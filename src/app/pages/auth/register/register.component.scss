@@ -1,0 +1,45 @@
+@import '../../../../assets/scss/main-theme';
+@import '../../../../assets/scss/button-style';
+
+.header{
+  min-height:10vh;
+}
+.Aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 90vh;
+  .Aligner-item {
+    .forms-container {
+      display: flex;
+      flex-direction: column;
+      .password-forms{
+        display: flex;
+        flex-direction: column;
+      }
+      .register-button{
+        align-items: center;
+        justify-content: center;
+        padding: 10px 30px;
+      }
+    }
+  }
+
+}
+
+.Aligner-item {
+  max-width: 70%;
+  min-width: 60%;
+}
+.box {
+  text-align: center;     /* will center text in <p>, which is not a flex item */
+}
+@media(max-width: 800px) {
+  .Aligner{
+    .Aligner-item {
+      max-width: 90%;
+      min-width: 90%;
+    }
+  }
+}

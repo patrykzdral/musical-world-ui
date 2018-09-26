@@ -1,0 +1,51 @@
+@import '../../../assets/scss/main-theme';
+
+#container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+}
+
+h1.app-name {
+  margin-left: 8px;
+}
+
+.active {
+  background-color: rgba(9, 30, 66, 0.25);
+}
+
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+
+}
+
+.sidenav-content {
+  margin-top: 15px;
+}
+
+.sidenav {
+  width: 200px;
+
+}
+
+.sidenav-item {
+  padding-top: 5px;
+}
+
+.border{
+  border-style: groove;
+}
+
+.padding-subheader{
+  padding-bottom: 0;
+}
+.bar_chart_icon_margin{
+  margin-right: 8px;
+}

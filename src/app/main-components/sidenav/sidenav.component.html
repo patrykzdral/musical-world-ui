@@ -1,0 +1,53 @@
+<div id="container" class="component-scroll-bar">
+  <app-main-header (toggleSideNav)="sidenav.toggle()"></app-main-header>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav [mode]="navbarMode()" class="sidenav border" [opened]="screenResize()">
+      <mat-nav-list>
+        <mat-list-item routerLink="/pages/dashboard" routerLinkActive="active">
+          <mat-icon mat-list-icon>dashboard</mat-icon>
+          <div fxFlex="5"></div>
+          <div class="sidenav-item">
+            <h5>{{'Sidenav.dashboard' | translate}}</h5>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+
+        <h3 mat-subheader class="padding-subheader">{{'Sidenav.bookmarks' | translate}}</h3>
+        <mat-list-item routerLink="/pages/charts" routerLinkActive="active">
+          <mat-icon class="mat-icon bar_chart_icon_margin" mat-list-icon>bar_chart</mat-icon>
+          <div fxFlex=5></div>
+          <div class="sidenav-item">
+            <h5>{{'Sidenav.charts' | translate}}</h5>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item routerLink="/ekanban/shelves" routerLinkActive="active">
+          <mat-icon class="mat-icon" mat-list-icon>folder</mat-icon>
+          <div fxFlex="10"></div>
+          <div class="sidenav-item">
+            <h5>{{'Sidenav.shelves' | translate}}</h5>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+        <mat-list-item routerLink="/ekanban/warnings" routerLinkActive="active">
+          <mat-icon class="mat-icon" mat-list-icon>warnings</mat-icon>
+          <div fxFlex="10"></div>
+          <div class="sidenav-item">
+            <h5>{{'Sidenav.warnings' | translate}}</h5>
+          </div>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="router-container">
+        <ng-content></ng-content>
+      </div>
+      <app-footer class="footer-container"></app-footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

@@ -1,0 +1,35 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.app-name{
+  margin-bottom: 10px;
+  color: white;
+}
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+}
+
+/* 2. Then use it like this in you component scss */
+
+mat-icon {
+  @include md-icon-size(32px);
+}
+mat-icon{
+  color: white;
+}
+
+.icon-margin{
+  margin-right:50px;
+}
+
+
+@media(max-width: 376px) {
+  .icon-margin{
+    margin-right: 10px;
+  }
+}
+

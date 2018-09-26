@@ -1,0 +1,58 @@
+<!--<div class="flex-container">-->
+<!--<div class="row">-->
+<!--<h2 class="title">{{'Auth.login.sign_in' | translate}}</h2>-->
+
+<!--<mat-form-field>-->
+<!--<input matInput placeholder="Enter you login" type="text" class="example-right-align">-->
+
+<!--</mat-form-field>-->
+
+<!--<mat-form-field>-->
+<!--<input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">-->
+<!--<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>-->
+<!--</mat-form-field>-->
+<!--</div>-->
+<!--</div>-->
+<div class="header">
+  <app-login-header></app-login-header>
+</div>
+<div class="Aligner"><!-- flex container -->
+
+  <div class="Aligner-item">
+    <mat-card>
+
+      <div class="box"><!-- flex item -->
+        <h2 class="sign_in">{{'Auth.login.sign_in' | translate}}</h2>
+      </div>
+      <div class="box"><!-- flex item -->
+        <h5 class="welcome">{{'Auth.login.welcome' | translate}}</h5>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="forms-container">
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Enter your username" formControlName="username" required>
+            <mat-error *ngIf="username.invalid">{{getEmailErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+                   formControlName="password" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="remember-row">
+          <mat-checkbox class="remember-me">{{'Auth.login.remember' | translate}}</mat-checkbox>
+          <div class="gap"></div>
+          <a class="forgot-password" routerLink="../request-password">Forgot Password?</a>
+        </div>
+        <div class="sign-button">
+          <button class="login-button" type="submit" [disabled]="!loginForm.valid" mat-stroked-button>Login</button>
+          <div class="gap"></div>
+          <button class="register-button" mat-stroked-button [routerLink]="['/auth/register']">Register</button>
+        </div>
+      </form>
+    </mat-card>
+
+  </div>
+</div>

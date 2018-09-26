@@ -1,0 +1,10 @@
+@import '../../../../assets/scss/main-header';
+@import '../../../../assets/scss/main-theme';
+
+::ng-deep .langSelect div.mat-select-arrow-wrapper {
+  display: none;
+}
+
+::ng-deep .langSelect.mat-select {
+  display: inline;
+}

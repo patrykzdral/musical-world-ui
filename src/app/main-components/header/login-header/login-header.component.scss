@@ -1,0 +1,14 @@
+@import '../../../../assets/scss/auth-header';
+@import '../../../../assets/scss/main-theme';
+::ng-deep .langSelect div.mat-select-arrow-wrapper {
+  display: none;
+}
+
+::ng-deep .langSelect.mat-select {
+  display: inline;
+}
+
+.app-name{
+  font-size: 24px;
+}
+
