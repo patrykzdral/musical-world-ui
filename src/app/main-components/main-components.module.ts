@@ -22,7 +22,6 @@ import {CommonModule} from '@angular/common';
   imports: [
     //BrowserModule,
     CommonModule,
-    BrowserAnimationsModule,
     HttpClientModule,
     MatModule,
     FormsModule,
@@ -31,7 +30,9 @@ import {CommonModule} from '@angular/common';
   ],
   exports: [
     LoginHeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    FooterComponent,
+    MainHeaderComponent
   ],
 
   providers: []

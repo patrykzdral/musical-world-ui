@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.scss']
+  selector: 'app-account-activated',
+  templateUrl: './account-activated.component.html',
+  styleUrls: ['./account-activated.component.scss']
 })
-export class LogoutComponent implements OnInit {
+export class AccountActivatedComponent implements OnInit {
 
   constructor(private _router: Router) { }
 
@@ -14,5 +14,6 @@ export class LogoutComponent implements OnInit {
   }
   goToHome(){
     this._router.navigate(['/']);
+
   }
 }

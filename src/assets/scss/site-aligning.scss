@@ -1,0 +1,12 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+}
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}

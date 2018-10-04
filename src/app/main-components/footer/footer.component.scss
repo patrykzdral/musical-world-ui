@@ -2,12 +2,11 @@
 @import '../../../assets/scss/footer';
 
 .footer-row{
-  margin-top: 20px;
   .footer{
-
+    min-height:5vh;
     display: flex;
-    height: 50px;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
   }
 }

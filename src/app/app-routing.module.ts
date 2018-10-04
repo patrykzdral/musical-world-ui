@@ -7,6 +7,7 @@ import {LogoutComponent} from './pages/auth/logout/logout.component';
 import {RequestPasswordComponent} from './pages/auth/request-password/request-password.component';
 import {ResetPasswordComponent} from './pages/auth/reset-password/reset-password.component';
 import {ErrorsComponent} from './@core/error/errors-components/errors.component';
+import {AccountActivatedComponent} from './pages/auth/account-activated/account-activated.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
@@ -38,11 +39,16 @@ export const routes: Routes = [
         path: 'reset-password',
         component: ResetPasswordComponent,
       },
+      {
+        path: 'account-activated',
+        component: AccountActivatedComponent,
+      },
+
     ],
   },
-  // {
-  //   path: '**', component: ErrorsComponent,
-  // },
+   {
+     path: '**', component: ErrorsComponent,
+   },
 ];
 const config: ExtraOptions = {
   useHash: true,

@@ -13,6 +13,9 @@ import {RouterModule} from '@angular/router';
 import {LoginHeaderComponent} from '../../main-components/header/login-header/login-header.component';
 import {MainComponentsModule} from '../../main-components/main-components.module';
 import {CommonModule} from '@angular/common';
+import {MatProgressButtonsModule} from 'mat-progress-buttons';
+import { AccountActivatedComponent } from './account-activated/account-activated.component';
+import { AuthPageTemplateComponent } from './auth-page-template/auth-page-template.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,9 @@ import {CommonModule} from '@angular/common';
     LogoutComponent,
     RequestPasswordComponent,
     ResetPasswordComponent,
+    AccountActivatedComponent,
+    AuthPageTemplateComponent,
+
   ],
   imports: [
     MatModule,
@@ -31,15 +37,19 @@ import {CommonModule} from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    MainComponentsModule
+    MainComponentsModule,
+    MatProgressButtonsModule
+
   ],
 
   exports: [
+    AuthPageTemplateComponent,
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
     RequestPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AccountActivatedComponent
   ],
 
   providers: []

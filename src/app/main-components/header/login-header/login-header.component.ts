@@ -8,10 +8,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LoginHeaderComponent implements OnInit {
   setLang: any;
-
   constructor(private translate: TranslateService) { }
 
   ngOnInit() {
+
   }
   changeLang() {
     this.translate.use(this.setLang);

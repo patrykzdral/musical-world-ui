@@ -1,19 +1,20 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {first, map} from 'rxjs/operators';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {UserService} from '../user/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {reject, resolve} from 'q';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 @Injectable()
-export class AuthenticationService {
+export class AuthenticationService implements OnDestroy{
   constructor(private _router: Router, private http: HttpClient, private cookieService: CookieService
-    , private userService: UserService) {
+    , private userService: UserService, private toastr: ToastrService) {
   }
 
   obtainAccessToken(loginData) {
@@ -27,13 +28,19 @@ export class AuthenticationService {
       'Authorization': 'Basic ' + btoa('patrykzdral:verysecretpassword')
     });
     console.log(headers);
-    this.http.post('/musicalworld/rest/oauth/token', params.toString(), {
+    return this.http.post('/musicalworld/rest/oauth/token', params.toString(), {
       headers: headers
     })
-    //.pipe(map(res => res.json()))
+      .pipe(first())
+      //.pipe(map(res => res.json()))
       .subscribe(
-        data => this.saveToken(data, loginData.username),
-        err => alert('Invalid Credentials')
+        data => {
+          console.log(data);
+          this.saveToken(data, loginData.username);
+          this.toastr.success('Login successful');
+        }
+        ,
+        err => this.toastr.error(err)
       );
   }
 
@@ -64,19 +71,6 @@ export class AuthenticationService {
       (err) => {
         console.log(err);
       });
-    // return this.userService.getByUsername(username)
-    //   .pipe(map(user => {
-    //     // login successful if there's a jwt token in the response
-    //     if (user) {
-    //       console.log("parse test" + JSON.stringify(user));
-    //       // store user details and jwt token in local storage to keep user logged in between page refreshes
-    //       localStorage.setItem('currentUser', JSON.stringify(user));
-    //     }
-    //     else{
-    //       console.log("parse test emtpy");
-    //     }
-    //     return user;
-    //   }));
   }
 
   checkCredentials() {
@@ -98,5 +92,8 @@ export class AuthenticationService {
   static isExpired(token) {
     const date = Number(token);
     return new Date().valueOf() > date;
+  }
+
+  ngOnDestroy(): void {
   }
 }

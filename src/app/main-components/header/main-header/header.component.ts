@@ -10,6 +10,7 @@ export class MainHeaderComponent implements OnInit {
 
   @Output() toggleSideNav = new EventEmitter<boolean>();
   setLang: any;
+  username: any;
 
   navToggle() {
     this.toggleSideNav.emit(true);
@@ -18,6 +19,7 @@ export class MainHeaderComponent implements OnInit {
   constructor(private translate: TranslateService) { }
 
   ngOnInit() {
+    this.username = JSON.parse( localStorage.getItem('currentUser') ).username;
   }
 
   showProfilePanel() {

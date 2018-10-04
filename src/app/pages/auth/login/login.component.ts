@@ -3,7 +3,7 @@ import {AuthenticationService} from '../../../@core/service/authentication/authe
 import {TranslateService} from '@ngx-translate/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-
+import { MatProgressButtonOptions } from 'mat-progress-buttons'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   //Validators.email
+  loading = false;
   loginForm = new FormGroup({
     username : new FormControl('', [Validators.required]),
     password : new FormControl('', [Validators.required]),
@@ -45,7 +46,27 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+    this.spinnerButtonOptions.active = true;
     console.log(this.loginForm.value);  // {first: 'Nancy', last: 'Drew'}
+
     this._authenticationService.obtainAccessToken(this.loginForm.value);
+    this.spinnerButtonOptions.active = false;
+    // this.spinnerButtonOptions.active = true;
+    // setTimeout(() => {
+    //   this.spinnerButtonOptions.active = false;
+    // }, 3500)
+  }
+
+  spinnerButtonOptions: MatProgressButtonOptions = {
+    active: false,
+    text: 'Spinner Button',
+    spinnerSize: 100,
+    raised: true,
+    stroked: false,
+    buttonColor: 'primary',
+    spinnerColor: 'accent',
+    fullWidth: false,
+    disabled: false,
+    mode: 'indeterminate'
   }
 }

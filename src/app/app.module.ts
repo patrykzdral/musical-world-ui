@@ -17,6 +17,8 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 // import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CookieService} from 'ngx-cookie-service';
+import {MatProgressButtonsModule} from 'mat-progress-buttons';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,10 @@ import {CookieService} from 'ngx-cookie-service';
     AuthModule,
     ErrorModule,
     ToastrModule.forRoot(),
+    MatProgressButtonsModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey:'AIzaSyBEmx5P3vl4ox4OU6nPgwTbU9k-_0Zm6Lo'
+    }),
     //Ng4LoadingSpinnerModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

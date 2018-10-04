@@ -23,7 +23,9 @@ export class UserService {
   }
 
   register(user: User) {
-    return this.http.post('/register', user);
+    console.log("register service");
+    console.log("USER"+user.firstName);
+    return this.http.post('/musicalworld/rest/register', user);
   }
 
   update(user: User) {

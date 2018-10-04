@@ -3,6 +3,7 @@ import {PagesComponent} from './pages.component';
 import {PagesRoutingModule} from './main-pages-routing.module';
 import {MapViewModule} from './map-view/map-view.module';
 import {ErrorModule} from '../../@core/error/error.module';
+import {MainComponentsModule} from '../../main-components/main-components.module';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -12,7 +13,7 @@ const PAGES_COMPONENTS = [
   imports: [
     PagesRoutingModule,
     MapViewModule,
-    //MainComponentsModule,
+    MainComponentsModule,
     ErrorModule
   ],
   declarations: [

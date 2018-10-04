@@ -48,11 +48,15 @@
         </div>
         <div class="sign-button">
           <button class="login-button" type="submit" [disabled]="!loginForm.valid" mat-stroked-button>Login</button>
+          <!--<mat-spinner-button class="login-button" type="submit"  [options]="spinnerButtonOptions">Login</mat-spinner-button>-->
           <div class="gap"></div>
-          <button class="register-button" mat-stroked-button [routerLink]="['/auth/register']">Register</button>
+          <button [disabled]="loading" class="register-button" mat-stroked-button [routerLink]="['/auth/register']">Register</button>
         </div>
       </form>
     </mat-card>
 
   </div>
+</div>
+<div class="footer">
+  <app-footer></app-footer>
 </div>

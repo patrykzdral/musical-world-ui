@@ -1,13 +1,20 @@
 import {NgModule} from '@angular/core';
 import {MapViewComponent} from './map-view.component';
+import {AgmCoreModule} from '@agm/core';
+//import {MapComponent} from '../map/map.component';
 
 @NgModule({
   declarations: [
-    MapViewComponent
+    MapViewComponent,
+ //   MapComponent
   ],
-  imports: [],
+  imports: [
+    AgmCoreModule
+  ],
   exports: [
-    MapViewComponent
+    MapViewComponent,
+ //   MapComponent
+
   ],
 
   providers: []
