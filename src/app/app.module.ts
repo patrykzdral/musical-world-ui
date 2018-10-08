@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {AppComponent} from './app.component';
 import {MainComponentsModule} from './main-components/main-components.module';
 import {MatModule} from './mat.module';
@@ -14,17 +14,18 @@ import {ErrorInterceptor} from './@core/error/error.interceptor';
 // import {CookieService} from 'ngx-cookie-service';
 import {ToastrModule} from 'ngx-toastr';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-// import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CookieService} from 'ngx-cookie-service';
 import {MatProgressButtonsModule} from 'mat-progress-buttons';
 import {AgmCoreModule} from '@agm/core';
+import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    AngularFontAwesomeModule,
     MainComponentsModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -39,7 +40,7 @@ import {AgmCoreModule} from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey:'AIzaSyBEmx5P3vl4ox4OU6nPgwTbU9k-_0Zm6Lo'
     }),
-    //Ng4LoadingSpinnerModule.forRoot(),
+    Ng4LoadingSpinnerModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -50,9 +51,9 @@ import {AgmCoreModule} from '@agm/core';
   ],
   providers: [
     CookieService,
-    //{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
-
+    {
+      provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

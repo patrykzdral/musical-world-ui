@@ -11,13 +11,15 @@ import {TranslateModule} from '@ngx-translate/core';
 import {MainHeaderComponent} from './header/main-header/header.component';
 import {LoginHeaderComponent} from './header/login-header/login-header.component';
 import {CommonModule} from '@angular/common';
+import { MenuListItemComponent } from './sidenav/menu-list-item/menu-list-item.component';
 
 @NgModule({
   declarations: [
     SidenavComponent,
     FooterComponent,
     LoginHeaderComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    MenuListItemComponent
   ],
   imports: [
     //BrowserModule,
@@ -32,7 +34,7 @@ import {CommonModule} from '@angular/common';
     LoginHeaderComponent,
     SidenavComponent,
     FooterComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
   ],
 
   providers: []

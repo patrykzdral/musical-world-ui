@@ -6,7 +6,7 @@ $custom-typography: mat-typography-config(
 );
 @include mat-core($custom-typography);
 
-$candy-app-primary: mat-palette($mat-light-blue);
+$candy-app-primary: mat-palette($mat-brown);
 $candy-app-accent:  mat-palette($mat-light-blue, A200, A100, A400);
 $candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent);
 

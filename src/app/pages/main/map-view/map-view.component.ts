@@ -11,11 +11,11 @@ export class MapViewComponent implements OnInit {
   title: string = 'My first AGM project';
   lat: number = 51.678418;
   lng: number = 7.809007;
-  constructor(private authService: AuthenticationService) {
+  constructor(private _authService: AuthenticationService) {
   }
 
   ngOnInit() {
-   this.authService.checkCredentials();
+   this._authService.checkCredentials();
     //this.authService.saveUserInLocalStorage("patrykz13")
   }
 

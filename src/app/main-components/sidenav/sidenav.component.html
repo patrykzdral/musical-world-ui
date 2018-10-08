@@ -1,53 +1,108 @@
-<div id="container" class="component-scroll-bar">
-  <app-main-header (toggleSideNav)="sidenav.toggle()"></app-main-header>
+<!--<div id="container" class="component-scroll-bar">-->
+  <!--<app-main-header (toggleSideNav)="sidenav.toggle()"></app-main-header>-->
 
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav [mode]="navbarMode()" class="sidenav border" [opened]="screenResize()">
-      <mat-nav-list>
-        <mat-list-item routerLink="/pages/main" routerLinkActive="active">
-          <mat-icon mat-list-icon>dashboard</mat-icon>
-          <div fxFlex="5"></div>
-          <div class="sidenav-item">
-            <h5>Main</h5>
-          </div>
-          <mat-divider></mat-divider>
-        </mat-list-item>
+  <!--<mat-sidenav-container class="sidenav-container">-->
+    <!--<mat-sidenav #sidenav [mode]="navbarMode()" class="sidenav border" [opened]="screenResize()">-->
+      <!--<mat-nav-list>-->
+        <!--<mat-list-item routerLink="/pages/main" routerLinkActive="active">-->
+          <!--<mat-icon mat-list-icon>dashboard</mat-icon>-->
+          <!--<div fxFlex="5"></div>-->
+          <!--<div class="sidenav-item">-->
+            <!--<h5>Main</h5>-->
+          <!--</div>-->
+          <!--<mat-divider></mat-divider>-->
+        <!--</mat-list-item>-->
 
-        <h3 mat-subheader class="padding-subheader">{{'Sidenav.bookmarks' | translate}}</h3>
-        <mat-list-item routerLink="/pages/charts" routerLinkActive="active">
-          <mat-icon class="mat-icon bar_chart_icon_margin" mat-list-icon>bar_chart</mat-icon>
-          <div fxFlex=5></div>
-          <div class="sidenav-item">
-            <h5>events</h5>
-          </div>
-        </mat-list-item>
+        <!--<h3 mat-subheader class="padding-subheader">bookmarks</h3>-->
+        <!---->
+        <!--<mat-list-item routerLink="/pages/charts" routerLinkActive="active">-->
+          <!--<mat-icon class="mat-icon" mat-list-icon>event</mat-icon>-->
+          <!--<div fxFlex="10"></div>-->
+          <!--<div class="sidenav-item">-->
+            <!--<h5>events</h5>-->
+          <!--</div>-->
+        <!--</mat-list-item>-->
+
+        <!--<mat-divider></mat-divider>-->
+
+        <!--<mat-list-item routerLink="/pages/events" routerLinkActive="active">-->
+          <!--<mat-icon class="mat-icon" mat-list-icon>folder</mat-icon>-->
+          <!--<div fxFlex="10"></div>-->
+          <!--<div class="sidenav-item">-->
+            <!--<h5>add event</h5>-->
+          <!--</div>-->
+        <!--</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+
+        <!--<mat-list-item routerLink="/pages/friends" routerLinkActive="active">-->
+          <!--<mat-icon class="mat-icon" mat-list-icon>person_pin</mat-icon>-->
+          <!--<div fxFlex="10"></div>-->
+          <!--<div class="sidenav-item">-->
+            <!--<h5>friends</h5>-->
+          <!--</div>-->
+        <!--</mat-list-item>-->
+      <!--</mat-nav-list>-->
+    <!--</mat-sidenav>-->
+
+    <!--<mat-sidenav-content>-->
+      <!--<div class="router-container">-->
+        <!--<ng-content></ng-content>-->
+      <!--</div>-->
+      <!--<app-footer class="footer-container"></app-footer>-->
+    <!--</mat-sidenav-content>-->
+  <!--</mat-sidenav-container>-->
+<!--</div>-->
+
+  <!--<app-main-header></app-main-header>-->
+
+  <!--<mat-sidenav-container class="sidenav-container">-->
+    <!--<mat-sidenav #appDrawer [mode]="navbarMode()" class="sidenav border" [opened]="screenResize()">-->
+      <!--<mat-nav-list>-->
+
+        <!--<mat-list-item routerLink="/pages/main" routerLinkActive="active">-->
+          <!--<mat-icon mat-list-icon>dashboard</mat-icon>-->
+          <!--<div class="sidenav-item">-->
+            <!--<h5>Main</h5>-->
+          <!--</div>-->
+          <!--<mat-divider></mat-divider>-->
+        <!--</mat-list-item>-->
+
+        <!--<h3 mat-subheader class="padding-subheader">bookmarks</h3>-->
+
+        <!--<app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>-->
+
+      <!--</mat-nav-list>-->
+    <!--</mat-sidenav>-->
+
+    <!--<mat-sidenav-content>-->
+      <!--<div class="router-container">-->
+        <!--<ng-content></ng-content>-->
+      <!--</div>-->
+      <!--<app-footer class="footer-container"></app-footer>-->
+    <!--</mat-sidenav-content>-->
+  <!--</mat-sidenav-container>-->
+
+<app-main-header></app-main-header>
+<mat-sidenav-container>
+  <mat-sidenav #appDrawer [mode]="navbarMode()" class="sidenav border" [opened]="screenResize()">
+    <mat-nav-list>
+      <mat-list-item routerLink="/pages/maps" routerLinkActive="active">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <div fxFlex="5"></div>
+        <div class="sidenav-item">
+          <h5>Main</h5>
+        </div>
         <mat-divider></mat-divider>
+      </mat-list-item>
+      <h3 mat-subheader class="padding-subheader">bookmarks</h3>
 
-        <mat-list-item routerLink="/pages/events" routerLinkActive="active">
-          <mat-icon class="mat-icon" mat-list-icon>folder</mat-icon>
-          <div fxFlex="10"></div>
-          <div class="sidenav-item">
-            <h5>add event</h5>
-          </div>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-
-        <mat-list-item routerLink="/ekanban/warnings" routerLinkActive="active">
-          <mat-icon class="mat-icon" mat-list-icon>warnings</mat-icon>
-          <div fxFlex="10"></div>
-          <div class="sidenav-item">
-            <h5>friends</h5>
-          </div>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <div class="router-container">
-        <ng-content></ng-content>
-      </div>
-      <app-footer class="footer-container"></app-footer>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
-
+      <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="router-container">
+      <ng-content></ng-content>
+    </div>
+    <app-footer class="footer-container"></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

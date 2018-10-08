@@ -13,8 +13,8 @@ import {ToastrService} from 'ngx-toastr';
 })
 @Injectable()
 export class AuthenticationService implements OnDestroy{
-  constructor(private _router: Router, private http: HttpClient, private cookieService: CookieService
-    , private userService: UserService, private toastr: ToastrService) {
+  constructor(private _router: Router, private _http: HttpClient, private _cookieService: CookieService
+    , private _userService: UserService, private _toastr: ToastrService) {
   }
 
   obtainAccessToken(loginData) {
@@ -28,7 +28,7 @@ export class AuthenticationService implements OnDestroy{
       'Authorization': 'Basic ' + btoa('patrykzdral:verysecretpassword')
     });
     console.log(headers);
-    return this.http.post('/musicalworld/rest/oauth/token', params.toString(), {
+    return this._http.post('/musicalworld/rest/oauth/token', params.toString(), {
       headers: headers
     })
       .pipe(first())
@@ -37,32 +37,30 @@ export class AuthenticationService implements OnDestroy{
         data => {
           console.log(data);
           this.saveToken(data, loginData.username);
-          this.toastr.success('Login successful');
+          this._toastr.success('Login successful');
         }
         ,
-        err => this.toastr.error(err)
+        err => this._toastr.error(err)
       );
   }
 
   logout() {
     // remove user from local storage to log user out
-    this.cookieService.delete('access_token');
-    this.cookieService.delete('access_token_expire_date');
+    this._cookieService.delete('access_token');
+    this._cookieService.delete('access_token_expire_date');
     localStorage.removeItem('currentUser');
   }
 
   saveToken(token, login) {
-    console.log(token.expires_in);
     const expireDate = new Date().getTime() + (1000 * token.expires_in);
-    console.log(expireDate);
-    this.cookieService.set('access_token', token.access_token, expireDate);
-    this.cookieService.set('access_token_expire_date', expireDate.toString());
+    this._cookieService.set('access_token', token.access_token, expireDate);
+    this._cookieService.set('access_token_expire_date', expireDate.toString());
     this.saveUserInLocalStorage(login);
     this._router.navigate(['/']);
   }
 
   saveUserInLocalStorage(username: string) {
-    this.userService.getByUsername(username).toPromise().then(res => {
+    this._userService.getByUsername(username).toPromise().then(res => {
         if ( res != null) {
           console.log(JSON.stringify(res));
           localStorage.setItem('currentUser', JSON.stringify(res));
@@ -75,13 +73,13 @@ export class AuthenticationService implements OnDestroy{
 
   checkCredentials() {
     console.log(localStorage.getItem('currentUser'));
-    if (!this.cookieService.check('access_token') || !this.cookieService.check('access_token_expire_date') ) {
+    if (!this._cookieService.check('access_token') || !this._cookieService.check('access_token_expire_date') ) {
       this._router.navigate(['/auth/login']);
     }
     else{
-      if (AuthenticationService.isExpired(this.cookieService.get('access_token_expire_date'))) {
-        this.cookieService.delete('access_token');
-        this.cookieService.delete('access_token_expire_date');
+      if (AuthenticationService.isExpired(this._cookieService.get('access_token_expire_date'))) {
+        this._cookieService.delete('access_token');
+        this._cookieService.delete('access_token_expire_date');
 
         this._router.navigate(['/auth/login']);
       }

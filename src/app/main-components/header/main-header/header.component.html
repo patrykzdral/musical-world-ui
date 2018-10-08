@@ -1,21 +1,25 @@
 <mat-toolbar class="application-main-color-shadow">
-  <button mat-icon-button (click)="navToggle()">
+  <button mat-icon-button (click)="navService.openNav()">
     <mat-icon>menu</mat-icon>
   </button>
   <h1 class="app-name">Musical World</h1>
   <span class="example-spacer"></span>
-  <button class="icon-margin" mat-icon-button matTooltip="{{'Header.language' | translate}}" (click)=select.open()>
+  <button class="icon-margin" mat-icon-button matTooltip="{{'Header.language' | translate}}" (click)=langselect.open()>
     <mat-icon>language</mat-icon>
-    <mat-select class="langSelect" #select [(ngModel)]="setLang">
+    <mat-select class="langSelect" #langselect [(ngModel)]="setLang">
       <!--<mat-option (click)="changeLang()" value="en">{{'Header.english-language' | translate}}</mat-option>-->
       <!--<mat-option (click)="changeLang()" value="de">{{'Header.german-language' | translate}}</mat-option>-->
-
       <mat-option (click)="changeLang()" value="en">english</mat-option>
       <mat-option (click)="changeLang()" value="de">german</mat-option>
     </mat-select>
   </button>
-  <button mat-icon-button matTooltip="{{'Header.profile' | translate}}" (click)="showProfilePanel()">
-    <mat-icon>account_box</mat-icon>
+  <button mat-icon-button matTooltip="{{'Header.profile' | translate}}" (click)="profileselect.open()">
+    <mat-icon >account_box</mat-icon>
+    <mat-select class="langSelect" #profileselect>
+
+      <mat-option  (click)="logOut()" value="en">log out</mat-option>
+      <mat-option (click)="showProfile()" value="de">my profile</mat-option>
+    </mat-select>
   </button>
   <h1 class="app-name">{{username}}</h1>
 </mat-toolbar>

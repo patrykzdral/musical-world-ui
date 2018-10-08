@@ -1,5 +1,6 @@
 @import '../../../../assets/scss/main-header';
 @import '../../../../assets/scss/main-theme';
+@import '../../../@theme/breakpoints';
 
 ::ng-deep .langSelect div.mat-select-arrow-wrapper {
   display: none;
@@ -8,3 +9,8 @@
 ::ng-deep .langSelect.mat-select {
   display: inline;
 }
+@media (max-width: $large-handset) {
+    .app-name{
+      display: none;
+    }
+  }

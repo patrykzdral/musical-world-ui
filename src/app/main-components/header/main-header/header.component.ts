@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {Router} from '@angular/router';
+import {NavService} from '../../../@core/service/navigation/nav.service';
 
 @Component({
   selector: 'app-main-header',
@@ -16,18 +18,22 @@ export class MainHeaderComponent implements OnInit {
     this.toggleSideNav.emit(true);
   }
 
-  constructor(private translate: TranslateService) { }
+  constructor(private _translate: TranslateService, private _router: Router, public navService: NavService) { }
 
   ngOnInit() {
     this.username = JSON.parse( localStorage.getItem('currentUser') ).username;
   }
 
-  showProfilePanel() {
+  showProfile() {
+    this._router.navigate(['/pages/profile']);
+  }
 
+  logOut(){
+    this._router.navigate(['/auth/logout']);
   }
 
   changeLang() {
-    this.translate.use(this.setLang);
+    this._translate.use(this.setLang);
   }
 
 }

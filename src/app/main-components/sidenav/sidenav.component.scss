@@ -8,7 +8,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-
 }
 
 h1.app-name {
@@ -33,6 +32,7 @@ h1.app-name {
 
 .sidenav {
   width: 200px;
+  background-color: #ebfffb;
 
 }
 
@@ -47,6 +47,29 @@ h1.app-name {
 .padding-subheader{
   padding-bottom: 0;
 }
-.bar_chart_icon_margin{
-  margin-right: 8px;
+.mat-nav-list {
+  padding-top: 0;
 }
+
+//@import './theme';
+//
+//.mat-sidenav {
+//  width: 200px;
+//}
+//.mat-sidenav-container {
+//  background-color: white !important;
+//  height: 100vh;
+//}
+//.sidenav-toolbar {
+//  height: 64px;
+//  background-color: mat-color($app-primary);
+//  display: flex;
+//  flex-direction: row;
+//
+//  @media (max-width: 600px) {
+//    height: 56px;
+//  }
+//}
+//.mat-nav-list {
+//  padding-top: 0;
+//}
