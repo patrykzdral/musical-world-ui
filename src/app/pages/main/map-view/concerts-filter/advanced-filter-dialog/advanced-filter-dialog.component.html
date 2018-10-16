@@ -1,0 +1,49 @@
+<!--<h4 mat-dialog-title>Filter Concerts</h4>-->
+<!--<div mat-dialog-content>-->
+  <!--<p>Choose filter options</p>-->
+  <!--<mat-form-field>-->
+    <!--<input matInput>-->
+    <!--&lt;!&ndash;<input matInput placeholder="event name" [(ngModel)]="data.eventName">&ndash;&gt;-->
+  <!--</mat-form-field>-->
+  <!--<mat-form-field>-->
+    <!--<input matInput placeholder="event name" [(ngModel)]="data.eventName">-->
+  <!--</mat-form-field>-->
+<!--</div>-->
+<!--<div mat-dialog-actions>-->
+  <!--<button mat-button (click)="onNoClick()">Cancel</button>-->
+  <!--<button mat-button [mat-dialog-close]="data" cdkFocusInitial>Filter concerts</button>-->
+<!--</div>-->
+
+  <h2 mat-dialog-title>Filter events</h2>
+  <mat-dialog-content class="flex-container">
+    <p>Choose filter options</p>
+    <div class="form-group">
+      <label>event name</label>
+      <input class="form-control"  placeholder="event name">
+    </div>
+
+    <!--<mat-form-field>-->
+      <!--<mat-select placeholder="Toppings" [formControl]="toppings" multiple>-->
+        <!--<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>-->
+      <!--</mat-select>-->
+    <!--</mat-form-field>-->
+    <mat-form-field>
+      <mat-select placeholder="Choose instruments" [formControl]="toppings" multiple>
+        <mat-option *ngFor="let instrumentsModel of instrumentsModelObservable | async" [value]="instrumentsModel.name">
+          {{instrumentsModel.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-group">
+      <label>Date</label>
+      <input  class="form-control" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" name="dateFrom-input">
+      <owl-date-time class="owl-picker" #dt></owl-date-time>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <div class="spacer"></div>
+    <button mat-button [mat-dialog-close]="data">Filter</button>
+  </mat-dialog-actions>
+

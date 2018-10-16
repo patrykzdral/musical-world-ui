@@ -1,0 +1,71 @@
+@import '../../../../../assets/scss/main-theme';
+@import '../../../../../assets/scss/button-style';
+
+.forms-container {
+  display: flex;
+  flex-direction: column;
+  .essential-info{
+    display: flex;
+    flex-direction: column;
+    .events-date{
+      display: flex;
+      flex-direction: row;
+      .date-from{
+        flex: 40%;
+      }
+      .spacer{
+        flex-grow: 1;
+
+      }
+      .date-to{
+        flex: 40%;
+      }
+    }
+  }
+  .additional-info{
+    display: flex;
+    flex-direction: column;
+  }
+  .done-section {
+    display: flex;
+    flex-direction: column;
+
+    .create-event {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 30px;
+      margin:30px 0 30px 0 ;
+      .new-event {
+        flex:100%; /* fg: 0, fs: 0, fb: 100% */
+
+      }
+    }
+    .reset-row {
+      display: flex;
+      flex-direction: row;
+      padding: 10px 30px;
+    }
+  }
+}
+
+
+.parent {
+  display: flex;
+  flex-direction: row;
+}
+.spacer {
+  flex-grow: 1;
+}
+.middle-buttons{
+  flex: 25%;
+}
+@media(max-width: 800px) {
+  .Aligner {
+    .Aligner-item {
+      max-width: 90%;
+      min-width: 90%;
+    }
+  }
+}

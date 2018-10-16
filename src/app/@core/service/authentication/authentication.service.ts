@@ -80,7 +80,7 @@ export class AuthenticationService implements OnDestroy{
       if (AuthenticationService.isExpired(this._cookieService.get('access_token_expire_date'))) {
         this._cookieService.delete('access_token');
         this._cookieService.delete('access_token_expire_date');
-
+        localStorage.removeItem('current_user');
         this._router.navigate(['/auth/login']);
       }
     }

@@ -1,6 +1,61 @@
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
+<div class="flex-container">
+
+  <app-concerts-filter></app-concerts-filter>
+  <agm-map
+    [latitude]="startLatitude"
+    [longitude]="startLongitude"
+    [mapTypeId]="mapTypes[mapTypeId]"
+    [zoom]="14"
+    [zoomControl]="false"
+    [streetViewControl]="false"
+    (mapClick)="onChoseLocation($event)">
+
+    <div *ngFor="let concert of concerts | async">
+      <agm-marker
+        *ngIf="concert.address"
+        [latitude]="getEventLatitude(concert)"
+        [longitude]="getEventLongitude(concert)"
+        [iconUrl]="getMarkerImage(concert)">
+
+        <agm-info-window>
+          <div style="line-height:1.35; overflow:hidden; white-space:nowrap; text-align: center">
+            <!--<app-info-window-event [event]="event"-->
+            <!--style="display: block; margin-bottom: 4px;"></app-info-window-event>-->
+            <span class="label label-warning event_details_label" style="border-radius: 0;">Kategoria: {{concert.name}}</span>
+            <span class="label label-warning event_details_label" style="border-radius: 0;">Ilość uczestników: {{concert.concertInstrumentSlots.length}}</span>
+          </div>
+          <div style="line-height:1.35; overflow:hidden; white-space:nowrap; text-align: center; margin-top: 5px">
+            <span class="label label-default event_details_label" style="margin-left: 5px;  border-radius: 0;">Adres: {{getFormattedAddress(concert)}}</span>
+          </div>
+        </agm-info-window>
+      </agm-marker>
+    </div>
+
+
+    <agm-marker
+      [latitude]="newEventMarker.latitude"
+      [longitude]="newEventMarker.longitude"
+      *ngIf="newEventLocationChosen"
+      [iconUrl]="newEventMarker.image">
+
+      <agm-info-window>
+        <div class="btn-group">
+          <label class="label_create_event_from_marker">Utwórz wydarzenie:</label>
+          <button (click)="navigateToNewEvent()">{{newEventMarker.formatted_address}}</button>
+        </div>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+
+  <!--<div id="events_buttons">-->
+    <!--<button class="btn-xs" id="btn_all_events" (click)="navigateToEvents()"></button>-->
+    <!--<img id="btn_map_view_mode" style="cursor: pointer"-->
+         <!--src="../../../../assets/map_view/maps_globe_icon.png"-->
+         <!--(click)="changeMapTypeId()">-->
+    <!--<button class="btn-xs" id="btn_new_event" (click)="navigateToNewEvent()"></button>-->
+  <!--</div>-->
+</div>
+

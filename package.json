@@ -38,7 +38,9 @@
     "font-awesome": "~4.7.0",
     "@google/maps": "~0.5.5",
     "ng4-loading-spinner": "~1.2.3",
-    "@agm/core": "^1.0.0-beta.5"
+    "@types/googlemaps": "^3.30.14",
+    "@agm/core": "^1.0.0-beta.5",
+    "ng-pick-datetime": "~6.0.16"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",

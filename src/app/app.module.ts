@@ -38,7 +38,8 @@ import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
     ToastrModule.forRoot(),
     MatProgressButtonsModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyBEmx5P3vl4ox4OU6nPgwTbU9k-_0Zm6Lo'
+      apiKey:'AIzaSyBEmx5P3vl4ox4OU6nPgwTbU9k-_0Zm6Lo',
+      libraries: ["places"]
     }),
     Ng4LoadingSpinnerModule.forRoot(),
     TranslateModule.forRoot({

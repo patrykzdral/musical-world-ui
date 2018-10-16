@@ -42,7 +42,7 @@ export const routes: Routes = [
       {
         path: 'account-activated',
         component: AccountActivatedComponent,
-      },
+      }
 
     ],
   },

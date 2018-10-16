@@ -1,0 +1,10 @@
+<div *ngIf="_instrument">
+  <!--<mat-checkbox class="example-margin" [(ngModel)]="_instrument.chosen">{{_instrument.name}}</mat-checkbox>-->
+
+  <mat-label class="instrument">{{_instrument.name}}</mat-label>
+  <mat-label>&nbsp;&nbsp;&nbsp;quantity: </mat-label>
+
+  <mat-form-field class="quantity">
+    <input matInput [(ngModel)]="_instrument.quantity" type="number">
+  </mat-form-field>
+</div>

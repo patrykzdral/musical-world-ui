@@ -1,0 +1,18 @@
+<div class="search-form">
+  <div class="first-row">
+    <input class="text-input form-control" placeholder="enter the name of concert" type="text" [(ngModel)]="value">
+    <fa class="search-icon" (click)="filter()" name="search" animation="spin"></fa>
+    <fa class="clear-icon" name="close"  *ngIf="value" aria-label="Clear" (click)="value=''"></fa>
+  </div>
+  <div class="second-row">
+    <div class="empty-space"></div>
+    <label (click)="openDialog()" class="filter-text" >display advanced filter options</label >
+  </div>
+</div>
+
+<!--<div id="filter_events" class="navbar-fixed-top">-->
+<!--<input style="color: #125553;  font-weight: bold; font-size: 16px; cursor: pointer" type="text" class="form-control"-->
+<!--id="events_filters" placeholder="Filtruj wydarzenia..." readonly>-->
+<!--</div>-->
+
+<!--<img class="navbar-fixed-top" style="cursor: pointer" id="search_icon" src="../../../assets/img/events_filters/search_icon.png" (click)="goToFilterEventView()">-->

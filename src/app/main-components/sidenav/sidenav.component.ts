@@ -20,17 +20,17 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         {
           displayName: 'create new',
           iconName: 'create_new_folder',
-          route: '/pages/events/create-new'
+          route: '/pages/concerts/create-new'
         },
         {
           displayName: 'show all',
           iconName: 'folder',
-          route: '/pages/events/all'
+          route: '/pages/concerts/all'
         },
         {
-          displayName: 'my events',
+          displayName: 'my concerts',
           iconName: '',
-          route: '/pages/events/my'
+          route: '/pages/concerts/my'
         }
       ]
     },
@@ -46,12 +46,12 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         {
           displayName: 'edit',
           iconName: 'border_color',
-          route: '/pages/events/create-new'
+          route: '/pages/profile/edit'
         },
         {
           displayName: 'show',
           iconName: 'more',
-          route: '/pages/events/all'
+          route: '/pages/profile/show'
         },
         {
           displayName: 'log out',

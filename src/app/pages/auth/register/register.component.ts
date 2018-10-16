@@ -12,7 +12,7 @@ import {User} from '../../../@core/model/user.model';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
   registrationFormGroup: FormGroup;
   passwordFormGroup: FormGroup;
   additionalFieldsFormGroup: FormGroup;
@@ -23,6 +23,9 @@ export class RegisterComponent {
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private toastrService: ToastrService, private router: Router) {
 
+  }
+
+  ngOnInit(): void {
     this.passwordFormGroup = this.formBuilder.group({
       password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)]],
       repeatPassword: ['', Validators.required]
@@ -41,9 +44,7 @@ export class RegisterComponent {
       passwordFormGroup: this.passwordFormGroup,
       additionalFields: this.additionalFieldsFormGroup
     });
-
   }
-
   get username(): any {
     return this.registrationFormGroup.get('username');
   }
@@ -95,7 +96,7 @@ export class RegisterComponent {
   }
 
   onSubmit(){
-    let user: User = new User();
+    const user: User = new User();
     //const resource = JSON.parse(this.registrationFormGroup.value);
     // user.username=
     console.log(this.passwordFormGroup);
@@ -120,4 +121,6 @@ export class RegisterComponent {
           this.loading = false;
         });
   }
+
+
 }

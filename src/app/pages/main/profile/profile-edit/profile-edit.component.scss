@@ -1,0 +1,32 @@
+.profile{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  .title{
+    font-size: 25px;
+  }
+  .content{
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+  .form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  ::ng-deep mat-form-field{
+    height: 2vh;
+    margin-top: 0 !important;
+    padding-top: 0;
+
+  }
+  label{
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  ::ng-deep div.mat-form-field-flex{
+    padding-top: 0 !important;
+  }
+
+}
+

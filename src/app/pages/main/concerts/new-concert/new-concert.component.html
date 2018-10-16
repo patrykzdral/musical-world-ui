@@ -1,0 +1,99 @@
+<mat-card>
+    <div class="forms-container" [formGroup]="eventData">
+      <mat-vertical-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="eventData">
+          <div class="essential-info">
+            <ng-template matStepLabel>Fill essential information</ng-template>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Enter event name" formControlName="name" required>
+              <mat-error *ngIf="name.invalid">{{getEventError()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Textarea" formControlName="description"></textarea>
+            </mat-form-field>
+            <div class="events-date">
+              <mat-form-field  class="date-from">
+                <mat-label>the beginning of the event</mat-label>
+                  <input matInput [owlDateTimeTrigger]="dt" [owlDateTime]="dt" formControlName="dateFrom" name="dateFrom-input">
+                  <owl-date-time class="owl-picker" #dt></owl-date-time>
+              </mat-form-field>
+              <div class="spacer"></div>
+              <mat-form-field class="date-to">
+                <mat-label>the end of the event</mat-label>
+                <input matInput [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" formControlName="dateTo" name="dateFrom-input">
+                <owl-date-time class="owl-picker" #dt2></owl-date-time>
+              </mat-form-field>
+            </div>
+
+            <mat-form-field>
+              <mat-label>number of rehearsals</mat-label>
+              <input type="number" matInput placeholder="Enter a number" formControlName="numberOfRehearsals">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput type="text" formControlName="address" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off"  #search>
+              <!--<mat-error *ngIf="name.invalid">{{getEventError()}}</mat-error>-->
+            </mat-form-field>
+            <!--<div class="form-group">-->
+              <!--<input type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>-->
+            <!--</div>-->
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Choose instruments</ng-template>
+          <mat-form-field>
+            <mat-select [(value)]="selectedInstruments" placeholder="Choose instruments" multiple required>
+              <mat-option *ngFor="let instrumentsModel of instrumentsModelObservable | async" [value]="instrumentsModel">
+                {{instrumentsModel.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="mat-list">
+            <mat-card *ngIf="selectedInstruments">
+              <mat-list>
+                <mat-list-item *ngFor="let instrument of selectedInstruments">
+                  <app-concert-instrument-element [instrument]="instrument"></app-concert-instrument-element>
+                </mat-list-item>
+              </mat-list>
+            </mat-card>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Additional information</ng-template>
+          <div class="additional-info">
+            <mat-slide-toggle formControlName="ensuredDrive">
+              Ensured drive
+            </mat-slide-toggle>
+            <mat-slide-toggle formControlName="guaranteedMeal">
+              Guaranteed meal
+            </mat-slide-toggle>
+          </div>
+
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <div class="done-section">
+
+            <div class="create-event">
+              <button class="new-event button-style" (click)="onSubmit()"
+                      [disabled]="!eventData.valid"
+                      mat-stroked-button>
+                Create new concert
+              </button>
+            </div>
+            <div class="reset-row">
+              <button class="middle-buttons" mat-stroked-button matStepperPrevious>Back</button>
+              <div class="spacer"></div>
+              <button class="middle-buttons" mat-stroked-button (click)="stepper.reset()">Reset</button>
+            </div>
+
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </div>
+</mat-card>
+
+

@@ -4,6 +4,8 @@ import {MapViewComponent} from './map-view/map-view.component';
 import {PagesComponent} from './pages.component';
 import {ErrorsComponent} from '../../@core/error/errors-components/errors.component';
 import {ProfileComponent} from './profile/profile.component';
+import {NewConcertComponent} from './concerts/new-concert/new-concert.component';
+import {ProfileEditComponent} from './profile/profile-edit/profile-edit.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,7 +16,12 @@ const routes: Routes = [{
   },
     {
       path: 'profile',
-      component: ProfileComponent
+      children:[
+        {
+          path: "edit",
+          component: ProfileEditComponent
+        }
+      ]
     },
     {
       path: '',
@@ -22,11 +29,20 @@ const routes: Routes = [{
       pathMatch: 'full',
     },
     {
+      path: 'concerts',
+      children:[
+        {
+          path: "create-new",
+          component: NewConcertComponent
+        }
+      ]
+    },
+    {
       path: 'bad-path', component: ErrorsComponent,
     },
     {
       path: '**', redirectTo: '/bad-path'
-    }],
+    }]
 }];
 
 @NgModule({
