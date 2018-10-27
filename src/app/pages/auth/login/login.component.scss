@@ -1,61 +1,79 @@
 @import '../../../../assets/scss/main-theme';
 
 .header{
-  min-height:10vh;
+  height:10vh;
 }
 
 .Aligner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display:flex;
+  flex-direction: row;
   min-height:85vh;
   .photo{
-
+    margin-left: 50px;
+    display: flex;
+    flex:50%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .logo{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 90%;
+    }
   }
   .Aligner-item {
-    .sign_in {
-      size: 24px;
-      margin-bottom: 40px;
-    }
-    .welcome {
-      color: #807f82;
-      font-size: 12px;
+    display: flex;
+    flex:50%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .mat-card{
+      width: 90%;
+      .sign_in {
+        size: 24px;
+        margin-bottom: 40px;
+      }
+      .welcome {
+        color: #807f82;
+        font-size: 12px;
+      }
+
+      .forms-container {
+        display: flex;
+        flex-direction: column;
+      }
+      .remember-row {
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        .remember-me {
+          flex: 40%;
+        }
+        .gap {
+          flex: 20%;
+        }
+        .forgot-password {
+          text-align: right;
+          color: $application-main-color;
+          flex: 40%
+        }
+      }
+      .sign-button {
+        display: flex;
+        .login-button {
+          flex: 48%;
+        }
+        .gap{
+          flex: 4%;
+        }
+        .register-button {
+          flex: 48%;
+
+        }
+      }
     }
 
-    .forms-container {
-      display: flex;
-      flex-direction: column;
-    }
-    .remember-row {
-      display: flex;
-      margin-top: 30px;
-      margin-bottom: 30px;
-      .remember-me {
-        flex: 40%;
-      }
-      .gap {
-        flex: 20%;
-      }
-      .forgot-password {
-        text-align: right;
-        color: $application-main-color;
-        flex: 40%
-      }
-    }
-    .sign-button {
-      display: flex;
-      .login-button {
-        flex: 48%;
-      }
-      .gap{
-        flex: 4%;
-      }
-      .register-button {
-        flex: 48%;
-
-      }
-    }
   }
 }
 
@@ -63,16 +81,18 @@
   text-align: center;     /* will center text in <p>, which is not a flex item */
 }
 .Aligner-item {
-  max-width: 70%;
-  min-width: 60%;
+
 }
 
 
 @media(max-width: 800px) {
   .Aligner{
+    .photo{
+      display: none;
+    }
     .Aligner-item {
-      max-width: 90%;
-      min-width: 90%;
+     // max-width: 90%;
+      min-width: 100%;
       .sign-button {
         display: flex;
         .login-button {

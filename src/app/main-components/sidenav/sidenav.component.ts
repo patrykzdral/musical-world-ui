@@ -25,7 +25,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         {
           displayName: 'show all',
           iconName: 'folder',
-          route: '/pages/concerts/all'
+          route: '/pages/concerts/show-all'
         },
         {
           displayName: 'my concerts',

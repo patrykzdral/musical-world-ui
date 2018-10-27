@@ -5,13 +5,15 @@ import {Observable} from 'rxjs';
 import {InstrumentService} from '../../../../@core/service/instrument/instrument.service';
 import {MapsAPILoader} from '@agm/core';
 import {first} from 'rxjs/operators';
-import {User} from '../../../../@core/model/user.model';
 import {Concert} from '../../../../@core/model/concert.model';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {ConcertService} from '../../../../@core/service/concert/concert.service';
 import {Address} from '../../../../@core/model/address.model';
 import {AuthenticationService} from '../../../../@core/service/authentication/authentication.service';
+import {GoogleService} from '../../../../@core/service/google/google.service';
+import {ConcertAddressModel} from '../../map-view/mapAddress.model';
+import {SessionService} from '../../../../@core/service/session/session.service';
 import {} from '@types/googlemaps';
 
 @Component({
@@ -23,24 +25,40 @@ export class NewConcertComponent implements OnInit {
   concert: Concert;
   address: Address;
   eventData: FormGroup;
-  additionalData: FormGroup;
   instrumentsModelObservable: Observable<Instrument[]>;
   selectedInstruments: Instrument[];
+  location: any;
+  mapAddress:any;
+  concertAddresModel: ConcertAddressModel;
   @ViewChild('search') public searchElement: ElementRef;
 
-  constructor(private _toastr : ToastrService,private router: Router, private ngZone: NgZone,
+  constructor(private _sessionService: SessionService, private _googleService: GoogleService, private _toastr: ToastrService, private router: Router, private ngZone: NgZone,
               private _mapsAPILoader: MapsAPILoader, private _formBuilder: FormBuilder,
-              private _instrumentService: InstrumentService,private _authService: AuthenticationService,
+              private _instrumentService: InstrumentService, private _authService: AuthenticationService,
               private _concertService: ConcertService) {
   }
 
   ngOnInit() {
+
+    //this.concertAddresModel = JSON.parse( localStorage.getItem('address') );
+
+      //this.getAddressComponentByPlace(this.location)
+    //lat: any = JSON.parse( localStorage.getItem('address') ).latitude;
+    //this.mapAddress = localStorage.getItem('address').toString();
+    //console.log(this.mapAddress);
+
+
     this._authService.checkCredentials();
-    this.concert= new Concert();
-    this.address= new Address();
+    this.concert = new Concert();
+    this.address = new Address();
     this.selectedInstruments = [];
     this.instrumentsModelObservable = this._instrumentService.findAll();
-
+    this.location= this._sessionService.location;
+    if(this.location) {
+      this.mapAddress = this.location.formatted_address;
+      this.getAddressComponentByPlace(this.location);
+      this._sessionService.location=null;
+    }
     this.eventData = this._formBuilder.group({
       name: ['', [Validators.required]],
       description: ['',],
@@ -54,17 +72,13 @@ export class NewConcertComponent implements OnInit {
 
     this._mapsAPILoader.load().then(
       () => {
-        let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types:["address"] });
+        let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, {types: ['address']});
 
-        autocomplete.addListener("place_changed", () => {
+        autocomplete.addListener('place_changed', () => {
           this.ngZone.run(() => {
             let place: google.maps.places.PlaceResult = autocomplete.getPlace();
             this.getAddressComponentByPlace(place);
-            console.log(place.address_components);
-            console.log(place.formatted_address);
-            console.log(place.geometry.location.lat());
-            console.log(place.geometry.location.lng());
-            if(place.geometry === undefined || place.geometry === null ){
+            if (place.geometry === undefined || place.geometry === null) {
               return;
             }
           });
@@ -80,7 +94,8 @@ export class NewConcertComponent implements OnInit {
   getEventError() {
     return 'You must fill out event name form';
   }
-  onSubmit(){
+
+  onSubmit() {
 
     //const resource = JSON.parse(this.registrationFormGroup.value);
     // user.username=
@@ -92,8 +107,8 @@ export class NewConcertComponent implements OnInit {
     this.concert.guaranteedMeal = this.eventData.controls['guaranteedMeal'].value;
     this.concert.numberOfRehearsals = this.eventData.controls['numberOfRehearsals'].value;
     this.concert.address = this.address;
-    this.concert.concertInstrumentSlots=this.selectedInstruments;
-    this.concert.username=JSON.parse( localStorage.getItem('currentUser') ).username;
+    this.concert.concertInstrumentSlots = this.selectedInstruments;
+    this.concert.username = JSON.parse(localStorage.getItem('currentUser')).username;
     console.log(this.concert);
     this._concertService.create(this.concert)
       .pipe(first())
@@ -121,7 +136,7 @@ export class NewConcertComponent implements OnInit {
     for (; component = components[i]; i++) {
       console.log(component);
       if (component.types[0] == 'country') {
-        country = component['short_name']+', '+component['long_name'];
+        country = component['short_name'] + ', ' + component['long_name'];
       }
       if (component.types[0] == 'administrative_area_level_1') {
         city = component['long_name'];
@@ -139,12 +154,12 @@ export class NewConcertComponent implements OnInit {
         locality = component['short_name'];
       }
     }
-    this.address.address=place.formatted_address;
-    this.address.country=country;
-    this.address.postalCode=postalCode;
-    this.address.city=locality;
-    this.address.street=route;
-    this.address.latitude=place.geometry.location.lat();
-    this.address.longitude=place.geometry.location.lng();
+    this.address.address = place.formatted_address;
+    this.address.country = country;
+    this.address.postalCode = postalCode;
+    this.address.city = locality;
+    this.address.street = route;
+    this.address.latitude = place.geometry.location.lat();
+    this.address.longitude = place.geometry.location.lng();
   }
 }

@@ -24,15 +24,17 @@ h1.app-name {
   flex: 1;
 }
 .router-container{
-  min-height:90vh;
+  overflow-x: hidden;
+  min-height:85vh;
 }
 .sidenav-content {
   margin-top: 15px;
 }
 
 .sidenav {
+  overflow-x: hidden;
   width: 200px;
-  background-color: #ebfffb;
+  background-color: #ffffff;
 
 }
 

@@ -1,0 +1,57 @@
+<div class="flex-area">
+  <mat-card>
+    <mat-card-header class="mat-header">
+      <!--<div mat-card-avatar class="example-header-image"></div>-->
+      <mat-card-title class="title">{{concert.name}}</mat-card-title>
+      <mat-card-subtitle>{{concert.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-grid-list class="details-grid" colspan='2' [cols]="2" rowHeight="50px">
+        <mat-grid-tile><p>Number of rehearsals:</p></mat-grid-tile>
+        <mat-grid-tile> {{concert.numberOfRehearsals}}</mat-grid-tile>
+        <mat-grid-tile>Ensured drive:</mat-grid-tile>
+        <mat-grid-tile>
+          <div *ngIf="concert.ensuredDrive;else not_ensured">
+            yes
+          </div>
+          <ng-template #not_ensured><p>no</p></ng-template>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-divider></mat-divider>
+
+      <mat-divider></mat-divider>
+      <div *ngIf="concert.guaranteedMeal;else not_guaranteed">
+        <p>guaranteed meal: yes</p>
+      </div>
+      <ng-template #not_guaranteed><p>guaranteed meal: no</p></ng-template>
+      <mat-divider></mat-divider>
+
+
+      <ag-grid-angular
+        #agGrid
+        class="ag-theme-balham inner"
+        [enableSorting]="true"
+        [enableFilter]="true"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+        [isRowSelectable]="isRowSelectable"
+        rowSelection="single"
+        (gridReady)="onGridReady($event)"
+        (rowSelected)="isAnySelected()">
+      </ag-grid-angular>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-row">
+        <button [disabled]="buttonDisabled" mat-raised-button class="middle-buttons" color="warn"
+                (click)="applyOnSelectedJob()">apply
+        </button>
+        <div class="spacer"></div>
+        <button mat-raised-button class="middle-buttons" color="warn" (click)="cancel()">cancel</button>
+      </div>
+
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+

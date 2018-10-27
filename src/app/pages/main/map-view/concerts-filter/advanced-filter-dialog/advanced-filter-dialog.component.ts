@@ -15,7 +15,6 @@ import {FormControl} from '@angular/forms';
 export class AdvancedFilterDialogComponent implements OnInit{
   instrumentsModelObservable: Observable<Instrument[]>;
   toppings = new FormControl();
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor(
     public dialogRef: MatDialogRef<AdvancedFilterDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: FilterData,private _instrumentsService : InstrumentService ) {}

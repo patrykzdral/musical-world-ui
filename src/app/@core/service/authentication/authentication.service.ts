@@ -62,6 +62,7 @@ export class AuthenticationService implements OnDestroy{
   saveUserInLocalStorage(username: string) {
     this._userService.getByUsername(username).toPromise().then(res => {
         if ( res != null) {
+          console.log(res);
           console.log(JSON.stringify(res));
           localStorage.setItem('currentUser', JSON.stringify(res));
         } else { this._router.navigate(['/auth/login']); }

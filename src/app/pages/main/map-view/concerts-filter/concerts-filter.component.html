@@ -5,8 +5,9 @@
     <fa class="clear-icon" name="close"  *ngIf="value" aria-label="Clear" (click)="value=''"></fa>
   </div>
   <div class="second-row">
+    <label (click)="changeMapView()" class="filter-text map-text" >change map view</label >
     <div class="empty-space"></div>
-    <label (click)="openDialog()" class="filter-text" >display advanced filter options</label >
+    <label (click)="openDialog()" class="filter-text advanced-text" >display advanced filter options</label >
   </div>
 </div>
 

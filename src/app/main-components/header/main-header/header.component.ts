@@ -35,5 +35,9 @@ export class MainHeaderComponent implements OnInit {
   changeLang() {
     this._translate.use(this.setLang);
   }
+  navigateToMainPage(){
+    this._router.navigate(['/']);
+
+  }
 
 }

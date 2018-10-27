@@ -1,0 +1,47 @@
+.flex-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  mat-card{
+    .mat-header{
+      margin-bottom: 50px;
+    }
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    width:80%;
+    .title{
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .details-grid{
+      text-align: left;
+    }
+  }
+  .ag-theme-balham{
+  }
+  .button-row{
+    display: flex;
+    flex-direction: row;
+    .spacer {
+      flex-grow: 1;
+    }
+    .middle-buttons{
+      flex: 25%;
+    }
+  }
+}
+.inner{
+  width: 500px;
+  height: 500px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+@media(max-width: 800px) {
+  .inner{
+    width: 250px;
+
+  }
+}
+

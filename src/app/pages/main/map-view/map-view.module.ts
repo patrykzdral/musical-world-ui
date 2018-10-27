@@ -11,8 +11,6 @@ import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import { InstrumentsCheckboxesListComponent } from './concerts-filter/advanced-filter-dialog/instruments-checkboxes-list/instruments-checkboxes-list.component';
 import { BottomConcertsBarComponent } from './bottom-concerts-bar/bottom-concerts-bar.component';
 
-//import {MapComponent} from '../map/map.component';
-
 @NgModule({
   declarations: [
     MapViewComponent,

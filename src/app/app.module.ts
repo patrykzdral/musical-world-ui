@@ -19,6 +19,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {MatProgressButtonsModule} from 'mat-progress-buttons';
 import {AgmCoreModule} from '@agm/core';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
+import {AgGridModule} from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
     ModuleRouting,
     AuthModule,
     ErrorModule,
+    AgGridModule.withComponents([]),
     ToastrModule.forRoot(),
     MatProgressButtonsModule.forRoot(),
     AgmCoreModule.forRoot({

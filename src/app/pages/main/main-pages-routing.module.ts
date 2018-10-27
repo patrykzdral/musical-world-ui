@@ -6,6 +6,9 @@ import {ErrorsComponent} from '../../@core/error/errors-components/errors.compon
 import {ProfileComponent} from './profile/profile.component';
 import {NewConcertComponent} from './concerts/new-concert/new-concert.component';
 import {ProfileEditComponent} from './profile/profile-edit/profile-edit.component';
+import {ConcertsListComponent} from './concerts/concerts-list/concerts-list.component';
+import {ConcertDetailsComponent} from './concerts/concert-details/concert-details.component';
+import {ConcertDetailsResolver} from './concerts/concert-details/concert-details.resolver';
 
 const routes: Routes = [{
   path: '',
@@ -34,6 +37,18 @@ const routes: Routes = [{
         {
           path: "create-new",
           component: NewConcertComponent
+        },
+        {
+          path: 'show-all',
+          component: ConcertsListComponent,
+
+        },
+        {
+          path: 'show-all/concert/:id',
+          component: ConcertDetailsComponent,
+          resolve: {
+            concert: ConcertDetailsResolver
+          }
         }
       ]
     },

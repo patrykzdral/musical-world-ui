@@ -23,10 +23,7 @@ export class AuthHttpService extends HttpClient{
 
   findOne(url: string, id: any): Observable<any> {
     let headers = this.createAuthorizationHeader();
-    return super.get(url ,{
-      params:{
-        username: id
-      },
+    return super.get(url+'/'+id ,{
       headers: headers
     });
   }

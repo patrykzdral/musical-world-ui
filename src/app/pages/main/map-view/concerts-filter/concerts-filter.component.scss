@@ -1,4 +1,10 @@
-
+%message-shared {
+  flex: 10%;
+  cursor: pointer;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+}
 .search-form {
   opacity: 0.8;
   text-align: center;
@@ -31,11 +37,18 @@
     text-align: right;
     font-size: 10px;
     background-color: transparent;
-    .filter-text {
-      flex: 10%;
-      cursor: pointer;
-      padding-bottom: 0;
-      margin-bottom: 0;
+    .map-text{
+      @extend %message-shared;
+      text-align: left;
+      margin-left: 15px;
+    }
+    .empty-space{
+
+      flex:1;
+    }
+    .advanced-text{
+      margin-right: 15px;
+      @extend %message-shared;
     }
   }
 

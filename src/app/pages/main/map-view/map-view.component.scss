@@ -1,3 +1,11 @@
 agm-map {
-  height: 95vh;
+  height: 85vh;
+}
+.create-new-event{
+  display: flex;
+  flex-direction: column;
+  .button-create{
+    font-size: 9px;
+
+  }
 }

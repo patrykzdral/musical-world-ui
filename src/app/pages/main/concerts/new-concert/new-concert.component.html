@@ -34,7 +34,7 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label>Address</mat-label>
-              <input matInput type="text" formControlName="address" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off"  #search>
+              <input matInput type="text" [ngModel]="mapAddress" formControlName="address" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off"  #search>
               <!--<mat-error *ngIf="name.invalid">{{getEventError()}}</mat-error>-->
             </mat-form-field>
             <!--<div class="form-group">-->

@@ -12,6 +12,8 @@ import {MatMonthView} from '@angular/material';
 import {MatModule} from '../../mat.module';
 import {ConcertsModule} from './concerts/concerts.module';
 import {ProfileModule} from './profile/profile.module';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from '../../@core/interceptor/auth.interceptor';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -31,6 +33,9 @@ const PAGES_COMPONENTS = [
   declarations: [
     ...PAGES_COMPONENTS,
   ],
+  providers: [
+
+  ]
 })
 export class MainPagesModule {
 }
