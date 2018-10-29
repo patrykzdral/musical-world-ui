@@ -101,6 +101,7 @@ export class NewConcertComponent implements OnInit {
     // user.username=
     this.concert.name = this.eventData.controls['name'].value;
     this.concert.description = this.eventData.controls['description'].value;
+    console.log(this.eventData.controls['dateFrom'].value);
     this.concert.dateFrom = this.eventData.controls['dateFrom'].value;
     this.concert.dateTo = this.eventData.controls['dateTo'].value;
     this.concert.ensuredDrive = this.eventData.controls['ensuredDrive'].value;

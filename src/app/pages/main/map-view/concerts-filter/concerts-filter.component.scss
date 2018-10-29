@@ -42,10 +42,11 @@
       text-align: left;
       margin-left: 15px;
     }
-    .empty-space{
-
-      flex:1;
+    .reset-text{
+      text-align: center;
+      @extend %message-shared;
     }
+
     .advanced-text{
       margin-right: 15px;
       @extend %message-shared;

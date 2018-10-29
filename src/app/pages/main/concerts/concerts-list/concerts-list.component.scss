@@ -1,0 +1,43 @@
+@import '../../../../../assets/scss/main-theme';
+
+.constant-height {
+  height: 600px;
+}
+
+mat-expansion-panel-header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+
+  .name {
+    float: left;
+    flex: 40%
+  }
+
+  .date-from {
+    text-align: center;
+    flex: 30%;
+  }
+
+  .date-to {
+    flex: 30%;
+    text-align: right;
+  }
+}
+
+
+.mat-expansion-panel-header {
+  color: white;
+}
+
+@media(max-width: 500px) {
+  .date-to{
+    display: none;
+  }
+  .date-from{
+    flex:40%;
+  }
+  .name{
+    flex:60%;
+  }
+}

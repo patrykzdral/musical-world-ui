@@ -15,6 +15,7 @@ import { ConcertsListItemComponent } from './concerts-list/concerts-list-item/co
 import { ConcertDetailsComponent } from './concert-details/concert-details.component';
 import {AgGridModule} from 'ag-grid-angular';
 import {AuthInterceptor} from '../../../@core/interceptor/auth.interceptor';
+import { AdminConcertsComponent } from './admin-concerts/admin-concerts.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import {AuthInterceptor} from '../../../@core/interceptor/auth.interceptor';
     ConcertInstrumentElementComponent,
     ConcertsListComponent,
     ConcertsListItemComponent,
-    ConcertDetailsComponent
+    ConcertDetailsComponent,
+    AdminConcertsComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

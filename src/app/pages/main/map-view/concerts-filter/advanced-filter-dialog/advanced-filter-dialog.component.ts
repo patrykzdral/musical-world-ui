@@ -15,6 +15,12 @@ import {FormControl} from '@angular/forms';
 export class AdvancedFilterDialogComponent implements OnInit{
   instrumentsModelObservable: Observable<Instrument[]>;
   toppings = new FormControl();
+  filterData: FilterData = new FilterData();
+  public selectedMoments = [
+    this.filterData.dateFrom = null,
+    this.filterData.dateTo = null,
+
+  ];
   constructor(
     public dialogRef: MatDialogRef<AdvancedFilterDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: FilterData,private _instrumentsService : InstrumentService ) {}
@@ -25,6 +31,10 @@ export class AdvancedFilterDialogComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.filterData.eventName=null;
+    this.filterData.dateFrom=null;
+    this.filterData.dateTo=null;
+    this.filterData.instruments=[];
     this.instrumentsModelObservable = this._instrumentsService.findAll();
   }
 

@@ -1,13 +1,15 @@
 <div class="search-form">
   <div class="first-row">
     <input class="text-input form-control" placeholder="enter the name of concert" type="text" [(ngModel)]="value">
-    <fa class="search-icon" (click)="filter()" name="search" animation="spin"></fa>
+    <fa class="search-icon" (click)="filterByName(value)" name="search" animation="spin"></fa>
     <fa class="clear-icon" name="close"  *ngIf="value" aria-label="Clear" (click)="value=''"></fa>
   </div>
   <div class="second-row">
     <label (click)="changeMapView()" class="filter-text map-text" >change map view</label >
     <div class="empty-space"></div>
-    <label (click)="openDialog()" class="filter-text advanced-text" >display advanced filter options</label >
+    <label (click)="deleteFilters()" class="reset-text " >delete filters</label >
+    <div class="empty-space"></div>
+    <label (click)="openDialog()" class="filter-text advanced-text" >advanced filter options</label >
   </div>
 </div>
 

@@ -1,21 +1,24 @@
-<mat-card class>
-  <div class="list-properties component-title">
-    <mat-card-title>List of actual concerts</mat-card-title>
-  </div>
-  <nav class="component-sticky">
-    <mat-accordion>
-      <mat-expansion-panel class="application-main-color-shadow" [disabled]="true">
-        <mat-expansion-panel-header>
-          <div class="id-header">name</div>
-          <div class="timestamp-header">start date</div>
-          <div class="product-header">end date</div>
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </nav>
-  <div id="warning-list">
-    <div *ngFor="let concertModel of concertModelObservable | async">
-      <app-concerts-list-item [concertModelIn]=concertModel></app-concerts-list-item>
+<div class="component-scroll-bar">
+
+  <mat-card class="constant-height">
+    <div class="list-properties component-title">
+      <mat-card-title>List of actual concerts</mat-card-title>
     </div>
-  </div>
-</mat-card>
+    <nav class="component-sticky">
+      <mat-accordion>
+        <mat-expansion-panel class="application-main-color-shadow" [disabled]="true">
+          <mat-expansion-panel-header>
+            <div class="name">name</div>
+            <div class="date-from">start date</div>
+            <div class="date-to">end date</div>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </nav>
+    <div id="warning-list">
+      <div *ngFor="let concertModel of concertModelObservable | async">
+        <app-concerts-list-item [concertModelIn]=concertModel></app-concerts-list-item>
+      </div>
+    </div>
+  </mat-card>
+</div>

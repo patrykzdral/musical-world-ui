@@ -73,8 +73,8 @@ export class AuthenticationService implements OnDestroy{
   }
 
   checkCredentials() {
-    console.log(localStorage.getItem('currentUser'));
     if (!this._cookieService.check('access_token') || !this._cookieService.check('access_token_expire_date') ) {
+      console.log("COOKIE ERROR");
       this._router.navigate(['/auth/login']);
     }
     else{

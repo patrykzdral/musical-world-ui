@@ -1,9 +1,9 @@
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<div class="flex-container">
+<div class="flex-container component-scroll-bar">
 
-  <app-concerts-filter [mapType]="mapTypeId" (mapTypeEmitter)="changeMapType($event)" ></app-concerts-filter>
+  <app-concerts-filter [mapType]="mapTypeId" (mapTypeEmitter)="changeMapType($event)" (resetFilterEmitter)="getEvents()"  (filterDataEmitter)="filterEvents($event)" ></app-concerts-filter>
   <agm-map
     [latitude]="startLatitude"
     [longitude]="startLongitude"

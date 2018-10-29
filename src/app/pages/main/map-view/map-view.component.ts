@@ -25,7 +25,7 @@ export class MapViewComponent implements OnInit {
   mapTypes = ['hybrid', 'roadmap', 'satellite', 'terrain'];
   mapTypeId = 0;
   concerts: Observable<ConcertModel[]>;
-
+  isFiltered: boolean = false;
   arrows = ['/assets/map_view/arrow_up_white.png', '/assets/map_view/arrow_up_black.png'];
   isEventsListOnScreen: boolean;
   imageNumber = 0;
@@ -110,16 +110,8 @@ export class MapViewComponent implements OnInit {
   }
 
   getEvents() {
-    this.concerts = this._concertService.getAll();
-    // if (this.eventService.filteredEvents != null)
-    //   this.concerts = this.eventService.filteredEvents;
-    // else
-    //   this.eventService.getEventsInfoWithoutEnded().subscribe(data => {
-    //     this.concerts = data;
-    //   });
-    //   this._concertService.getAll().subscribe(data => {
-    //     this.concerts = data;
-    //   });
+    if(!this.isFiltered)
+      this.concerts = this._concertService.getAll();
   }
 
   getEventLatitude(event: Concert) {
@@ -206,5 +198,17 @@ export class MapViewComponent implements OnInit {
 
   changeMapType(id) {
     this.mapTypeId=id;
+  }
+  filterEvents(filteredData){
+    this.isFiltered=false;
+    let dateToToSend:Date=null;
+    let dateFromToSend:Date=null;
+    if(filteredData.dateFrom)
+      dateFromToSend =filteredData.dateFrom.toDateString();
+    if(filteredData.dateTo)
+      dateToToSend =filteredData.dateTo.toDateString();
+
+    this.concerts=this._concertService
+      .displayFilteredConcerts(filteredData.eventName,filteredData.instruments,dateFromToSend,dateToToSend);
   }
 }
