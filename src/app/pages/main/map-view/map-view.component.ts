@@ -23,7 +23,7 @@ export class MapViewComponent implements OnInit {
   startLongitude = 17.0385376;
   newEventLocationChosen = false;
   mapTypes = ['hybrid', 'roadmap', 'satellite', 'terrain'];
-  mapTypeId = 0;
+  mapTypeId = 1;
   concerts: Observable<ConcertModel[]>;
   isFiltered: boolean = false;
   arrows = ['/assets/map_view/arrow_up_white.png', '/assets/map_view/arrow_up_black.png'];

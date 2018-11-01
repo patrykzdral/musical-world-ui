@@ -1,0 +1,33 @@
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <div class="name">{{concertModel.name}}</div>
+    <div class="date-from">{{concertModel.dateFrom | date : 'MM/dd/yyyy'}}</div>
+    <div class="date-to">{{concertModel.dateTo | date : 'MM/dd/yyyy'}}</div>
+
+  </mat-expansion-panel-header>
+  <mat-tab-group disabled>
+    <mat-tab disabled>
+      <ng-template mat-tab-label>
+        <button mat-raised-button color="warn" (click)="deleteEvent()">
+          delete
+        </button>
+
+      </ng-template>
+    </mat-tab>
+    <mat-tab disabled>
+      <ng-template mat-tab-label>
+        <button mat-raised-button color="primary" (click)="updateEvent()">
+          update
+        </button>
+
+      </ng-template>
+    </mat-tab>
+    <mat-tab disabled>
+      <ng-template mat-tab-label>
+        <button mat-raised-button color="accent" (click)="eventDetails()">
+          details
+        </button>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</mat-expansion-panel>

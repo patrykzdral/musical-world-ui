@@ -24,4 +24,8 @@ export class ConcertsListItemComponent implements OnInit {
     this._router.navigate(['/pages/concerts/show-all/concert', this.concertModel.id]);
 
   }
+
+  deleteEvent() {
+
+  }
 }

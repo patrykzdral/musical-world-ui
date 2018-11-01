@@ -3,12 +3,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {MapViewComponent} from './map-view/map-view.component';
 import {PagesComponent} from './pages.component';
 import {ErrorsComponent} from '../../@core/error/errors-components/errors.component';
-import {ProfileComponent} from './profile/profile.component';
 import {NewConcertComponent} from './concerts/new-concert/new-concert.component';
 import {ProfileEditComponent} from './profile/profile-edit/profile-edit.component';
 import {ConcertsListComponent} from './concerts/concerts-list/concerts-list.component';
-import {ConcertDetailsComponent} from './concerts/concert-details/concert-details.component';
-import {ConcertDetailsResolver} from './concerts/concert-details/concert-details.resolver';
+import {ConcertDetailsComponent} from './concerts/concerts-list/concert-details/concert-details.component';
+import {ConcertDetailsResolver} from './concerts/concerts-list/concert-details/concert-details.resolver';
+import {AdminConcertsComponent} from './concerts/admin-concerts/admin-concerts.component';
+import {AdminConcertsDetailsComponent} from './concerts/admin-concerts/admin-concerts-details/admin-concerts-details.component';
+
 
 const routes: Routes = [{
   path: '',
@@ -40,16 +42,33 @@ const routes: Routes = [{
         },
         {
           path: 'show-all',
-          component: ConcertsListComponent,
-
+          children:[
+            {
+              path: '',
+              component: ConcertsListComponent
+            },
+            {
+              path: 'concert/:id',
+              component: ConcertDetailsComponent,
+              resolve: {
+                concert: ConcertDetailsResolver
+              }
+            }
+          ]
         },
         {
-          path: 'show-all/concert/:id',
-          component: ConcertDetailsComponent,
-          resolve: {
-            concert: ConcertDetailsResolver
-          }
-        }
+          path: "admin-concerts",
+          children:[
+            {
+              path: '',
+              component: AdminConcertsComponent
+            },
+            {
+              path: 'details/:id',
+              component: AdminConcertsDetailsComponent
+            }
+          ]
+        },
       ]
     },
     {

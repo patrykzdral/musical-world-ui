@@ -12,10 +12,14 @@ import { ConcertInstrumentElementComponent } from './new-concert/concert-instrum
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import { ConcertsListComponent } from './concerts-list/concerts-list.component';
 import { ConcertsListItemComponent } from './concerts-list/concerts-list-item/concerts-list-item.component';
-import { ConcertDetailsComponent } from './concert-details/concert-details.component';
 import {AgGridModule} from 'ag-grid-angular';
 import {AuthInterceptor} from '../../../@core/interceptor/auth.interceptor';
 import { AdminConcertsComponent } from './admin-concerts/admin-concerts.component';
+import {ConcertDetailsComponent} from './concerts-list/concert-details/concert-details.component';
+import { AdminConcertsItemComponent } from './admin-concerts/admin-concerts-item/admin-concerts-item.component';
+import { SnackBarDeleteComponent } from './admin-concerts/admin-concerts-item/snack-bar-delete/snack-bar-delete.component';
+import { AdminConcertsDetailsComponent } from './admin-concerts/admin-concerts-details/admin-concerts-details.component';
+import { AdminConcertApplicationComponent } from './admin-concerts/admin-concerts-details/admin-concert-application/admin-concert-application.component';
 
 @NgModule({
   imports: [
@@ -24,6 +28,7 @@ import { AdminConcertsComponent } from './admin-concerts/admin-concerts.componen
     TranslateModule,
     ReactiveFormsModule,
     CommonModule,
+
     //BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -40,7 +45,11 @@ import { AdminConcertsComponent } from './admin-concerts/admin-concerts.componen
     ConcertsListComponent,
     ConcertsListItemComponent,
     ConcertDetailsComponent,
-    AdminConcertsComponent
+    AdminConcertsComponent,
+    AdminConcertsItemComponent,
+    SnackBarDeleteComponent,
+    AdminConcertsDetailsComponent,
+    AdminConcertApplicationComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

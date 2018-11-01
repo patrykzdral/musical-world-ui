@@ -1,0 +1,12 @@
+@import '../../../../../../../assets/scss/main-theme';
+
+.snack-bar{
+  .center{
+    text-align: center;
+  }
+}
+.blue-snackbar {
+}
+::ng-deep snack-bar-container{
+  background-color: $application-main-color !important;
+}

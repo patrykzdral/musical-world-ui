@@ -16,4 +16,8 @@ export class ConcertApplicationService {
   save(concertApplication: ConcertApplicationModel){
     return this._authHttpService.save('/musicalworld/rest/api/concert-applications/new',concertApplication);
   }
+
+  getConcertApplications(id: any):Observable<ConcertApplicationModel[]>{
+    return this._authHttpService.findAll('/musicalworld/rest/api/concert-applications/list/'+id);
+  }
 }

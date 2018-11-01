@@ -28,6 +28,13 @@ export class AuthHttpService extends HttpClient{
     });
   }
 
+  delete(url: string, id: any): Observable<any> {
+    let headers = this.createAuthorizationHeader();
+    return super.delete(url+'/'+id ,{
+      headers: headers
+    });
+  }
+
   findAll(url: string): Observable<any> {
     let headers = this.createAuthorizationHeader();
     return super.get(url, {

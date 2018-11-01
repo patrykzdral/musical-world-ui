@@ -9,11 +9,13 @@
 ::ng-deep .langSelect.mat-select {
   display: inline;
 }
+
 @media (max-width: $large-handset) {
-    .app-name{
-      display: none;
-    }
+  .app-name {
+    display: none;
   }
+}
+
 #logo {
   height: 50px;
   width: 100px;

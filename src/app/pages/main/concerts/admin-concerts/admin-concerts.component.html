@@ -1,3 +1,23 @@
-<p>
-  admin-concerts works!
-</p>
+<div class="component-scroll-bar">
+  <mat-card >
+    <div class="list-properties component-title">
+      <mat-card-title>List of actual concerts</mat-card-title>
+    </div>
+    <nav class="component-sticky">
+      <mat-accordion>
+        <mat-expansion-panel class="application-main-color-shadow" [disabled]="true">
+          <mat-expansion-panel-header>
+            <div class="name">name</div>
+            <div class="date-from">when is my event</div>
+            <div class="date-to">end date</div>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </nav>
+    <div class="warning-list">
+      <div *ngFor="let concertModel of concertModelObservable | async">
+        <app-admin-concerts-item (eventDeletedEmitter)="refreshList()" [concertModelIn]="concertModel"></app-admin-concerts-item>
+      </div>
+    </div>
+  </mat-card>
+</div>

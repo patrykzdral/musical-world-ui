@@ -42,7 +42,8 @@
     "@agm/core": "^1.0.0-beta.5",
     "ng-pick-datetime": "~6.0.16",
     "ag-grid-community": "^19.0.0",
-    "ag-grid-angular": "^19.0.0"
+    "ag-grid-angular": "^19.0.0",
+    "material-design-icons": "^3.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",

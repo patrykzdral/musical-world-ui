@@ -1,0 +1,28 @@
+@import '../../../../../../assets/scss/main-theme';
+
+mat-expansion-panel-header {
+  flex-direction: row;
+  display: flex;
+  font-size: $application-table-font-size;
+  .name {
+    float: left;
+    flex: 40%
+  }
+
+  .date-from {
+    text-align: center;
+    margin-right: 3px;
+    flex: 30%;
+  }
+
+  .date-to {
+    flex: 30%;
+    text-align: right;
+  }
+
+}
+@media(max-width: 500px) {
+  .date-to{
+    display: none;
+  }
+}

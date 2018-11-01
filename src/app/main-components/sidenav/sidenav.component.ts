@@ -29,8 +29,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         },
         {
           displayName: 'my concerts',
-          iconName: '',
-          route: '/pages/concerts/my'
+          iconName: 'star_half',
+          route: '/pages/concerts/admin-concerts'
         }
       ]
     },

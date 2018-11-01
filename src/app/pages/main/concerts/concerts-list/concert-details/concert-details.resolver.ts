@@ -2,9 +2,9 @@ import {ActivatedRouteSnapshot, Resolve, Router} from '@angular/router';
 import {_throw} from 'rxjs-compat/observable/throw';
 import {catchError} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
-import {ConcertService} from '../../../../@core/service/concert/concert.service';
 import {Observable} from 'rxjs';
-import {ConcertModel} from '../../../../@core/model/get-model/concert.model';
+import {ConcertService} from '../../../../../@core/service/concert/concert.service';
+import {ConcertModel} from '../../../../../@core/model/get-model/concert.model';
 
 @Injectable({
   providedIn: 'root'

@@ -17,5 +17,4 @@ export class ConcertsListComponent implements OnInit {
   ngOnInit() {
     this.concertModelObservable = this.concertsService.getAll();
   }
-
 }

@@ -12,6 +12,8 @@ import {MainHeaderComponent} from './header/main-header/header.component';
 import {LoginHeaderComponent} from './header/login-header/login-header.component';
 import {CommonModule} from '@angular/common';
 import { MenuListItemComponent } from './sidenav/menu-list-item/menu-list-item.component';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {LoginFooterComponent} from './login-footer/login-footer.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { MenuListItemComponent } from './sidenav/menu-list-item/menu-list-item.c
     FooterComponent,
     LoginHeaderComponent,
     MainHeaderComponent,
+    LoginFooterComponent,
     MenuListItemComponent
   ],
   imports: [
     //BrowserModule,
+    AngularFontAwesomeModule,
     CommonModule,
     HttpClientModule,
     MatModule,
@@ -35,6 +39,7 @@ import { MenuListItemComponent } from './sidenav/menu-list-item/menu-list-item.c
     SidenavComponent,
     FooterComponent,
     MainHeaderComponent,
+    LoginFooterComponent
   ],
 
   providers: []

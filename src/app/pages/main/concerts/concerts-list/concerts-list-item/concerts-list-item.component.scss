@@ -1,5 +1,5 @@
 @import '../../../../../../assets/scss/main-theme';
-
+@import '../../../../../@theme/_breakpoints.scss';
 mat-expansion-panel-header {
   flex-direction: row;
   display: flex;

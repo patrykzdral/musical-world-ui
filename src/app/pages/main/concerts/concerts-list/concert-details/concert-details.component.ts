@@ -1,29 +1,28 @@
 import {Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {pipe, Subject} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ConcertModel} from '../../../../@core/model/get-model/concert.model';
 import {HttpClient} from '@angular/common/http';
 import {AgGridNg2} from 'ag-grid-angular';
 import {GridOptions} from 'ag-grid-community';
-import {ConcertApplicationService} from '../../../../@core/service/concert-application/concert-application.service';
-import {ConcertInstrumentSlot} from '../../../../@core/model/concert-instrument-slot.model';
-import {ConcertApplicationModel} from '../../../../@core/model/concert-application.model';
-import {Concert} from '../../../../@core/model/concert.model';
-import {ConcertInstrumentSlotModel} from '../../../../@core/model/get-model/concert-instrument-slot.model';
+
 import {first} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
+import {ConcertModel} from '../../../../../@core/model/get-model/concert.model';
+import {ConcertApplicationService} from '../../../../../@core/service/concert-application/concert-application.service';
+import {ConcertApplicationModel} from '../../../../../@core/model/concert-application.model';
+import {ConcertInstrumentSlotModel} from '../../../../../@core/model/get-model/concert-instrument-slot.model';
 
 @Component({
   selector: 'app-concert-details',
   templateUrl: './concert-details.component.html',
   styleUrls: ['./concert-details.component.scss']
 })
-export class ConcertDetailsComponent implements OnInit, OnDestroy {
+export class ConcertDetailsComponent implements OnInit {
 
   private destroy$: Subject<void> = new Subject<void>();
   concert: ConcertModel;
   public isRowSelectable;
-  public buttonDisabled =true;
+  public buttonDisabled = true;
   private gridOptions: GridOptions;
 
   @ViewChild('agGrid') agGrid: AgGridNg2;
@@ -37,15 +36,17 @@ export class ConcertDetailsComponent implements OnInit, OnDestroy {
   ];
 
   rowData: any;
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.agGrid.api.sizeColumnsToFit();
   }
-  constructor(private toastrService: ToastrService, private router: Router, private route: ActivatedRoute, private _concertApplicationService: ConcertApplicationService, private http: HttpClient) {
+
+  constructor(private toastrService: ToastrService, private router: Router, private route: ActivatedRoute, private _concertApplicationService: ConcertApplicationService) {
   }
 
   ngOnInit() {
-    this.isRowSelectable = function(node) {
+    this.isRowSelectable = function (node) {
       return node.data ? node.data.taken === false : false;
     };
     this.route.data.subscribe((data: { concert: ConcertModel }) => {
@@ -75,15 +76,6 @@ export class ConcertDetailsComponent implements OnInit, OnDestroy {
     alert(`Selected nodes: ${selectedDataStringPresentation}`);
   }
 
-  isAnyInstrumentChosen(){
-    // this.agGrid.api.
-     return false;
-  }
-
-  ngOnDestroy() {
-    //this.sub.unsubscribe();
-  }
-
   applyOnSelectedJob() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
     const selectedData = selectedNodes.map(node => node.data);
@@ -104,9 +96,8 @@ export class ConcertDetailsComponent implements OnInit, OnDestroy {
   }
 
 
-
   onGridReady(params) {
-    console.log("read");
+    console.log('read');
     this.agGrid.api.sizeColumnsToFit();
   }
 
@@ -116,7 +107,7 @@ export class ConcertDetailsComponent implements OnInit, OnDestroy {
 
   isAnySelected() {
     const selectedNode = this.agGrid.api.getSelectedNodes().length;
-    this.buttonDisabled = selectedNode !== 0;
-    return true;
+    if(selectedNode === 0) this.buttonDisabled=true;
+    if(selectedNode !== 0) this.buttonDisabled=false;
   }
 }

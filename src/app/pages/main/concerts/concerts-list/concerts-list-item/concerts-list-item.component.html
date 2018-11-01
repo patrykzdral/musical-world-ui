@@ -7,13 +7,14 @@
 
     </mat-expansion-panel-header>
     <mat-tab-group>
-      <mat-tab disabled>
+      <mat-tab>
         <ng-template mat-tab-label>
           <button mat-icon-button (click)="navigateToDetails()">
             <mat-icon>add_circle</mat-icon>
           </button>
         </ng-template>
-      </mat-tab>      <mat-tab label="Description">{{concertModel.description}}  </mat-tab>
+      </mat-tab>
+      <mat-tab label="Description">{{concertModel.description}}  </mat-tab>
       <mat-tab label="Additional">Ensured drive: {{concertModel.ensuredDrive}}<br>
         Guaranteed meal: {{concertModel.guaranteedMeal}}<br></mat-tab>
     </mat-tab-group>

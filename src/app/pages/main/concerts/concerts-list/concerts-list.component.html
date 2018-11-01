@@ -1,6 +1,5 @@
 <div class="component-scroll-bar">
-
-  <mat-card class="constant-height">
+  <mat-card>
     <div class="list-properties component-title">
       <mat-card-title>List of actual concerts</mat-card-title>
     </div>
@@ -15,7 +14,7 @@
         </mat-expansion-panel>
       </mat-accordion>
     </nav>
-    <div id="warning-list">
+    <div  class=" concert-list constant-height">
       <div *ngFor="let concertModel of concertModelObservable | async">
         <app-concerts-list-item [concertModelIn]=concertModel></app-concerts-list-item>
       </div>
