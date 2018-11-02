@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Roboto'
+);
+@include mat-core($custom-typography);
+
+$candy-app-primary: mat-palette($mat-grey);
+$candy-app-accent:  mat-palette($mat-grey, A200, A100, A400);
+$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent);
+
+@include angular-material-theme($candy-app-theme);
+
+
+$dark-primary: mat-palette($mat-gray);
+$dark-accent:  mat-palette($mat-grey, A200, A100, A400);
+$dark-warn:    mat-palette($mat-grey);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+.unicorn-dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+
+
