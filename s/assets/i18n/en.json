@@ -1,0 +1,13 @@
+{
+  "Auth":{
+    "login":{
+      "sign_in": "Sign In",
+      "welcome": "Welcome in Musical World! Sign in with your username or email!",
+      "remember": "Remember me",
+      "forgot": "Forgot Password?",
+      "connect": "or connect with: ",
+      "dont_have": "Don't have an account?",
+      "sign_up": "Sign up"
+    }
+  }
+}
