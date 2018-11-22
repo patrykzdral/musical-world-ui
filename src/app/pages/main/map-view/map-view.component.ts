@@ -1,3 +1,5 @@
+/// <reference types="@types/googlemaps" />
+
 import {Component, HostListener, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../@core/service/authentication/authentication.service';
 import {AdvancedFilterDialogComponent} from './concerts-filter/advanced-filter-dialog/advanced-filter-dialog.component';
@@ -11,7 +13,6 @@ import {MapsAPILoader} from '@agm/core';
 import {ConcertAddressModel} from './mapAddress.model';
 import {SessionService} from '../../../@core/service/session/session.service';
 import {ConcertModel} from '../../../@core/model/get-model/concert.model';
-import {} from '@types/googlemaps';
 
 @Component({
   selector: 'app-map-view',
@@ -43,13 +44,11 @@ export class MapViewComponent implements OnInit {
     buildingNumber: null
   };
 
-  constructor(private _sessionService: SessionService, private  _mapsAPILoader: MapsAPILoader, private _concertService: ConcertService, private _router: Router,
-              private _authService: AuthenticationService, public dialog: MatDialog, private http: HttpClient) {
+  constructor(private _sessionService: SessionService, private  _mapsAPILoader: MapsAPILoader, private _concertService: ConcertService, private _router: Router, public dialog: MatDialog, private http: HttpClient) {
   }
 
   ngOnInit() {
     this.mapAddress= new ConcertAddressModel();
-    this._authService.checkCredentials();
     this.getEvents();
 
     if (window.innerWidth < 320) {
@@ -110,8 +109,9 @@ export class MapViewComponent implements OnInit {
   }
 
   getEvents() {
+    console.log(JSON.parse(localStorage.getItem('currentUser')).username);
     if(!this.isFiltered)
-      this.concerts = this._concertService.getAll();
+      this.concerts = this._concertService.getAllNotAdminEvents(JSON.parse(localStorage.getItem('currentUser')).username);
   }
 
   getEventLatitude(event: Concert) {
@@ -127,7 +127,7 @@ export class MapViewComponent implements OnInit {
   }
 
   getMarkerImage(event: Concert) {
-    return 'assets/concert/normal/marker_overnotev2.png';
+    return 'assets/concert/normal/marker_overnote.png';
     // if (event.eventStatus == "available" && event.numberOfParticipants == 0)
     //   return 'assets/img/markers/transparent_background/marker_' + event.thematicsMarkerImagePath;
     // else if (event.eventStatus == "in_the_middle" && event.numberOfParticipants == 0)
@@ -209,6 +209,12 @@ export class MapViewComponent implements OnInit {
       dateToToSend =filteredData.dateTo.toDateString();
 
     this.concerts=this._concertService
-      .displayFilteredConcerts(filteredData.eventName,filteredData.instruments,dateFromToSend,dateToToSend);
+      .displayFilteredConcerts(JSON.parse(localStorage.getItem('currentUser')).username,filteredData.eventName,filteredData.instruments,dateFromToSend,dateToToSend);
+  }
+
+
+  navigateToEventDetails(id: any) {
+    this._router.navigate(['/pages/concerts/show-all/concert', id]);
+
   }
 }

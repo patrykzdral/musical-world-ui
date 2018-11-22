@@ -1,4 +1,4 @@
-@import '../../../../assets/scss/main-theme';
+@import '../../../@theme/scss/main-theme';
 
 
 .header{
@@ -8,4 +8,10 @@
 .title{
   margin-bottom: 30px;
   text-align: center;
+}
+.flex-column{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

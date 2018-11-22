@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 import {SidenavComponent} from './sidenav/sidenav.component';
-import {FooterComponent} from './footer/footer.component';
 import {MatModule} from '../mat.module';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {MainHeaderComponent} from './header/main-header/header.component';
 import {LoginHeaderComponent} from './header/login-header/login-header.component';
 import {CommonModule} from '@angular/common';
-import { MenuListItemComponent } from './sidenav/menu-list-item/menu-list-item.component';
+import {MenuListItemComponent} from './sidenav/menu-list-item/menu-list-item.component';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
-import {LoginFooterComponent} from './login-footer/login-footer.component';
+import {LoginFooterComponent} from './footer/login-footer/login-footer.component';
+import {FooterComponent} from './footer/main-footer/footer.component';
+import {SharedModule} from '../shared/shared.module';
+import {PipesModule} from '../shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -25,14 +25,15 @@ import {LoginFooterComponent} from './login-footer/login-footer.component';
     MenuListItemComponent
   ],
   imports: [
-    //BrowserModule,
+    ReactiveFormsModule,
     AngularFontAwesomeModule,
     CommonModule,
     HttpClientModule,
-    MatModule,
     FormsModule,
     RouterModule,
-    TranslateModule
+    TranslateModule,
+    PipesModule,
+    MatModule
   ],
   exports: [
     LoginHeaderComponent,

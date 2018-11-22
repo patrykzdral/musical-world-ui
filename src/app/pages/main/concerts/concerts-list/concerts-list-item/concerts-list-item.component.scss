@@ -1,10 +1,11 @@
-@import '../../../../../../assets/scss/main-theme';
+@import '../../../../../@theme/scss/main-theme';
 @import '../../../../../@theme/_breakpoints.scss';
 mat-expansion-panel-header {
   flex-direction: row;
   display: flex;
   font-size: $application-table-font-size;
   .name {
+    flex-direction: row;
     float: left;
     flex: 40%
   }

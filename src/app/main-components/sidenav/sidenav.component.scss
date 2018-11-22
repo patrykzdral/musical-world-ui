@@ -1,4 +1,4 @@
-@import '../../../assets/scss/main-theme';
+@import '../../@theme/scss/main-theme';
 
 #container {
   display: flex;
@@ -25,7 +25,7 @@ h1.app-name {
 }
 .router-container{
   overflow-x: hidden;
-  min-height:85vh;
+  height: 88vh;
 }
 .sidenav-content {
   margin-top: 15px;
@@ -34,12 +34,10 @@ h1.app-name {
 .sidenav {
   overflow-x: hidden;
   width: 200px;
-  background-color: #ffffff;
-
 }
 
 .sidenav-item {
-  padding-top: 5px;
+  padding-top: 10px;
 }
 
 .border{
@@ -52,7 +50,9 @@ h1.app-name {
 .mat-nav-list {
   padding-top: 0;
 }
-
+.margin{
+  margin-right: 15px;
+}
 //@import './theme';
 //
 //.mat-sidenav {

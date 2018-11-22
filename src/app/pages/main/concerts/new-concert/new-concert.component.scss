@@ -1,6 +1,16 @@
-@import '../../../../../assets/scss/main-theme';
-@import '../../../../../assets/scss/button-style';
+@import '../../../../@theme/scss/main-theme';
+@import '../../../../@theme/scss/button-style';
+.aligner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .mat-card{
 
+    width: 70%;
+    height: 70%;
+
+  }
+}
 .forms-container {
   display: flex;
   flex-direction: column;
@@ -22,6 +32,7 @@
       }
     }
   }
+
   .additional-info{
     display: flex;
     flex-direction: column;
@@ -61,11 +72,33 @@
 .middle-buttons{
   flex: 25%;
 }
+
+@media(max-width: 1050px) {
+  .aligner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mat-card{
+      width: 100%;
+      height: 70%;
+    }
+  }
+}
 @media(max-width: 800px) {
   .Aligner {
     .Aligner-item {
       max-width: 90%;
       min-width: 90%;
+    }
+  }
+}
+@media(max-width: 550px) {
+  .forms-container {
+    .essential-info{
+      .events-date{
+        flex-direction: column;
+
+      }
     }
   }
 }

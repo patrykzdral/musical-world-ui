@@ -5,11 +5,11 @@
     <fa class="clear-icon" name="close"  *ngIf="value" aria-label="Clear" (click)="value=''"></fa>
   </div>
   <div class="second-row">
-    <label (click)="changeMapView()" class="filter-text map-text" >change map view</label >
+    <button mat-raised-button color="primary" (click)="changeMapView()" class="filter-text map-text" >change map view</button >
     <div class="empty-space"></div>
-    <label (click)="deleteFilters()" class="reset-text " >delete filters</label >
+    <button  mat-raised-button color="primary" (click)="deleteFilters()" class="reset-text " >delete filters</button >
     <div class="empty-space"></div>
-    <label (click)="openDialog()" class="filter-text advanced-text" >advanced filter options</label >
+    <button mat-raised-button color="primary" (click)="openDialog()" class="filter-text advanced-text" >advanced filter options</button >
   </div>
 </div>
 

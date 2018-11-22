@@ -1,10 +1,8 @@
 import {ActivatedRouteSnapshot, Resolve, Router} from '@angular/router';
 import {_throw} from 'rxjs-compat/observable/throw';
-import {catchError} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ConcertService} from '../../../../../@core/service/concert/concert.service';
-import {ConcertModel} from '../../../../../@core/model/get-model/concert.model';
 import {ConcertApplicationModel} from '../../../../../@core/model/concert-application.model';
 import {ConcertApplicationService} from '../../../../../@core/service/concert-application/concert-application.service';
 
@@ -20,13 +18,27 @@ export class AdminConcertsDetailsResolver implements Resolve<ConcertApplicationM
     console.log(id);
     if (isNaN(id)) {
       return this.navigateToAllConcerts();
-    } else {
-      return this.concertApplicationService.getConcertApplications(id).pipe(
-        catchError(() => {
-          return this.navigateToAllConcerts();
-        })
-      );
     }
+    else {
+      this.concertApplicationService.getConcertApplications(id)
+        .pipe(first())
+        .subscribe(data => {
+            return data;
+          },
+          error => {
+            console.log(error)
+          }
+        );
+    }
+    // } else {
+    //   console.log("check");
+    //   return this.concertApplicationService.getConcertApplications(id).pipe(
+    //
+    //     catchError(() => {
+    //       return this.navigateToAllConcerts();
+    //     })
+    //   );
+    // }
   }
 
   private navigateToAllConcerts() {

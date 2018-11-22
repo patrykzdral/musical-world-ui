@@ -74,7 +74,7 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [
     MatAutocompleteModule,
@@ -112,7 +112,7 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    MatButtonModule
+    MatButtonModule,
   ]
 })
 export class MatModule {

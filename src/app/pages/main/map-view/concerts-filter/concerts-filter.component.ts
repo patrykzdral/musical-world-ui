@@ -44,7 +44,7 @@ export class ConcertsFilterComponent{
   filterByName(value: string) {
     let result = new FilterData();
     result.eventName=value;
-    this.filterDataEmitter.emit();
+    this.filterDataEmitter.emit(result);
   }
 
   deleteFilters() {

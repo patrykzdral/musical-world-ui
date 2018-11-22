@@ -1,24 +1,21 @@
-<div class="row">
-
+<div class="flexbox">
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
-      <div class="name">{{concertApplication.username}}</div>
-      <button mat-raised-button color="red" (click)="navigateToUserDetails()"> user details</button>
-      <div class="date-from">{{concertApplication.concertInstrumentSlot.instrument.name}}</div>
-
+      <div class="name">{{concertApplication.user.username}}</div>
+      <div class="instrument">{{concertApplication.concertInstrumentSlot.instrument.name}}</div>
+      <button class="details-button" mat-raised-button color="primary" (click)="navigateToUserDetails()"> user details</button>
     </mat-expansion-panel-header>
     <mat-tab-group>
       <mat-tab disabled>
         <ng-template mat-tab-label>
-          <button mat-raised-button color="green" (click)="accept()">
+          <button mat-raised-button color="primary" (click)="accept()">
             accept
           </button>
-
         </ng-template>
       </mat-tab>
       <mat-tab disabled>
         <ng-template mat-tab-label>
-          <button mat-raised-button color="red" (click)="reject()">
+          <button mat-raised-button color="warn" (click)="reject()">
             reject
           </button>
         </ng-template>

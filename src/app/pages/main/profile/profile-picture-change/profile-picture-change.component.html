@@ -1,0 +1,15 @@
+<div class="Aligner-item">
+  <mat-card class="mat-card">
+    <h2 class="title">{{'Pages.profile.picture_change.title' | translate}}</h2>
+    <div class="box"><!-- flex item -->
+      <div *ngIf="hasProfilePic();else other_content">
+        <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar">
+      </div>
+      <ng-template #other_content>
+        <div class="big-avatar"></div>
+      </ng-template>
+    </div>
+    <app-profile-picture-upload></app-profile-picture-upload>
+  </mat-card>
+
+</div>

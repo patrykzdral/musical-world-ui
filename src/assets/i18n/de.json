@@ -1,4 +1,7 @@
 {
+  "Footer":{
+    "name":"Created with by"
+  },
   "Auth":{
     "login":{
       "sign_in": "einloggen",

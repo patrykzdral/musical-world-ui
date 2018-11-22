@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ConcertModel} from '../../../../@core/model/get-model/concert.model';
 import {ConcertService} from '../../../../@core/service/concert/concert.service';
+import {ConcertWithPhotoModel} from '../../../../@core/model/get-model/concert-with-photo.model';
 
 @Component({
   selector: 'app-admin-concerts',
@@ -9,8 +10,8 @@ import {ConcertService} from '../../../../@core/service/concert/concert.service'
   styleUrls: ['./admin-concerts.component.scss']
 })
 export class AdminConcertsComponent implements OnInit {
-
-  concertModelObservable: Observable<ConcertModel[]>;
+  hasPhoto: boolean = false;
+  concertModelObservable: Observable<ConcertWithPhotoModel[]>;
 
   constructor(private concertsService: ConcertService) { }
 

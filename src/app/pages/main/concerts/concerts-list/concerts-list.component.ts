@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {ConcertModel} from '../../../../@core/model/get-model/concert.model';
 import {ConcertService} from '../../../../@core/service/concert/concert.service';
+import {ConcertWithPhotoModel} from '../../../../@core/model/get-model/concert-with-photo.model';
 
 @Component({
   selector: 'app-concerts-list',
@@ -10,11 +11,11 @@ import {ConcertService} from '../../../../@core/service/concert/concert.service'
 })
 export class ConcertsListComponent implements OnInit {
 
-  concertModelObservable: Observable<ConcertModel[]>;
+  concertModelObservable: Observable<ConcertWithPhotoModel[]>;
 
   constructor(private concertsService: ConcertService) { }
 
   ngOnInit() {
-    this.concertModelObservable = this.concertsService.getAll();
+    this.concertModelObservable = this.concertsService.getAllNotAdminEventsWithPhoto(JSON.parse(localStorage.getItem('currentUser')).username);
   }
 }

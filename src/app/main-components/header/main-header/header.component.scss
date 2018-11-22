@@ -1,5 +1,5 @@
-@import '../../../../assets/scss/main-header';
-@import '../../../../assets/scss/main-theme';
+@import '../../../@theme/scss/main-header';
+@import '../../../@theme/scss/main-theme';
 @import '../../../@theme/breakpoints';
 
 ::ng-deep .langSelect div.mat-select-arrow-wrapper {
@@ -9,13 +9,20 @@
 ::ng-deep .langSelect.mat-select {
   display: inline;
 }
-
+.app-name{
+  margin-top: 3px;
+}
+.const-height{
+  height: 7vh;
+}
 @media (max-width: $large-handset) {
   .app-name {
     display: none;
   }
 }
-
+.profile-icon{
+  margin-top: 5px;
+}
 #logo {
   height: 50px;
   width: 100px;
@@ -24,3 +31,4 @@
   display: inline-block;
   cursor: pointer;
 }
+

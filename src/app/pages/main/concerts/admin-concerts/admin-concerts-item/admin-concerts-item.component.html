@@ -1,12 +1,20 @@
 <mat-expansion-panel hideToggle>
   <mat-expansion-panel-header>
-    <div class="name">{{concertModel.name}}</div>
+    <div class="name">
+      <div *ngIf="hasPhoto;else other_content">
+        <img [src]="imageToShow | safeUrl" alt="Card image cap" class="round-avatar-smaller"> {{concertModel.name}}
+      </div>
+      <ng-template #other_content>
+        <mat-icon  svgIcon="no_concert_photo"></mat-icon> {{concertModel.name}}
+      </ng-template>
+
+    </div>
     <div class="date-from">{{concertModel.dateFrom | date : 'MM/dd/yyyy'}}</div>
     <div class="date-to">{{concertModel.dateTo | date : 'MM/dd/yyyy'}}</div>
 
   </mat-expansion-panel-header>
-  <mat-tab-group disabled>
-    <mat-tab disabled>
+  <mat-tab-group class="mat-tab-g" disabled>
+    <mat-tab  disabled>
       <ng-template mat-tab-label>
         <button mat-raised-button color="warn" (click)="deleteEvent()">
           delete
@@ -19,7 +27,6 @@
         <button mat-raised-button color="primary" (click)="updateEvent()">
           update
         </button>
-
       </ng-template>
     </mat-tab>
     <mat-tab disabled>

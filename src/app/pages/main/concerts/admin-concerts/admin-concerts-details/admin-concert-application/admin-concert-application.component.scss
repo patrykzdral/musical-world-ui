@@ -1,0 +1,25 @@
+.flexbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  .name{
+    flex: 30%;
+    margin-right: 15px;
+  }
+  .instrument{
+    flex: 30%;
+    margin-right: 15px;
+  }
+  .details-button{
+    flex: 40%;
+
+  }
+}
+
+mat-expansion-panel{
+  width: 100%;
+}
+
+

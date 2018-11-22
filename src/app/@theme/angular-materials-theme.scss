@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-@import '../../assets/scss/main-theme';
+@import '../@theme/scss/main-theme';
 
 $custom-typography: mat-typography-config(
   $font-family: 'Roboto'
@@ -7,17 +7,17 @@ $custom-typography: mat-typography-config(
 @include mat-core($custom-typography);
 
 $candy-app-primary: mat-palette($mat-amber);
-$candy-app-accent:  mat-palette($mat-grey, A200, A100, A400);
-$dark-warn:    mat-palette($mat-deep-orange);
+$candy-app-accent:  mat-palette($mat-blue-grey);
+$candy-app-warn:  mat-palette($mat-red);
 
-$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent);
+$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent,$candy-app-warn);
 
 @include angular-material-theme($candy-app-theme);
 
 
 $dark-primary: mat-palette($mat-light-blue);
 $dark-accent:  mat-palette($mat-light-blue, A200, A100, A400);
-$dark-warn:    mat-palette($mat-deep-orange);
+$dark-warn:    mat-palette($mat-blue);
 $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 .unicorn-dark-theme {

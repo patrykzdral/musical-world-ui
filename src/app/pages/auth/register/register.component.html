@@ -45,102 +45,101 @@
 <!--</div>-->
 
 
-<div class="header">
-  <app-login-header></app-login-header>
-</div>
-<div class="Aligner"><!-- flex container -->
-  <div class="Aligner-item">
-    <mat-card>
-      <div class="box"><!-- flex item -->
-        <h2 class="sign_in">Sign up</h2>
-      </div>
-      <mat-horizontal-stepper [linear]="true" #stepper>
-        <mat-step [stepControl]="registrationFormGroup">
-          <ng-template matStepLabel>Fill out essential data</ng-template>
-          <form [formGroup]="registrationFormGroup">
-            <div class="forms-container">
-              <mat-form-field appearance="outline">
-                <input matInput placeholder="Enter your username*" formControlName="username" required>
-                <mat-error *ngIf="username.invalid">{{getUsernameMessage()}}</mat-error>
-              </mat-form-field>
-              <mat-form-field appearance="outline">
-                <input matInput placeholder="Enter your email*" formControlName="email" required>
-                <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
-              </mat-form-field>
-              <div class="password-forms" [formGroup]="passwordFormGroup">
-                <mat-form-field appearance="outline">
-                  <input matInput placeholder="Enter your password*" [type]="hide ? 'password' : 'text'"
-                         formControlName="password" required>
-                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-                  <mat-error
-                    *ngIf="passwordFormGroup.controls.password.errors?.required && passwordFormGroup.controls.password.touched">
-                    {{getPasswordErrorMessage()}}
-                  </mat-error>
-                  <mat-error
-                    *ngIf="passwordFormGroup.controls.password.errors?.pattern && passwordFormGroup.controls.password.touched">
-                    {{getPatternPasswordErrorMessage()}}
-                  </mat-error>
-                </mat-form-field>
 
+<app-auth-page-template-for-registration>
+  <div class="Aligner"><!-- flex container -->
+    <div class="Aligner-item">
+      <mat-card>
+        <div class="box"><!-- flex item -->
+          <h2 class="sign_in">Sign up</h2>
+        </div>
+        <mat-horizontal-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="registrationFormGroup">
+            <ng-template matStepLabel>Fill out essential data</ng-template>
+            <form [formGroup]="registrationFormGroup">
+              <div class="forms-container">
                 <mat-form-field appearance="outline">
-                  <input matInput placeholder="Repeat your password" [type]="'password'"
-                         formControlName="repeatPassword" [errorStateMatcher]="matcher" required>
-                  <mat-error
-                    *ngIf="passwordFormGroup.controls.repeatPassword.errors?.required && passwordFormGroup.controls.repeatPassword.touched">
-                    {{getPasswordRepeatErrorMessage()}}
-                  </mat-error>
-                  <!--<mat-error *ngIf="passwordFormGroup.errors?.doesMatchPassword">{{getPasswordNotEqualsMessage()}}</mat-error>-->
-                  <mat-error *ngIf="passwordFormGroup.hasError('notSame')">Passwords do not match</mat-error>
+                  <input matInput placeholder="Enter your username*" formControlName="username" required>
+                  <mat-error *ngIf="username.invalid">{{getUsernameMessage()}}</mat-error>
                 </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Enter your email*" formControlName="email" required>
+                  <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <div class="password-forms" [formGroup]="passwordFormGroup">
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter your password*" [type]="hide ? 'password' : 'text'"
+                           formControlName="password" required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-error
+                      *ngIf="passwordFormGroup.controls.password.errors?.required && passwordFormGroup.controls.password.touched">
+                      {{getPasswordErrorMessage()}}
+                    </mat-error>
+                    <mat-error
+                      *ngIf="passwordFormGroup.controls.password.errors?.pattern && passwordFormGroup.controls.password.touched">
+                      {{getPatternPasswordErrorMessage()}}
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline">
+                    <input matInput placeholder="Repeat your password" [type]="'password'"
+                           formControlName="repeatPassword" [errorStateMatcher]="matcher" required>
+                    <mat-error
+                      *ngIf="passwordFormGroup.controls.repeatPassword.errors?.required && passwordFormGroup.controls.repeatPassword.touched">
+                      {{getPasswordRepeatErrorMessage()}}
+                    </mat-error>
+                    <!--<mat-error *ngIf="passwordFormGroup.errors?.doesMatchPassword">{{getPasswordNotEqualsMessage()}}</mat-error>-->
+                    <mat-error *ngIf="passwordFormGroup.hasError('notSame')">Passwords do not match</mat-error>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+            </form>
+          </mat-step>
+          <mat-step>
+
+            <ng-template matStepLabel>Fill out additional data</ng-template>
+            <div class="additional-forms-container" [formGroup]="additionalFieldsFormGroup">
+
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Enter your first name" formControlName="firstName">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="Enter your last name" formControlName="lastName">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <input type="number" matInput placeholder="Enter your phone number" formControlName="phoneNumber">
+                <mat-icon matSuffix>phone</mat-icon>
+              </mat-form-field>
+              <div class="parent">
+                <button class="middle-buttons" mat-stroked-button matStepperPrevious>Back</button>
+                <div class="spacer"></div>
+                <button class="middle-buttons" mat-stroked-button matStepperNext>Next</button>
+              </div>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            <div class="done-section">
+
+              <div class="register-row">
+                <button class="register-button button-style" (click)="onSubmit()"
+                        [disabled]="!registrationFormGroup.valid"
+                        mat-stroked-button>
+                  Register
+                </button>
+              </div>
+              <div class="reset-row">
+                <button class="middle-buttons" mat-stroked-button matStepperPrevious>Back</button>
+                <div class="spacer"></div>
+                <button class="middle-buttons" mat-stroked-button (click)="stepper.reset()">Reset</button>
               </div>
 
             </div>
-
-          </form>
-        </mat-step>
-        <mat-step>
-
-          <ng-template matStepLabel>Fill out additional data</ng-template>
-          <div class="additional-forms-container" [formGroup]="additionalFieldsFormGroup">
-
-            <mat-form-field appearance="outline">
-              <input matInput placeholder="Enter your first name" formControlName="firstName">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <input matInput placeholder="Enter your last name" formControlName="lastName">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <input type="number" matInput placeholder="Enter your phone number" formControlName="phoneNumber">
-              <mat-icon matSuffix>phone</mat-icon>
-            </mat-form-field>
-            <div class="parent">
-              <button class="middle-buttons" mat-stroked-button matStepperPrevious>Back</button>
-              <div class="spacer"></div>
-              <button class="middle-buttons" mat-stroked-button matStepperNext>Next</button>
-            </div>
-          </div>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <div class="done-section">
-
-            <div class="register-row">
-            <button class="register-button button-style" (click)="onSubmit()"
-                    [disabled]="!registrationFormGroup.valid"
-                    mat-stroked-button>
-              Register
-            </button>
-          </div>
-            <div class="reset-row">
-              <button class="middle-buttons" mat-stroked-button matStepperPrevious>Back</button>
-              <div class="spacer"></div>
-              <button class="middle-buttons" mat-stroked-button (click)="stepper.reset()">Reset</button>
-            </div>
-
-          </div>
-        </mat-step>
-      </mat-horizontal-stepper>
-    </mat-card>
-
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card>
+    </div>
   </div>
-</div>
+</app-auth-page-template-for-registration>

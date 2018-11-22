@@ -2,7 +2,7 @@
    [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}">
   <mat-divider></mat-divider>
 
-  <mat-icon class="routeIcon">{{item.iconName}}</mat-icon>
+  <mat-icon class="routeIcon" [svgIcon]="item.iconName"></mat-icon>
   {{item.displayName}}
   <span *ngIf="item.children && item.children.length">
     <mat-icon class="ex-icon" [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">

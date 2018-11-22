@@ -4,7 +4,7 @@
     <mat-sidenav #appDrawer [mode]="navbarMode()" class="sidenav border" [opened]="screenResize()">
       <mat-nav-list>
         <mat-list-item routerLink="/pages/maps" routerLinkActive="active">
-          <mat-icon mat-list-icon>dashboard</mat-icon>
+          <mat-icon class="margin" svgIcon="homepage"></mat-icon>
           <div fxFlex="5"></div>
           <div class="sidenav-item">
             <h5>Main</h5>
@@ -17,8 +17,8 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div class="router-container">
-        <ng-content></ng-content>
+      <div class="router-container background-theme">
+        <ng-content class="background-theme"></ng-content>
       </div>
       <app-footer class="footer-container"></app-footer>
     </mat-sidenav-content>

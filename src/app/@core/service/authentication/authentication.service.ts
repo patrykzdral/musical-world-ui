@@ -1,18 +1,15 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {first, map} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {UserService} from '../user/user.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import {reject, resolve} from 'q';
 import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
-@Injectable()
-export class AuthenticationService implements OnDestroy{
+export class AuthenticationService{
   constructor(private _router: Router, private _http: HttpClient, private _cookieService: CookieService
     , private _userService: UserService, private _toastr: ToastrService) {
   }
@@ -32,7 +29,6 @@ export class AuthenticationService implements OnDestroy{
       headers: headers
     })
       .pipe(first())
-      //.pipe(map(res => res.json()))
       .subscribe(
         data => {
           console.log(data);
@@ -45,7 +41,6 @@ export class AuthenticationService implements OnDestroy{
   }
 
   logout() {
-    // remove user from local storage to log user out
     this._cookieService.delete('access_token');
     this._cookieService.delete('access_token_expire_date');
     localStorage.removeItem('currentUser');
@@ -56,34 +51,37 @@ export class AuthenticationService implements OnDestroy{
     this._cookieService.set('access_token', token.access_token, expireDate);
     this._cookieService.set('access_token_expire_date', expireDate.toString());
     this.saveUserInLocalStorage(login);
-    this._router.navigate(['/']);
+    setTimeout(() => {
+      this._router.navigate(['/']);
+    }, 500);
   }
 
   saveUserInLocalStorage(username: string) {
     this._userService.getByUsername(username).toPromise().then(res => {
-        if ( res != null) {
+        if (res != null) {
           console.log(res);
           console.log(JSON.stringify(res));
           localStorage.setItem('currentUser', JSON.stringify(res));
-        } else { this._router.navigate(['/auth/login']); }
+        } else {
+          this._router.navigate(['/auth/login']);
+        }
       },
       (err) => {
         console.log(err);
       });
   }
 
-  checkCredentials() {
-    if (!this._cookieService.check('access_token') || !this._cookieService.check('access_token_expire_date') ) {
-      console.log("COOKIE ERROR");
-      this._router.navigate(['/auth/login']);
+  checkCredentials(): boolean {
+    if (!this._cookieService.check('access_token') || !this._cookieService.check('access_token_expire_date')) {
+      return false;
     }
-    else{
+    else {
       if (AuthenticationService.isExpired(this._cookieService.get('access_token_expire_date'))) {
         this._cookieService.delete('access_token');
         this._cookieService.delete('access_token_expire_date');
         localStorage.removeItem('current_user');
-        this._router.navigate(['/auth/login']);
       }
+      return true;
     }
 
   }
@@ -93,6 +91,4 @@ export class AuthenticationService implements OnDestroy{
     return new Date().valueOf() > date;
   }
 
-  ngOnDestroy(): void {
-  }
 }

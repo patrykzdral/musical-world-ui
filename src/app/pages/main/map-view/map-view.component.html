@@ -1,54 +1,63 @@
 
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<div class="flex-container component-scroll-bar">
-
+<div class=" wrapper component-scroll-bar">
   <app-concerts-filter [mapType]="mapTypeId" (mapTypeEmitter)="changeMapType($event)" (resetFilterEmitter)="getEvents()"  (filterDataEmitter)="filterEvents($event)" ></app-concerts-filter>
-  <agm-map
-    [latitude]="startLatitude"
-    [longitude]="startLongitude"
-    [(mapTypeId)]="mapTypes[mapTypeId]"
-    [zoom]="14"
-    [zoomControl]="false"
-    [streetViewControl]="false"
-    (mapClick)="onChoseLocation($event)">
 
-    <div *ngFor="let concert of concerts | async">
+  <div class="map">
+    <agm-map
+      [latitude]="startLatitude"
+      [longitude]="startLongitude"
+      [(mapTypeId)]="mapTypes[mapTypeId]"
+      [zoom]="14"
+      [zoomControl]="false"
+      [streetViewControl]="false"
+      (mapClick)="onChoseLocation($event)">
+
+      <div *ngFor="let concert of concerts | async">
+        <agm-marker
+          *ngIf="concert.address"
+          [latitude]="getEventLatitude(concert)"
+          [longitude]="getEventLongitude(concert)"
+          [iconUrl]="getMarkerImage(concert)">
+
+          <agm-info-window>
+            <div class="event-info">
+              <div>
+                <span class="info-title">Concert name: </span> {{concert.name}}
+              </div>
+              <div>
+                <span class="info-title">Concert slots: </span> {{concert.concertInstrumentSlots.length}}
+              </div>
+              <div>
+                <span class="info-title">Address: </span> {{getFormattedAddress(concert)}}
+              </div>
+            </div>
+            <div class="button-info">
+              <button class="button-style"  mat-raised-button color="primary" (click)="navigateToEventDetails(concert.id)" >
+                navigate to details</button>
+            </div>
+          </agm-info-window>
+        </agm-marker>
+      </div>
+
+
       <agm-marker
-        *ngIf="concert.address"
-        [latitude]="getEventLatitude(concert)"
-        [longitude]="getEventLongitude(concert)"
-        [iconUrl]="getMarkerImage(concert)">
+        [latitude]="newEventMarker.latitude"
+        [longitude]="newEventMarker.longitude"
+        *ngIf="newEventLocationChosen"
+        [iconUrl]="newEventMarker.image">
 
         <agm-info-window>
-          <div style="line-height:1.35; overflow:hidden; white-space:nowrap; text-align: center">
-            <!--<app-info-window-event [event]="event"-->
-            <!--style="display: block; margin-bottom: 4px;"></app-info-window-event>-->
-            <span class="label label-warning event_details_label" style="border-radius: 0;">Name: {{concert.name}}</span>
-            <span class="label label-warning event_details_label" style="border-radius: 0;">Ilość uczestników: {{concert.concertInstrumentSlots.length}}</span>
-          </div>
-          <div style="line-height:1.35; overflow:hidden; white-space:nowrap; text-align: center; margin-top: 5px">
-            <span class="label label-default event_details_label" style="margin-left: 5px;  border-radius: 0;">Adres: {{getFormattedAddress(concert)}}</span>
+          <div class="create-new-event">
+            <span class="create-title" >Create new event: </span>
+            <button class="button-create" mat-raised-button color="primary" (click)="navigateToNewEvent()" >{{currentLocation}}</button>
           </div>
         </agm-info-window>
       </agm-marker>
-    </div>
+    </agm-map>
+  </div>
 
-
-    <agm-marker
-      [latitude]="newEventMarker.latitude"
-      [longitude]="newEventMarker.longitude"
-      *ngIf="newEventLocationChosen"
-      [iconUrl]="newEventMarker.image">
-
-      <agm-info-window>
-        <div class="create-new-event">
-          <label class="label_create_event_from_marker">Create new event:</label>
-          <button class="button-create" mat-stroked-button color="primary" (click)="navigateToNewEvent()" >{{currentLocation}}</button>
-        </div>
-      </agm-info-window>
-    </agm-marker>
-  </agm-map>
 
   <!--<div id="events_buttons">-->
     <!--<button class="btn-xs" id="btn_all_events" (click)="navigateToEvents()"></button>-->

@@ -1,5 +1,5 @@
-@import '../../../../assets/scss/auth-header';
-@import '../../../../assets/scss/main-theme';
+@import '../../../@theme/scss/auth-header';
+@import '../../../@theme/scss/main-theme';
 ::ng-deep .langSelect div.mat-select-arrow-wrapper {
   display: none;
 }
@@ -10,5 +10,13 @@
 
 .app-name{
   font-size: 24px;
+  cursor: pointer;
 }
 
+
+.const-height{
+  height: 7vh;
+}
+.margin-bottom{
+  margin-bottom: 18px;
+}

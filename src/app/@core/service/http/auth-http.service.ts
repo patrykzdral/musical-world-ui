@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHandler, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Params, Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 
@@ -28,6 +28,8 @@ export class AuthHttpService extends HttpClient{
     });
   }
 
+
+
   delete(url: string, id: any): Observable<any> {
     let headers = this.createAuthorizationHeader();
     return super.delete(url+'/'+id ,{
@@ -35,10 +37,18 @@ export class AuthHttpService extends HttpClient{
     });
   }
 
+  deleteWithParams(url: string, params: HttpParams): Observable<any> {
+    let headers = this.createAuthorizationHeader();
+    return super.delete(url ,{
+      headers: headers,
+      params: params
+    });
+  }
+
   findAll(url: string): Observable<any> {
     let headers = this.createAuthorizationHeader();
     return super.get(url, {
-      headers: headers
+      headers: headers,
     });
   }
 
@@ -46,6 +56,14 @@ export class AuthHttpService extends HttpClient{
     let headers = this.createAuthorizationHeader();
     return super.post(url, object, {
       headers: headers
+    });
+  }
+  put(url: string, object: any,params: Params): Observable<any> {
+    console.log("PUT");
+    let headers = this.createAuthorizationHeader();
+    return super.put(url, object, {
+      headers: headers,
+      params
     });
   }
 

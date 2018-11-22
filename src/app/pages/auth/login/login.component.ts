@@ -10,7 +10,6 @@ import { MatProgressButtonOptions } from 'mat-progress-buttons'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  //Validators.email
   loading = false;
   loginForm = new FormGroup({
     username : new FormControl('', [Validators.required]),

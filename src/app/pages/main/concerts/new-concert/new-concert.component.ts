@@ -1,3 +1,5 @@
+/// <reference types="@types/googlemaps" />
+
 import {Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Instrument} from '../../../../@core/model/intrument.model';
@@ -14,7 +16,7 @@ import {AuthenticationService} from '../../../../@core/service/authentication/au
 import {GoogleService} from '../../../../@core/service/google/google.service';
 import {ConcertAddressModel} from '../../map-view/mapAddress.model';
 import {SessionService} from '../../../../@core/service/session/session.service';
-import {} from '@types/googlemaps';
+import {PictureService} from '../../../../@core/service/picture/picture.service';
 
 @Component({
   selector: 'app-new-event',
@@ -22,6 +24,7 @@ import {} from '@types/googlemaps';
   styleUrls: ['./new-concert.component.scss']
 })
 export class NewConcertComponent implements OnInit {
+  currentFileUpload: File;
   concert: Concert;
   address: Address;
   eventData: FormGroup;
@@ -29,26 +32,16 @@ export class NewConcertComponent implements OnInit {
   selectedInstruments: Instrument[];
   location: any;
   mapAddress:any;
-  concertAddresModel: ConcertAddressModel;
+  concertAddressModel: ConcertAddressModel;
+  message: any;
   @ViewChild('search') public searchElement: ElementRef;
 
   constructor(private _sessionService: SessionService, private _googleService: GoogleService, private _toastr: ToastrService, private router: Router, private ngZone: NgZone,
               private _mapsAPILoader: MapsAPILoader, private _formBuilder: FormBuilder,
-              private _instrumentService: InstrumentService, private _authService: AuthenticationService,
-              private _concertService: ConcertService) {
+              private _instrumentService: InstrumentService,private _concertService: ConcertService, private _pictureService: PictureService) {
   }
 
   ngOnInit() {
-
-    //this.concertAddresModel = JSON.parse( localStorage.getItem('address') );
-
-      //this.getAddressComponentByPlace(this.location)
-    //lat: any = JSON.parse( localStorage.getItem('address') ).latitude;
-    //this.mapAddress = localStorage.getItem('address').toString();
-    //console.log(this.mapAddress);
-
-
-    this._authService.checkCredentials();
     this.concert = new Concert();
     this.address = new Address();
     this.selectedInstruments = [];
@@ -96,9 +89,6 @@ export class NewConcertComponent implements OnInit {
   }
 
   onSubmit() {
-
-    //const resource = JSON.parse(this.registrationFormGroup.value);
-    // user.username=
     this.concert.name = this.eventData.controls['name'].value;
     this.concert.description = this.eventData.controls['description'].value;
     console.log(this.eventData.controls['dateFrom'].value);
@@ -111,16 +101,32 @@ export class NewConcertComponent implements OnInit {
     this.concert.concertInstrumentSlots = this.selectedInstruments;
     this.concert.username = JSON.parse(localStorage.getItem('currentUser')).username;
     console.log(this.concert);
+    if(this.currentFileUpload){
+      this.message= this._pictureService.pushFileToStorage(this.currentFileUpload)
+        .pipe(first())
+        .subscribe(
+          data => {
+            console.log(data);
+            this._toastr.info('Toastr.success.file_uploaded');
+            this.concert.pictureName = data;
+          },
+          error => {
+            this._toastr.error('Toastr.error.file_upload_error');
+          });
+      setTimeout(() => {
+      }, 500);
+    }
+
     this._concertService.create(this.concert)
       .pipe(first())
       .subscribe(
         data => {
           //this.loading=true;
-          this._toastr.success('Event has been created');
+          this._toastr.success('Toastr.success.event_created');
           this.router.navigate(['/']);
         },
         error => {
-          this._toastr.error(error);
+          this._toastr.error("Toastr.error.something_wrong");
         });
   }
 
@@ -163,4 +169,10 @@ export class NewConcertComponent implements OnInit {
     this.address.latitude = place.geometry.location.lat();
     this.address.longitude = place.geometry.location.lng();
   }
+
+  fileAdded(picture: File){
+    console.log(picture);
+    this.currentFileUpload=picture;
+  }
 }
+

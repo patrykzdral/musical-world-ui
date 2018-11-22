@@ -1,0 +1,23 @@
+@import "../../../../@theme/scss/main-theme";
+
+.Aligner-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  .mat-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .title {
+      size: 24px;
+      margin-bottom: 20px;
+    }
+    .sub-title {
+      color: #807f82;
+      font-size: 12px;
+    }
+
+  }
+
+}

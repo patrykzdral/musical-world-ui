@@ -122,5 +122,8 @@ export class RegisterComponent implements OnInit{
         });
   }
 
-
+  getUrl()
+  {
+    return "url('')";
+  }
 }

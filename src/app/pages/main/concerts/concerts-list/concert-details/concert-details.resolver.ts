@@ -4,16 +4,16 @@ import {catchError} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ConcertService} from '../../../../../@core/service/concert/concert.service';
-import {ConcertModel} from '../../../../../@core/model/get-model/concert.model';
+import {ConcertWithPhotoModel} from '../../../../../@core/model/get-model/concert-with-photo.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ConcertDetailsResolver implements Resolve<ConcertModel> {
+export class ConcertDetailsResolver implements Resolve<ConcertWithPhotoModel> {
   constructor(private concertService: ConcertService, private router: Router) {
   }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<ConcertModel> {
+  resolve(route: ActivatedRouteSnapshot): Observable<ConcertWithPhotoModel> {
     const id = parseInt(route.params.id, 10);
     console.log(id);
     if (isNaN(id)) {

@@ -1,4 +1,5 @@
-<mat-card>
+<div class="aligner">
+  <mat-card class="mat-card">
     <div class="forms-container" [formGroup]="eventData">
       <mat-vertical-stepper [linear]="true" #stepper>
         <mat-step [stepControl]="eventData">
@@ -17,8 +18,8 @@
             <div class="events-date">
               <mat-form-field  class="date-from">
                 <mat-label>the beginning of the event</mat-label>
-                  <input matInput [owlDateTimeTrigger]="dt" [owlDateTime]="dt" formControlName="dateFrom" name="dateFrom-input">
-                  <owl-date-time class="owl-picker" #dt></owl-date-time>
+                <input matInput [owlDateTimeTrigger]="dt" [owlDateTime]="dt" formControlName="dateFrom" name="dateFrom-input">
+                <owl-date-time class="owl-picker" #dt></owl-date-time>
               </mat-form-field>
               <div class="spacer"></div>
               <mat-form-field class="date-to">
@@ -38,7 +39,7 @@
               <!--<mat-error *ngIf="name.invalid">{{getEventError()}}</mat-error>-->
             </mat-form-field>
             <!--<div class="form-group">-->
-              <!--<input type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>-->
+            <!--<input type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>-->
             <!--</div>-->
           </div>
         </mat-step>
@@ -51,15 +52,13 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <div class="mat-list">
-            <mat-card *ngIf="selectedInstruments">
-              <mat-list>
-                <mat-list-item *ngFor="let instrument of selectedInstruments">
-                  <app-concert-instrument-element [instrument]="instrument"></app-concert-instrument-element>
-                </mat-list-item>
-              </mat-list>
-            </mat-card>
-          </div>
+          <mat-card *ngIf="selectedInstruments">
+            <div class="mat-list">
+              <div *ngFor="let instrument of selectedInstruments">
+                <app-concert-instrument-element [instrument]="instrument"></app-concert-instrument-element>
+              </div>
+            </div>
+          </mat-card>
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Additional information</ng-template>
@@ -71,7 +70,7 @@
               Guaranteed meal
             </mat-slide-toggle>
           </div>
-
+          <app-picture-upload (fileAdded)="fileAdded($event)"></app-picture-upload>
         </mat-step>
         <mat-step>
           <ng-template matStepLabel>Done</ng-template>
@@ -94,6 +93,8 @@
         </mat-step>
       </mat-vertical-stepper>
     </div>
-</mat-card>
+  </mat-card>
+</div>
+
 
 

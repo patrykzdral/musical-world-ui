@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
-import {HttpService} from '../http/http.service';
+import {Injectable} from '@angular/core';
 import {User} from '../../model/user.model';
 import {AuthHttpService} from '../http/auth-http.service';
 import {Observable} from 'rxjs';
+import {HttpParams} from '@angular/common/http';
+import {UserWithPhotoModel} from '../../../pages/main/profile/profile-picture-change/user-with-photo.model';
 
 @Injectable({
   providedIn: 'root'
 })
 @Injectable()
 export class UserService {
-  constructor(private http: AuthHttpService) { }
+  constructor(private http: AuthHttpService) {
+  }
 
   getAll() {
     return this.http.get<User[]>('/api/users');
@@ -18,8 +20,13 @@ export class UserService {
   getById(id: number) {
     return this.http.get('/api/users/' + id);
   }
-  getByUsername(username: string) : Observable<User>  {
+
+  getByUsername(username: string): Observable<User> {
     return this.http.findAllWithParams('/musicalworld/rest/api/users/', {username: username});
+  }
+
+  getUserWithPhoto(username: string): Observable<UserWithPhotoModel> {
+    return this.http.findAllWithParams('/musicalworld/rest/api/users/with-photo', {username: username});
   }
 
   register(user: User) {
@@ -27,10 +34,45 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put('/api/users/' + user.id, user);
+    //return this.http.put('/api/users/' + user.id, user);
   }
 
   delete(id: number) {
     return this.http.delete('/api/users/', id);
+  }
+
+  deleteByUsername(username: any) {
+    let httpParams = new HttpParams()
+      .append('username', username);
+    return this.http.deleteWithParams('/musicalworld/rest/api/users/', httpParams);
+  }
+
+  activateAccount(token: string) {
+    let httpParams = new HttpParams()
+      .append('token', token);
+    return this.http.post('/musicalworld/rest/registrationConfirm', httpParams, {
+      responseType: 'text'
+    });
+  }
+
+  requestPasswordReset(email: string) {
+    let httpParams = new HttpParams()
+      .append('email', email);
+    return this.http.post('/musicalworld/rest/user/requestResetPassword', httpParams);
+
+  }
+
+  confirmResetPassword(password: any, token: any): Observable<string> {
+    let httpParams = new HttpParams()
+      .append('password', password)
+      .append('token', token);
+
+    return this.http.post('/musicalworld/rest/user/confirmResetPassword', httpParams, {
+      responseType: 'text'
+    });
+  }
+
+  editUser(userWithPhotoModel: UserWithPhotoModel) {
+    return this.http.put('/musicalworld/rest/api/users/', userWithPhotoModel,null);
   }
 }

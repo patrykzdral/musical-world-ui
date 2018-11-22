@@ -20,6 +20,7 @@ import {MatProgressButtonsModule} from 'mat-progress-buttons';
 import {AgmCoreModule} from '@agm/core';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import {AgGridModule} from 'ag-grid-angular';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [

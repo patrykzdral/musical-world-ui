@@ -1,14 +1,10 @@
-%message-shared {
-  flex: 10%;
-  cursor: pointer;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  font-weight: bold;
-}
+
 .search-form {
-  opacity: 0.8;
+  position: absolute;
+  width: 100%;
+  z-index: 99;
+  background-color: rgba(255, 255, 255, 0.0) !important;
   text-align: center;
-  border: 1px solid grey;
   display: flex;
   flex-direction: column;
   .first-row {
@@ -22,6 +18,7 @@
       font-size: 16px;
     }
     .search-icon {
+      background-color: rgba(255, 255, 255, 0.0) !important;
       opacity: 1;
       cursor: pointer;
       background-color: white;
@@ -31,48 +28,19 @@
       margin-left: 10px;
     }
   }
-  .second-row {
+  .second-row{
     display: flex;
-    color: #005255;
-    text-align: right;
-    font-size: 10px;
-    background-color: transparent;
-    .map-text{
-      @extend %message-shared;
-      text-align: left;
-      margin-left: 15px;
-    }
-    .reset-text{
-      text-align: center;
-      @extend %message-shared;
-    }
-
-    .advanced-text{
-      margin-right: 15px;
-      @extend %message-shared;
+    flex-direction: row;
+    .empty-space{
+      flex-grow: 1;
     }
   }
 
 }
-//* {
-//  border-radius: 0 !important;
-//}
-//
-//div#filter_events {
-//  margin-top: 40px;
-//  height: 30px;
-//  opacity: 0.8;
-//  display: flex;
-//}
-//
-//#events_filters::placeholder {
-//  font-weight: bold;
-//  font-size: 16px;
-//}
-//
-//#search_icon {
-//  height: 30px;
-//  width: 30px;
-//  margin-left: calc(100% - 37px);
-//  margin-top: 42px;
-//}
+  button {
+    min-height: 20px !important;
+    min-width: 46px !important;
+    font-size: 10px !important;
+    line-height: 0;
+  }
+

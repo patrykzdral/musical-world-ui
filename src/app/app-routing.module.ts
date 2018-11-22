@@ -8,6 +8,8 @@ import {RequestPasswordComponent} from './pages/auth/request-password/request-pa
 import {ResetPasswordComponent} from './pages/auth/reset-password/reset-password.component';
 import {AccountActivatedComponent} from './pages/auth/account-activated/account-activated.component';
 import {ErrorsComponent} from './@core/error/errors-components/errors.component';
+import {TokenCorrectGuard} from './pages/auth/account-activated/token-correct.guard';
+import {UnauthorizedComponent} from './pages/auth/unauthorized/unauthorized.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'pages', pathMatch: 'full'},
@@ -40,14 +42,18 @@ export const routes: Routes = [
         component: ResetPasswordComponent,
       },
       {
-        path: 'account-activated',
+        path: 'registration-confirm',
         component: AccountActivatedComponent,
+        canActivate: [TokenCorrectGuard]
       }
 
     ],
   },
   {
     path: 'bad-path', component: ErrorsComponent,
+  },
+  {
+    path: 'unauthorized', component: UnauthorizedComponent,
   },
   {
     path: '**', redirectTo: '/bad-path'

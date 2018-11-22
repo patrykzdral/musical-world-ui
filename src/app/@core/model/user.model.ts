@@ -1,3 +1,5 @@
+import {PictureModel} from './picture.model';
+
 export class User {
   public id: number;
   public username: string;
@@ -7,4 +9,5 @@ export class User {
   public lastName: string;
   public email: string;
   public phoneNumber: string;
+  public picture: PictureModel
 }

@@ -7,10 +7,11 @@ import {GridOptions} from 'ag-grid-community';
 
 import {first} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
-import {ConcertModel} from '../../../../../@core/model/get-model/concert.model';
 import {ConcertApplicationService} from '../../../../../@core/service/concert-application/concert-application.service';
 import {ConcertApplicationModel} from '../../../../../@core/model/concert-application.model';
 import {ConcertInstrumentSlotModel} from '../../../../../@core/model/get-model/concert-instrument-slot.model';
+import {UserService} from '../../../../../@core/service/user/user.service';
+import {ConcertWithPhotoModel} from '../../../../../@core/model/get-model/concert-with-photo.model';
 
 @Component({
   selector: 'app-concert-details',
@@ -20,10 +21,13 @@ import {ConcertInstrumentSlotModel} from '../../../../../@core/model/get-model/c
 export class ConcertDetailsComponent implements OnInit {
 
   private destroy$: Subject<void> = new Subject<void>();
-  concert: ConcertModel;
+  concert: ConcertWithPhotoModel;
   public isRowSelectable;
   public buttonDisabled = true;
   private gridOptions: GridOptions;
+  hasProfile: boolean = false;
+  imageToShow: any;
+
 
   @ViewChild('agGrid') agGrid: AgGridNg2;
 
@@ -49,15 +53,15 @@ export class ConcertDetailsComponent implements OnInit {
     this.isRowSelectable = function (node) {
       return node.data ? node.data.taken === false : false;
     };
-    this.route.data.subscribe((data: { concert: ConcertModel }) => {
+    this.route.data.subscribe((data: { concert: ConcertWithPhotoModel }) => {
         if (data.concert) {
-          this.concert = data.concert;
+          this.concert=data.concert;
+          if(this.concert.picture){
+            this.imageToShow=this.concert.picture;
+            this.hasProfile=true;
+          }
           this.rowData = this.concert.concertInstrumentSlots;
           console.log(this.concert.concertInstrumentSlots);
-          // this.bookForm.setValue({
-          //   authors: data.book.authors,
-          //   title: data.book.title
-          // });
         } else {
           this.router.navigate(['/pages/concerts/show-all/']);
 
@@ -66,13 +70,13 @@ export class ConcertDetailsComponent implements OnInit {
     );
 
   }
-
+  hasProfilePic() {
+    return this.hasProfile;
+  }
   getSelectedRows() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
     const selectedData = selectedNodes.map(node => node.data);
     const selectedDataStringPresentation = selectedData.map(node => node);
-
-
     alert(`Selected nodes: ${selectedDataStringPresentation}`);
   }
 

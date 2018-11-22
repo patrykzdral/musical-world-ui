@@ -1,23 +1,34 @@
-<mat-toolbar class="application-main-color-shadow">
+<mat-toolbar class=" const-height application-main-color-shadow border-theme">
   <button mat-icon-button (click)="navService.openNav()">
     <mat-icon>menu</mat-icon>
   </button>
   <img src="../../../../assets/logo/navbarlogo.png" id="logo" (click)="navigateToMainPage()">
   <span class="example-spacer"></span>
-  <button class="icon-margin" mat-icon-button matTooltip="{{'Header.language' | translate}}" (click)=langselect.open()>
-    <mat-icon>language</mat-icon>
-    <mat-select class="langSelect" #langselect [(ngModel)]="setLang">
-      <!--<mat-option (click)="changeLang()" value="en">{{'Header.english-language' | translate}}</mat-option>-->
-      <!--<mat-option (click)="changeLang()" value="de">{{'Header.german-language' | translate}}</mat-option>-->
-      <mat-option (click)="changeLang()" value="en">english</mat-option>
-      <mat-option (click)="changeLang()" value="de">german</mat-option>
-    </mat-select>
+  <button mat-icon-button (click)="changeLang('de')">
+    <mat-icon svgIcon="pl"></mat-icon>
   </button>
+  <button class="icon-margin" mat-icon-button (click)="changeLang('en')">
+    <mat-icon svgIcon="uk"></mat-icon>
+  </button>
+  <!--<button class="icon-margin" mat-icon-button matTooltip="{{'Header.language' | translate}}" (click)=langselect.open()>-->
+  <!--<mat-icon>language</mat-icon>-->
+  <!--<mat-select class="langSelect" #langselect [(ngModel)]="setLang">-->
+  <!--&lt;!&ndash;<mat-option (click)="changeLang()" value="en">{{'Header.english-language' | translate}}</mat-option>&ndash;&gt;-->
+  <!--&lt;!&ndash;<mat-option (click)="changeLang()" value="de">{{'Header.german-language' | translate}}</mat-option>&ndash;&gt;-->
+  <!--<mat-option (click)="changeLang()" value="en">english</mat-option>-->
+  <!--<mat-option (click)="changeLang()" value="de">german</mat-option>-->
+  <!--</mat-select>-->
+  <!--</button>-->
   <button mat-icon-button matTooltip="{{'Header.profile' | translate}}" (click)="profileselect.open()">
-    <mat-icon >account_box</mat-icon>
-    <mat-select class="langSelect" #profileselect>
+    <div *ngIf="hasProfilePic();else other_content">
+      <img [src]="imageToShow | safeUrl" alt="Card image cap" class="round-avatar">
+    </div>
+    <ng-template #other_content>
+      <mat-icon class="profile-icon" svgIcon="profile_pic"></mat-icon>
+    </ng-template>
 
-      <mat-option  (click)="logOut()" value="en">log out</mat-option>
+    <mat-select class="langSelect" #profileselect>
+      <mat-option (click)="logOut()" value="en">log out</mat-option>
       <mat-option (click)="showProfile()" value="de">my profile</mat-option>
     </mat-select>
   </button>

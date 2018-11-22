@@ -1,6 +1,21 @@
-.quantity{
-  max-width: 35px;
+
+
+.instr-row{
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  .instrument{
+    min-width: 150px;
+    font-weight: bold;
+  }
+  .quantity-label {
+    min-width: 150px;
+    .form-field{
+      //max-width: 35px;
+    }
+  }
 }
-.instrument{
-  font:  bold 12px/30px;
+mat-form-field{
+  margin:0;
+  padding: 0;
 }

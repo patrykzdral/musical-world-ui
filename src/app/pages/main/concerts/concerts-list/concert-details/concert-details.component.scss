@@ -1,39 +1,51 @@
 @import '../../../../../@theme/breakpoints';
+@import "~ag-grid-community/dist/styles/ag-theme-fresh.css";
+@import "../../../../../@theme/scss/main-theme";
 
-.flex-area{
+.flex-area {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  mat-card{
-    .mat-header{
-      margin-bottom: 50px;
+  mat-card {
+    .flex-row {
+      display: flex;
+      flex-direction: row;
+      .photo-column {
+        flex: 50%
+
+      }
+      .title-column {
+        flex: 50%;
+      }
+
     }
+
     margin-top: 50px;
     margin-bottom: 50px;
-
-    width:80%;
-    .title{
+    width: 80%;
+    .title {
       font-weight: bold;
       font-size: 20px;
     }
-    .details-grid{
+    .details-grid {
       text-align: left;
     }
   }
-  .ag-theme-balham{
+  .ag-theme-balham {
   }
-  .button-row{
+  .button-row {
     display: flex;
     flex-direction: row;
     .spacer {
       flex-grow: 1;
     }
-    .middle-buttons{
+    .middle-buttons {
       flex: 25%;
     }
   }
 }
+
 .inner {
   height: 500px;
   margin-bottom: 50px;
@@ -41,4 +53,7 @@
 
 }
 
-
+.text-align {
+  display: flex;
+  justify-content: flex-start !important;
+}

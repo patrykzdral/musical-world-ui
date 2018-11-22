@@ -1,4 +1,4 @@
-@import '../../../../../../assets/scss/main-theme';
+@import '../../../../../@theme/scss/main-theme';
 
 mat-expansion-panel-header {
   flex-direction: row;
@@ -26,3 +26,31 @@ mat-expansion-panel-header {
     display: none;
   }
 }
+.mat-tab-g {
+  ::ng-deep mat-tab-group {
+
+
+      width:100% !important;
+
+    ::ng-deep mat-tab-label{
+      display: flex;
+        flex:30%;
+      }
+        //.mat-tab-list {
+        //  width: 100%;
+        //}
+
+        //.mat-tab-header-pagination {
+        //  display: none;
+        //}
+        //
+        //.mat-tab-label {
+        //  min-width: 50%;
+        //  font-size: 10px;
+        //
+        //}
+
+
+  }
+}
+

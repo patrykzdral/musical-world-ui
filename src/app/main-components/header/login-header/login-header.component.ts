@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-header',
@@ -8,12 +9,15 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LoginHeaderComponent implements OnInit {
   setLang: any;
-  constructor(private translate: TranslateService) { }
+  constructor(private _router: Router, private _translateService: TranslateService) { }
 
   ngOnInit() {
 
   }
-  changeLang() {
-    this.translate.use(this.setLang);
+  changeLang(lang: any) {
+    this._translateService.use(lang);
+  }
+  navigateToMainPage(){
+    this._router.navigate(['/']);
   }
 }

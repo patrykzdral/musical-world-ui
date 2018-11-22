@@ -10,7 +10,7 @@ import {AdvancedFilterDialogComponent} from './concerts-filter/advanced-filter-d
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import { InstrumentsCheckboxesListComponent } from './concerts-filter/advanced-filter-dialog/instruments-checkboxes-list/instruments-checkboxes-list.component';
 import { BottomConcertsBarComponent } from './bottom-concerts-bar/bottom-concerts-bar.component';
-import {SnackBarDeleteComponent} from '../concerts/admin-concerts/admin-concerts-item/snack-bar-delete/snack-bar-delete.component';
+import {SharedModule} from '../../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import {SnackBarDeleteComponent} from '../concerts/admin-concerts/admin-concerts
   providers: [],
   entryComponents: [
     AdvancedFilterDialogComponent,
-    SnackBarDeleteComponent
+
   ]
 })
 export class MapViewModule {

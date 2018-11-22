@@ -1,5 +1,6 @@
+/// <reference types="@types/googlemaps" />
+
 import { Injectable } from '@angular/core';
-import {} from '@types/googlemaps';
 
 @Injectable({
   providedIn: 'root'

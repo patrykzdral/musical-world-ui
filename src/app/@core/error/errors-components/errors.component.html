@@ -1,5 +1,9 @@
 <app-auth-page-template>
-  <h2 class="title">404 Page Not Found</h2>
-  <small class="sub-title">The page you were looking for doesn't exist</small>
-  <button mat-stroked-button (click)="goToHome()">Take me home</button>
+  <mat-card>
+    <div class="error-page-container">
+      <h2 class="title">404 Page Not Found</h2>
+      <small class="sub-title">The page you were looking for doesn't exist</small>
+      <button mat-stroked-button (click)="goToHome()">Take me home</button>
+    </div>
+  </mat-card>
 </app-auth-page-template>

@@ -1,7 +1,17 @@
-@import '../../../../../assets/scss/main-theme';
+@import '../../../../@theme/scss/main-theme';
 
 .constant-height {
   height: 600px;
+}
+.aligner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+  .mat-card{
+    width: 70%;
+    height: 700px;
+  }
 }
 
 mat-expansion-panel-header {
@@ -41,6 +51,28 @@ mat-expansion-panel-header {
     flex:60%;
   }
 }
+
+@media(max-width: 1000px) {
+  .aligner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mat-card{
+
+      width: 100%;
+      height: 100%;
+
+    }
+  }
+}
 .concert-list{
   overflow-y: auto;
+}
+.header-expension{
+  ::ng-deep mat-expansion-panel{
+    background-color: rgba($application-main-color, 0.9) !important;
+  }
+  .mat-expansion-panel-header {
+    color: white;
+  }
 }

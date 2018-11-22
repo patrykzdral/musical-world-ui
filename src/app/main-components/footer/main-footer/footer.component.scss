@@ -1,0 +1,42 @@
+@import '../../../@theme/scss/main-theme';
+@import '../../../@theme/scss/footer';
+@import '../../../@theme/breakpoints';
+.footer-row{
+  display: flex;
+  height: 5vh;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  .text{
+    margin-left: 10px;
+    .created-by{
+    }
+  }
+  .socials{
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+
+  }
+
+}
+
+@media (max-width: $large-handset) {
+  .footer-row{
+    justify-content: center;
+    .social-div {
+      display: none;
+    }
+  }
+
+}
+a {
+  color: #b5d4d6;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}

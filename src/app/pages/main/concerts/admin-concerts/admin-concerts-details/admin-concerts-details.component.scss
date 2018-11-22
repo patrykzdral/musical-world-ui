@@ -1,0 +1,39 @@
+@import '../../../../../@theme/scss/main-theme';
+
+.aligner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mat-card{
+    width: 70%;
+
+    .user{
+      flex: 30%;
+    }
+    .instrument{
+      flex: 30%;
+    }
+    .empty{
+      flex: 40%;
+    }
+  }
+}
+
+.header-expension{
+  ::ng-deep mat-expansion-panel{
+    background-color: rgba($application-main-color, 0.9) !important;
+  }
+  .mat-expansion-panel-header {
+    color: white;
+  }
+}
+
+@media(max-width: 500px) {
+  .aligner{
+    .mat-card{
+      width: 100%;
+    }
+  }
+
+}
