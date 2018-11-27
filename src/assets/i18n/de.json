@@ -1,9 +1,9 @@
 {
-  "Footer":{
-    "name":"Created with by"
+  "Footer": {
+    "name": "Created with by"
   },
-  "Auth":{
-    "login":{
+  "Auth": {
+    "login": {
       "sign_in": "einloggen",
       "welcome": "Willkommen in der Welt der Musik! Melde dich mit deinem Benutzernamen oder deiner E-Mail an!",
       "remember": "Erinnere dich an mich",

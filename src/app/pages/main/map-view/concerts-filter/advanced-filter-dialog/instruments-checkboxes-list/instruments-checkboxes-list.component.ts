@@ -8,16 +8,18 @@ import {Instrument} from '../../../../../../@core/model/intrument.model';
 })
 export class InstrumentsCheckboxesListComponent implements OnInit {
 
+  constructor() {
+  }
+
   _instrument: Instrument;
 
   @Input()
   set instrument(value: Instrument) {
     this._instrument = value;
   }
-  constructor() { }
 
   ngOnInit() {
-    this._instrument.chosen=false;
+    this._instrument.chosen = false;
   }
 
 }

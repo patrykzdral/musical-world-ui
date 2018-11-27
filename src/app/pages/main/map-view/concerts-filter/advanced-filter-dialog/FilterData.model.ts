@@ -1,5 +1,3 @@
-import {Instrument} from '../../../../../@core/model/intrument.model';
-
 export class FilterData {
   eventName: any;
   dateFrom: Date;

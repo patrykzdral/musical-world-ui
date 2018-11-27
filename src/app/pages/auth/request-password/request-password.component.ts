@@ -18,16 +18,16 @@ export class RequestPasswordComponent implements OnInit {
   constructor(private _userService: UserService, private _toastrService: ToastrService, private _router: Router) {
   }
 
+  get email(): any {
+    return this.resetPasswordForm.get('email');
+  }
+
   ngOnInit() {
   }
 
   getEmailErrorMessage() {
     return this.email.hasError('required') ? 'You must enter an email' :
       this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  get email(): any {
-    return this.resetPasswordForm.get('email');
   }
 
   onSubmit() {

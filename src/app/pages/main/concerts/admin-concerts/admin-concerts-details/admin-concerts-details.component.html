@@ -3,14 +3,14 @@
 
     <mat-accordion class="header-expension">
       <mat-expansion-panel class="application-main-color-shadow" [disabled]="true">
-        <mat-expansion-panel-header >
+        <mat-expansion-panel-header>
           <div class="user">user</div>
           <div class="instrument">instrument</div>
           <div class="empty"></div>
         </mat-expansion-panel-header>
       </mat-expansion-panel>
     </mat-accordion>
-    <div  class=" concert-list constant-height">
+    <div class=" concert-list constant-height">
       <div *ngFor="let concertApplic of concertApplications | async">
         <app-admin-concert-application [concertApplicationInput]=concertApplic></app-admin-concert-application>
       </div>

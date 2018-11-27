@@ -1,5 +1,6 @@
 @import '../../../../../@theme/scss/main-theme';
 @import '../../../../../@theme/_breakpoints.scss';
+
 mat-expansion-panel-header {
   flex-direction: row;
   display: flex;
@@ -13,17 +14,21 @@ mat-expansion-panel-header {
   .date-from {
     text-align: center;
     margin-right: 3px;
-    flex: 30%;
+    flex: 28%;
   }
 
   .date-to {
-    flex: 30%;
+    flex: 28%;
     text-align: right;
   }
+  .arrow {
+    flex: 4%;
 
+  }
 }
+
 @media(max-width: 500px) {
-  .date-to{
+  .date-to {
     display: none;
   }
 }

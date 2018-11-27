@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProfilePictureChangeComponent } from './profile-picture-change.component';
+import {ProfilePictureChangeComponent} from './profile-picture-change.component';
 
 describe('ProfilePictureChangeComponent', () => {
   let component: ProfilePictureChangeComponent;
@@ -8,9 +8,9 @@ describe('ProfilePictureChangeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfilePictureChangeComponent ]
+      declarations: [ProfilePictureChangeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

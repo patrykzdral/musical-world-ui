@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ConcertModel} from '../../../../@core/model/get-model/concert.model';
 import {ConcertService} from '../../../../@core/service/concert/concert.service';
 import {ConcertWithPhotoModel} from '../../../../@core/model/get-model/concert-with-photo.model';
 
@@ -10,16 +9,18 @@ import {ConcertWithPhotoModel} from '../../../../@core/model/get-model/concert-w
   styleUrls: ['./admin-concerts.component.scss']
 })
 export class AdminConcertsComponent implements OnInit {
-  hasPhoto: boolean = false;
+  hasPhoto = false;
   concertModelObservable: Observable<ConcertWithPhotoModel[]>;
+  searchText: string;
 
-  constructor(private concertsService: ConcertService) { }
+  constructor(private concertsService: ConcertService) {
+  }
 
   ngOnInit() {
-    this.concertModelObservable = this.concertsService.getAllAdminEvents(JSON.parse( localStorage.getItem('currentUser') ).username);
+    this.concertModelObservable = this.concertsService.getAllAdminEvents();
   }
 
   refreshList() {
-    this.concertModelObservable = this.concertsService.getAllAdminEvents(JSON.parse( localStorage.getItem('currentUser') ).username);
+    this.concertModelObservable = this.concertsService.getAllAdminEvents();
   }
 }

@@ -18,6 +18,11 @@
     }
   },
   "Pages": {
+    "friends": {
+      "tab1": "friends",
+      "tab2": "pending friend requests",
+      "tab3": "invite to friends"
+    },
     "profile": {
       "delete": {
         "delete_account": "Do you want to delete your account? ",
@@ -29,15 +34,15 @@
       }
     }
   },
-  "Toastr":{
-    "error":{
+  "Toastr": {
+    "error": {
       "file_too_big": "File is too big!",
       "invalid_format": "Invalid format!",
       "file_upload_error": "File upload error!",
       "something_wrong": "Something went wrong :("
     },
     "success": {
-      "file_uploaded":"Photo has been uploaded successfully!",
+      "file_uploaded": "Photo has been uploaded successfully!",
       "event_created": "Concert created successfully!"
     }
   }

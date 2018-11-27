@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
-import {ConcertService} from '../../../../../@core/service/concert/concert.service';
 import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from '@angular/material';
 import {first} from 'rxjs/operators';
 import {UserService} from '../../../../../@core/service/user/user.service';
@@ -22,7 +21,7 @@ export class SnackBarDeleteProfileComponent implements OnInit {
   }
 
   onYesClick() {
-    this._userService.deleteByUsername(this.data)
+    this._userService.deleteByUsername()
       .pipe(first())
       .subscribe(
         data => {

@@ -33,22 +33,18 @@ export class UserService {
     return this.http.post('/musicalworld/rest/register', user);
   }
 
-  update(user: User) {
-    //return this.http.put('/api/users/' + user.id, user);
-  }
 
   delete(id: number) {
     return this.http.delete('/api/users/', id);
   }
 
-  deleteByUsername(username: any) {
-    let httpParams = new HttpParams()
-      .append('username', username);
+  deleteByUsername() {
+    const httpParams = new HttpParams()
     return this.http.deleteWithParams('/musicalworld/rest/api/users/', httpParams);
   }
 
   activateAccount(token: string) {
-    let httpParams = new HttpParams()
+    const httpParams = new HttpParams()
       .append('token', token);
     return this.http.post('/musicalworld/rest/registrationConfirm', httpParams, {
       responseType: 'text'
@@ -56,14 +52,14 @@ export class UserService {
   }
 
   requestPasswordReset(email: string) {
-    let httpParams = new HttpParams()
+    const httpParams = new HttpParams()
       .append('email', email);
     return this.http.post('/musicalworld/rest/user/requestResetPassword', httpParams);
 
   }
 
   confirmResetPassword(password: any, token: any): Observable<string> {
-    let httpParams = new HttpParams()
+    const httpParams = new HttpParams()
       .append('password', password)
       .append('token', token);
 
@@ -73,6 +69,6 @@ export class UserService {
   }
 
   editUser(userWithPhotoModel: UserWithPhotoModel) {
-    return this.http.put('/musicalworld/rest/api/users/', userWithPhotoModel,null);
+    return this.http.put('/musicalworld/rest/api/users/', userWithPhotoModel, null);
   }
 }

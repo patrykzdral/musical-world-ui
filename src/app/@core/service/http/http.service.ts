@@ -1,13 +1,13 @@
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {Params} from "@angular/router";
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {Params} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 @Injectable()
-export class HttpService extends HttpClient{
+export class HttpService extends HttpClient {
 
 
   findOne(url: string, id: any): Observable<any> {
@@ -22,8 +22,8 @@ export class HttpService extends HttpClient{
     return super.post(url, object);
   }
 
-  findAllWithParams(url: string, params: Params) : Observable<any> {
-    return super.get(url + '/',{params});
+  findAllWithParams(url: string, params: Params): Observable<any> {
+    return super.get(url + '/', {params});
   }
 
 }

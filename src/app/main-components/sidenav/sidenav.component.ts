@@ -69,9 +69,12 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     {
       displayName: 'log out',
       iconName: 'logout',
-      route: '/pages/orchestra'
+      route: '/auth/logout'
     }
   ];
+
+  constructor(private navService: NavService) {
+  }
 
   ngOnInit() {
   }
@@ -85,11 +88,9 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     const mq = window.matchMedia('(min-width: 767px)');
     if (mq.matches) {
       return 'c';
+    } else {
+      return 'over';
     }
-    else return 'over';
-  }
-
-  constructor(private navService: NavService) {
   }
 
   ngAfterViewInit() {

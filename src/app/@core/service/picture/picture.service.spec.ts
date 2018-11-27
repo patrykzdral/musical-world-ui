@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { PictureService } from './picture.service';
+import {PictureService} from './picture.service';
 
 describe('PictureService', () => {
   beforeEach(() => {

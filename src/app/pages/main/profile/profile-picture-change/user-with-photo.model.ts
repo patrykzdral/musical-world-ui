@@ -6,4 +6,6 @@ export class UserWithPhotoModel {
   phoneNumber: string;
   description: string;
   photo: string;
+  email: string;
+
 }

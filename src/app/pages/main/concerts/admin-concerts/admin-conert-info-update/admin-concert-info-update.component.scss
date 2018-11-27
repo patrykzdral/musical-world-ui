@@ -1,0 +1,98 @@
+.aligner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  .mat-card {
+    display: flex;
+
+    flex-direction: column;
+    width: 75%;
+    height: 85%;
+    .main-info-row {
+      display: flex;
+      flex-direction: row;
+      .photo-column {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        flex: 35%;
+        margin-right: 10px;
+      }
+      .info-column {
+        margin-left: 10px;
+        flex: 65%;
+        display: flex;
+        flex-direction: column;
+
+      }
+    }
+    .concert-slots {
+      display: flex;
+      flex-direction: column;
+    }
+    .additional-info-column {
+      display: flex;
+      flex-direction: column;
+      .events-date {
+        display: flex;
+        flex-direction: row;
+        .date-from {
+          flex: 40%;
+        }
+        .spacer {
+          flex-grow: 1;
+
+        }
+        .date-to {
+          flex: 40%;
+        }
+      }
+    }
+
+  }
+  .buttons-row {
+    display: flex;
+    flex-direction: row;
+    .button-update {
+      flex: 30;
+    }
+    .space {
+      flex-grow: 1;
+    }
+    .button-cancel {
+      flex: 30;
+    }
+  }
+}
+
+.concert-description {
+  height: 300px;
+}
+
+.inner {
+  height: 500px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+
+}
+
+@media(max-width: 800px) {
+  .aligner {
+    .mat-card {
+      max-width: 90%;
+      min-width: 90%;
+      .main-info-row {
+        display: flex;
+        flex-direction: column;
+      }
+      .additional-info-column {
+        .events-date {
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}

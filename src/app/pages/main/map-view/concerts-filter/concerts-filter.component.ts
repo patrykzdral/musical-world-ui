@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {AdvancedFilterDialogComponent} from './advanced-filter-dialog/advanced-filter-dialog.component';
-import {Instrument} from '../../../../@core/model/intrument.model';
 import {FilterData} from './advanced-filter-dialog/FilterData.model';
 
 @Component({
@@ -9,7 +8,7 @@ import {FilterData} from './advanced-filter-dialog/FilterData.model';
   templateUrl: './concerts-filter.component.html',
   styleUrls: ['./concerts-filter.component.scss']
 })
-export class ConcertsFilterComponent{
+export class ConcertsFilterComponent {
   @Output() mapTypeEmitter = new EventEmitter<number>();
   @Output() filterDataEmitter = new EventEmitter<FilterData>();
   @Output() resetFilterEmitter = new EventEmitter<any>();
@@ -17,7 +16,9 @@ export class ConcertsFilterComponent{
 
   @Input() mapType: number;
   value = '';
-  constructor(public dialog: MatDialog) {}
+
+  constructor(public dialog: MatDialog) {
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(AdvancedFilterDialogComponent);
@@ -28,22 +29,24 @@ export class ConcertsFilterComponent{
   }
 
 
-  filter(result: FilterData){
+  filter(result: FilterData) {
     this.filterDataEmitter.emit(result);
   }
-  changeMapView(){
+
+  changeMapView() {
     let currentMapTypeId = this.mapType;
     currentMapTypeId++;
-    if (currentMapTypeId > 3)
+    if (currentMapTypeId > 3) {
       currentMapTypeId = 0;
+    }
     this.mapType = currentMapTypeId;
 
     this.mapTypeEmitter.emit(this.mapType);
   }
 
   filterByName(value: string) {
-    let result = new FilterData();
-    result.eventName=value;
+    const result = new FilterData();
+    result.eventName = value;
     this.filterDataEmitter.emit(result);
   }
 

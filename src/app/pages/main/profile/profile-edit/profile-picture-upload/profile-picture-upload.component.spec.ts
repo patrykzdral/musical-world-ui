@@ -1,16 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProfilePictureUploadComponent } from './profile-picture-upload.component';
+import {ProfilePictureUploadComponent} from './profile-picture-upload.component';
 
-describe('ProfilePictureUploadComponent', () => {
+describe('AdminConcertPictureUpdateComponent', () => {
   let component: ProfilePictureUploadComponent;
   let fixture: ComponentFixture<ProfilePictureUploadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfilePictureUploadComponent ]
+      declarations: [ProfilePictureUploadComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

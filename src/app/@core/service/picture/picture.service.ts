@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthHttpService} from '../http/auth-http.service';
-import {Observable} from 'rxjs';
-import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpRequest} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,24 +19,40 @@ export class PictureService {
   // }
 
 
-  pushFileToStorage(file: File){
-    let formdata: FormData = new FormData();
-    let headers = this._authHttpService.createAuthorizationHeader();
+  pushFileToStorage(file: File) {
+    const formdata: FormData = new FormData();
+    const headers = this._authHttpService.createAuthorizationHeader();
     formdata.append('file', file);
-    return this._httpClient.post('/musicalworld/rest/api/picture/new',formdata,{
+    return this._httpClient.post('/musicalworld/rest/api/picture/new', formdata, {
       headers: headers,
       reportProgress: true,
       responseType: 'text'
     });
   }
-  pushFileToStorageAndRaportProgressAndAssignToUser(file: File, username: string){
-    let formdata: FormData = new FormData();
-    let headers = this._authHttpService.createAuthorizationHeader();
+
+  pushFileToStorageAndRapportProgressAndAssignToUser(file: File) {
+    const formdata: FormData = new FormData();
+    const headers = this._authHttpService.createAuthorizationHeader();
 
     formdata.append('file', file);
-    formdata.append('username', username);
 
     const req = new HttpRequest('POST', '/musicalworld/rest/api/picture/user', formdata, {
+      headers: headers,
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this._httpClient.request(req);
+  }
+
+  pushFileToStorageAndRapportProgressAndAssignToConcert(file: File, concertId: number) {
+    const formdata: FormData = new FormData();
+    const headers = this._authHttpService.createAuthorizationHeader();
+
+    formdata.append('file', file);
+    formdata.append('id', concertId.toString());
+
+    const req = new HttpRequest('POST', '/musicalworld/rest/api/picture/concert', formdata, {
       headers: headers,
       reportProgress: true,
       responseType: 'text'

@@ -14,15 +14,16 @@ export class AppComponent implements OnInit {
 
 
   constructor(private matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer, private _authenticationService: AuthenticationService, private translate: TranslateService) {
+              private domSanitizer: DomSanitizer, private _authenticationService: AuthenticationService,
+              private translate: TranslateService) {
     translate.setDefaultLang('pl');
     translate.use('pl');
 
-    console.log(this.translate.get('footer.name').toString()+"SDASD");
+    console.log(this.translate.get('footer.name').toString() + 'SDASD');
   }
 
   ngOnInit(): void {
-    let warningTranslation: string = this.translate.instant('Toastr.warnings');
+    const warningTranslation: string = this.translate.instant('Toastr.warnings');
     this.matIconRegistry.addSvgIcon(
       'uk',
       this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/united-kingdom.svg')
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit {
       .addSvgIcon('picture_change',
         this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/sidenav/picture_change.svg'))
       .addSvgIcon('no_concert_photo',
-        this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/concert/no_concert_photo.svg'));
+        this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/concert/no_concert_photo.svg'))
 
   }
 

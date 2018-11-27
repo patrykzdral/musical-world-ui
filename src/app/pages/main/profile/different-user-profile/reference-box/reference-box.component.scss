@@ -1,0 +1,59 @@
+@import "../../../../../@theme/scss/main-theme";
+
+.star {
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+
+.filled {
+  color: #1e90ff;
+}
+
+.bad {
+  color: #deb0b0;
+}
+
+.filled.bad {
+  color: #fffb01;
+}
+
+.reference-flex-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .stars {
+
+  }
+  .text-area {
+    mat-form-field {
+      margin-top: 0;
+      padding-top: 0;
+      width: 100%;
+      textarea {
+        resize: none;
+        height: 50px;
+
+      }
+    }
+
+  }
+  .rate {
+  }
+}
+
+.reference-list {
+  overflow-y: auto;
+}
+
+.constant-height {
+  height: 600px;
+}
+
+.ref-margin {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+mat-card {
+  overflow-y: hidden;
+}

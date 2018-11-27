@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ConcertModel} from '../../../../../@core/model/get-model/concert.model';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ConcertApplicationService} from '../../../../../@core/service/concert-application/concert-application.service';
-import {ConcertApplicationModel} from '../../../../../@core/model/concert-application.model';
 import {Observable} from 'rxjs';
 import {ConcertApplicationChangeModel} from '../../../../../@core/model/concert-application-change.model';
 

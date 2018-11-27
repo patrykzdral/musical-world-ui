@@ -23,10 +23,12 @@ h1.app-name {
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
   flex: 1;
 }
-.router-container{
+
+.router-container {
   overflow-x: hidden;
   height: 88vh;
 }
+
 .sidenav-content {
   margin-top: 15px;
 }
@@ -40,19 +42,22 @@ h1.app-name {
   padding-top: 10px;
 }
 
-.border{
+.border {
   border-style: groove;
 }
 
-.padding-subheader{
+.padding-subheader {
   padding-bottom: 0;
 }
+
 .mat-nav-list {
   padding-top: 0;
 }
-.margin{
+
+.margin {
   margin-right: 15px;
 }
+
 //@import './theme';
 //
 //.mat-sidenav {

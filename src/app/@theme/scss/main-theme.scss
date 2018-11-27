@@ -7,24 +7,25 @@ $background-img: url("/assets/background.jpg");
 
 .application-main-color-shadow {
   background-color: $application-main-color;
-  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.application-auth-color-shadow{
+.application-auth-color-shadow {
   background-color: $auth-color;
-  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.border-theme{
+.border-theme {
   border-top: 1px dotted #ffffff;
   border-bottom: 1px dotted #ffffff;
   box-shadow: inset 0 -1px 0 0 #000, inset 0 1px 0 0 #000, 0 1px 0 0 #000, 0 -1px 0 0 #000;
 }
-.component-scroll-bar{
+
+.component-scroll-bar {
   ::-webkit-scrollbar {
     width: 15px;
   }
@@ -46,7 +47,8 @@ $background-img: url("/assets/background.jpg");
     background: #555;
   }
 }
-::ng-deep mat-card{
+
+::ng-deep mat-card {
   background-color: rgba(255, 255, 255, 0.7) !important;
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
   overflow: auto;
@@ -54,43 +56,49 @@ $background-img: url("/assets/background.jpg");
   border-radius: 15px;
 }
 
-::ng-deep mat-vertical-stepper{
+::ng-deep mat-vertical-stepper {
   background-color: $application-light-color !important;
 }
 
-::ng-deep mat-expansion-panel{
+::ng-deep mat-expansion-panel {
   background-color: $application-light-color !important;
 }
-::ng-deep mat-sidenav{
+
+::ng-deep mat-sidenav {
   background-color: $application-light-color !important;
 }
-::ng-deep mat-select{
+
+::ng-deep mat-select {
   background-color: $application-light-color !important;
 }
-::ng-deep mat-option{
+
+::ng-deep mat-option {
   background-color: $application-light-color !important;
 }
-.background-theme{
+
+.background-theme {
   background: url("/assets/background.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-.round-avatar{
+
+.round-avatar {
   background-size: cover;
-  border-radius:50% 50% 50% 50%;
-  width:32px;
-  height:32px
+  border-radius: 50% 50% 50% 50%;
+  width: 32px;
+  height: 32px
 }
 
-.round-avatar-smaller{
+.round-avatar-smaller {
   background-size: cover;
-  border-radius:50% 50% 50% 50%;
-  width:24px;
-  height:24px
+  border-radius: 50% 50% 50% 50%;
+  width: 24px;
+  height: 24px
 }
-.big-avatar{
+
+.big-avatar {
   width: 300px;
   height: 300px;
   -webkit-border-radius: 60px;

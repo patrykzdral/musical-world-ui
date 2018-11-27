@@ -1,4 +1,4 @@
-import {Injectable, OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {first} from 'rxjs/operators';
 import {CookieService} from 'ngx-cookie-service';
@@ -9,9 +9,14 @@ import {ToastrService} from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService{
+export class AuthenticationService {
   constructor(private _router: Router, private _http: HttpClient, private _cookieService: CookieService
     , private _userService: UserService, private _toastr: ToastrService) {
+  }
+
+  static isExpired(token) {
+    const date = Number(token);
+    return new Date().valueOf() > date;
   }
 
   obtainAccessToken(loginData) {
@@ -31,12 +36,11 @@ export class AuthenticationService{
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
           this.saveToken(data, loginData.username);
           this._toastr.success('Login successful');
         }
         ,
-        err => this._toastr.error(err)
+        err => this._toastr.error('Wrong username or password!')
       );
   }
 
@@ -74,8 +78,7 @@ export class AuthenticationService{
   checkCredentials(): boolean {
     if (!this._cookieService.check('access_token') || !this._cookieService.check('access_token_expire_date')) {
       return false;
-    }
-    else {
+    } else {
       if (AuthenticationService.isExpired(this._cookieService.get('access_token_expire_date'))) {
         this._cookieService.delete('access_token');
         this._cookieService.delete('access_token_expire_date');
@@ -84,11 +87,6 @@ export class AuthenticationService{
       return true;
     }
 
-  }
-
-  static isExpired(token) {
-    const date = Number(token);
-    return new Date().valueOf() > date;
   }
 
 }

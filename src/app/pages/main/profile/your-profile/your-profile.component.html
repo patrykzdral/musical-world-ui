@@ -1,0 +1,73 @@
+<!--Your Information-->
+<!--<mat-divider></mat-divider>-->
+<!--<mat-form-field appearance="outline">-->
+<!--<input matInput placeholder="Enter your first name" formControlName="firstName">-->
+<!--</mat-form-field>-->
+<div class="profile">
+  <mat-card>
+    <div class="flex-row">
+      <div class="photo-column">
+        <div *ngIf="hasProfilePic();else other_content">
+          <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar">
+        </div>
+        <ng-template #other_content class="company-header-avatar-white">
+          <div class="photo"></div>
+        </ng-template>
+      </div>
+      <div class="title-column">
+        <mat-card-title class="title">Display profile</mat-card-title>
+        <mat-card-subtitle>Show profile information</mat-card-subtitle>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+    <mat-card-content class="content">
+      <div class="form-group">
+        <label>First Name:</label>
+        <mat-form-field appearance="standard">
+          <input [disabled]="true" matInput [(ngModel)]="user.firstName" type="text">
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group">
+        <label>Last Name:</label>
+        <mat-form-field appearance="standard">
+          <input [disabled]="true" matInput [(ngModel)]="user.lastName" type="text">
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <label>Phone Number:</label>
+        <mat-form-field appearance="standard">
+          <input [disabled]="true" matInput [(ngModel)]="user.phoneNumber" type="text">
+          <mat-icon matPrefix>phone</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <label>Email address:</label>
+        <mat-form-field appearance="standard">
+          <input [disabled]="true" matInput [(ngModel)]="user.email" type="text">
+          <mat-icon matPrefix>phone</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <mat-form-field appearance="standard">
+          <textarea [disabled]="true" matInput [(ngModel)]="user.description" type="text"></textarea>
+          <mat-icon matPrefix>description</mat-icon>
+        </mat-form-field>
+      </div>
+      <mat-card class="card">
+        <app-reference-box [notAdmin]="false" [userTo]="user.username"></app-reference-box>
+      </mat-card>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="button-row">
+        <button mat-raised-button="" class="button-cancel" color="accent" (click)="cancelEdition()">Cancel</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { InstrumentsCheckboxesListComponent } from './instruments-checkboxes-list.component';
+import {InstrumentsCheckboxesListComponent} from './instruments-checkboxes-list.component';
 
 describe('InstrumentsCheckboxesListComponent', () => {
   let component: InstrumentsCheckboxesListComponent;
@@ -8,9 +8,9 @@ describe('InstrumentsCheckboxesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InstrumentsCheckboxesListComponent ]
+      declarations: [InstrumentsCheckboxesListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

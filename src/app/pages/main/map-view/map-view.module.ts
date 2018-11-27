@@ -8,9 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {AdvancedFilterDialogComponent} from './concerts-filter/advanced-filter-dialog/advanced-filter-dialog.component';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
-import { InstrumentsCheckboxesListComponent } from './concerts-filter/advanced-filter-dialog/instruments-checkboxes-list/instruments-checkboxes-list.component';
-import { BottomConcertsBarComponent } from './bottom-concerts-bar/bottom-concerts-bar.component';
-import {SharedModule} from '../../../shared/shared.module';
+import {InstrumentsCheckboxesListComponent} from './concerts-filter/advanced-filter-dialog/instruments-checkboxes-list/instruments-checkboxes-list.component';
+import {BottomConcertsBarComponent} from './bottom-concerts-bar/bottom-concerts-bar.component';
 
 @NgModule({
   declarations: [

@@ -1,15 +1,15 @@
 @import '../../../@theme/scss/main-theme';
 
-
-.header{
-  min-height:10vh;
+.header {
+  min-height: 10vh;
 }
 
-.title{
+.title {
   margin-bottom: 30px;
   text-align: center;
 }
-.flex-column{
+
+.flex-column {
   flex-direction: column;
   display: flex;
   align-items: center;

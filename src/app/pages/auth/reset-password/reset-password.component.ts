@@ -35,7 +35,7 @@ export class ResetPasswordComponent implements OnInit {
 
   getPasswordErrorMessage() {
     return 'You must enter password';
-    //return this.password.hasError('required') ? 'You must enter a password':'';
+    // return this.password.hasError('required') ? 'You must enter a password':'';
   }
 
   getPasswordRepeatErrorMessage() {
@@ -52,13 +52,13 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
-    let pass = group.controls.password.value;
-    let confirmPass = group.controls.repeatPassword.value;
-    return pass === confirmPass ? null : {notSame: true};
+    const pass = group.controls.password.value;
+    const confirmPass = group.controls.repeatPassword.value;
+    return pass ===  confirmPass ? null : {notSame: true};
 
   }
 
-  //TODO TOASTR ERROR PO SUKCESIE
+  // TODO TOASTR ERROR PO SUKCESIE
   onSubmit() {
     this._userService.confirmResetPassword(this.passwordFormGroup.controls['password'].value, this.token)
       .pipe(first())

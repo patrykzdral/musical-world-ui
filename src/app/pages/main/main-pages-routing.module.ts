@@ -14,9 +14,14 @@ import {ProfileDeleteComponent} from './profile/profile-delete/profile-delete.co
 import {MainPageGuard} from '../../shared/guards/main-page.guard';
 import {AuthGuard} from '../../shared/guards/auth.guard';
 import {AdminConcertsDetailsResolver} from './concerts/admin-concerts/admin-concerts-details/admin-concerts-details.resolver';
-import {ProfilePictureUploadComponent} from './profile/profile-edit/profile-picture-upload/profile-picture-upload.component';
 import {ProfilePictureChangeComponent} from './profile/profile-picture-change/profile-picture-change.component';
 import {UnauthorizedComponent} from '../auth/unauthorized/unauthorized.component';
+import {AdminConcertInfoUpdateComponent} from './concerts/admin-concerts/admin-conert-info-update/admin-concert-info-update.component';
+import {AdminConcertInfoUpdateResolver} from './concerts/admin-concerts/admin-conert-info-update/admin-concert-info-update.resolver';
+import {DifferentUserProfileComponent} from './profile/different-user-profile/different-user-profile.component';
+import {DifferentUserProfileResolver} from './profile/different-user-profile/different-user-profile.resolver';
+import {YourProfileComponent} from './profile/your-profile/your-profile.component';
+import {FriendsComponent} from './friends/friends.component';
 
 
 const routes: Routes = [{
@@ -70,21 +75,52 @@ const routes: Routes = [{
               canActivate: [AuthGuard]
             },
             {
-              path: 'details/:id',
+              path: 'applications/:id',
               component: AdminConcertsDetailsComponent,
               resolve: {
                 concert: AdminConcertsDetailsResolver
               },
               canActivate: [AuthGuard]
-
+            },
+            {
+              path: 'update/:id',
+              component: AdminConcertInfoUpdateComponent,
+              resolve: {
+                concert: AdminConcertInfoUpdateResolver
+              },
+              canActivate: [AuthGuard]
             }
           ]
         },
       ]
     },
     {
+      path: 'friends',
+      children: [
+        {
+          path: '',
+          component: FriendsComponent,
+          canActivate: [AuthGuard]
+
+        },
+      ]
+    },
+    {
       path: 'profile',
       children: [
+        {
+          path: 'user-profile-show/:username',
+          component: DifferentUserProfileComponent,
+          resolve: {
+            user: DifferentUserProfileResolver
+          },
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'show',
+          component: YourProfileComponent,
+          canActivate: [AuthGuard]
+        },
         {
           path: 'edit',
           component: ProfileEditComponent,

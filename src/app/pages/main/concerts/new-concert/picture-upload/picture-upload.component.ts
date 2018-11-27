@@ -12,9 +12,10 @@ export class PictureUploadComponent implements OnInit {
 
   selectedFiles: FileList;
   currentFileUpload: File;
-  progress: { percentage: number } = { percentage: 0 };
+  progress: { percentage: number } = {percentage: 0};
 
-  constructor(private _translateService: TranslateService, private _toastr: ToastrService) { }
+  constructor(private _translateService: TranslateService, private _toastr: ToastrService) {
+  }
 
   ngOnInit() {
   }
@@ -23,13 +24,12 @@ export class PictureUploadComponent implements OnInit {
     const file = event.target.files.item(0);
     if (file.type.match('image.*')) {
       this.selectedFiles = event.target.files;
-      if(this.selectedFiles.item(0).size>4194304){
-        this.selectedFiles=null;
+      if (this.selectedFiles.item(0).size > 4194304) {
+        this.selectedFiles = null;
         this._toastr.error(this._translateService.instant('Toastr.error.file_too_big'));
-      }
-      else {
+      } else {
         this.selectedFiles = event.target.files;
-        this.currentFileUpload=event.target.files.item(0);
+        this.currentFileUpload = event.target.files.item(0);
         this.fileAdded.emit(this.currentFileUpload);
       }
 

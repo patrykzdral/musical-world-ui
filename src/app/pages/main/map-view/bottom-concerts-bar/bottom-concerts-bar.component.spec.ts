@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BottomConcertsBarComponent } from './bottom-concerts-bar.component';
+import {BottomConcertsBarComponent} from './bottom-concerts-bar.component';
 
 describe('BottomConcertsBarComponent', () => {
   let component: BottomConcertsBarComponent;
@@ -8,9 +8,9 @@ describe('BottomConcertsBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BottomConcertsBarComponent ]
+      declarations: [BottomConcertsBarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,0 +1,163 @@
+.application-main-color-shadow {
+  background-color: #016464;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.application-auth-color-shadow {
+  background-color: #525255;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.component-scroll-bar {
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.component-scroll-bar ::-webkit-scrollbar {
+  width: 15px;
+}
+
+.component-scroll-bar ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 15px;
+}
+
+.component-scroll-bar ::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: #888;
+}
+
+.component-scroll-bar ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+mat-card {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  margin: 1px;
+  border-radius: 15px;
+}
+
+.header {
+  height: 10vh;
+}
+
+.Aligner {
+  background-image: url("paper.gif");
+  display: flex;
+  flex-direction: row;
+  min-height: 85vh;
+}
+
+.Aligner .photo {
+  margin-left: 50px;
+  display: flex;
+  flex: 50%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Aligner .photo .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+}
+
+.Aligner .Aligner-item {
+  display: flex;
+  flex: 50%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Aligner .Aligner-item .mat-card {
+  width: 90%;
+}
+
+.Aligner .Aligner-item .mat-card .sign_in {
+  size: 24px;
+  margin-bottom: 40px;
+}
+
+.Aligner .Aligner-item .mat-card .welcome {
+  color: #807f82;
+  font-size: 12px;
+}
+
+.Aligner .Aligner-item .mat-card .forms-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Aligner .Aligner-item .mat-card .remember-row {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.Aligner .Aligner-item .mat-card .remember-row .remember-me {
+  flex: 40%;
+}
+
+.Aligner .Aligner-item .mat-card .remember-row .gap {
+  flex: 20%;
+}
+
+.Aligner .Aligner-item .mat-card .remember-row .forgot-password {
+  text-align: right;
+  color: #016464;
+  flex: 40%;
+}
+
+.Aligner .Aligner-item .mat-card .sign-button {
+  display: flex;
+}
+
+.Aligner .Aligner-item .mat-card .sign-button .login-button {
+  flex: 48%;
+}
+
+.Aligner .Aligner-item .mat-card .sign-button .gap {
+  flex: 4%;
+}
+
+.Aligner .Aligner-item .mat-card .sign-button .register-button {
+  flex: 48%;
+}
+
+.box {
+  text-align: center;
+  /* will center text in <p>, which is not a flex item */
+}
+
+@media (max-width: 800px) {
+  .Aligner .photo {
+    display: none;
+  }
+
+  .Aligner .Aligner-item {
+    min-width: 100%;
+  }
+
+  .Aligner .Aligner-item .sign-button {
+    display: flex;
+  }
+
+  .Aligner .Aligner-item .sign-button .login-button {
+    flex: 50%;
+  }
+
+  .Aligner .Aligner-item .sign-button .register-button {
+    flex: 50%;
+  }
+}
+
+/*# sourceMappingURL=login.component.css.map */

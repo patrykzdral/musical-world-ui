@@ -12,17 +12,29 @@ import {User} from '../../../@core/model/user.model';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
   registrationFormGroup: FormGroup;
   passwordFormGroup: FormGroup;
   additionalFieldsFormGroup: FormGroup;
-  loading=false;
+  loading = false;
   hide = true;
   matcher = new OwnErrorStateMatcher();
 
   constructor(private formBuilder: FormBuilder, private userService: UserService,
               private toastrService: ToastrService, private router: Router) {
 
+  }
+
+  get username(): any {
+    return this.registrationFormGroup.get('username');
+  }
+
+  get email(): any {
+    return this.registrationFormGroup.get('email');
+  }
+
+  get password(): any {
+    return this.passwordFormGroup.get('password');
   }
 
   ngOnInit(): void {
@@ -45,16 +57,6 @@ export class RegisterComponent implements OnInit{
       additionalFields: this.additionalFieldsFormGroup
     });
   }
-  get username(): any {
-    return this.registrationFormGroup.get('username');
-  }
-
-  get email(): any {
-    return this.registrationFormGroup.get('email');
-  }
-  get password(): any {
-    return this.passwordFormGroup.get('password');
-  }
 
   login() {
     // this._authenticationService.obtainAccessToken(this.loginData);
@@ -72,7 +74,7 @@ export class RegisterComponent implements OnInit{
 
   getPasswordErrorMessage() {
     return 'You must enter password';
-    //return this.password.hasError('required') ? 'You must enter a password':'';
+    // return this.password.hasError('required') ? 'You must enter a password':'';
   }
 
   getPasswordRepeatErrorMessage() {
@@ -83,21 +85,21 @@ export class RegisterComponent implements OnInit{
     return 'Password don\'t match';
   }
 
-  getPatternPasswordErrorMessage(){
+  getPatternPasswordErrorMessage() {
     return 'Password must has at least 6 cases, 1 Uppercase, 1 digit character and 1 special character';
 
   }
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
-    let pass = group.controls.password.value;
-    let confirmPass = group.controls.repeatPassword.value;
-    return pass === confirmPass ? null : { notSame: true }
+    const pass = group.controls.password.value;
+    const confirmPass = group.controls.repeatPassword.value;
+    return pass ===  confirmPass ? null : {notSame: true};
 
   }
 
-  onSubmit(){
+  onSubmit() {
     const user: User = new User();
-    //const resource = JSON.parse(this.registrationFormGroup.value);
+    // const resource = JSON.parse(this.registrationFormGroup.value);
     // user.username=
     console.log(this.passwordFormGroup);
     user.username = this.registrationFormGroup.controls['username'].value;
@@ -112,7 +114,7 @@ export class RegisterComponent implements OnInit{
       .pipe(first())
       .subscribe(
         data => {
-          //this.loading=true;
+          // this.loading=true;
           this.toastrService.success('Registration successful', 'Verification mail has been sent');
           this.router.navigate(['/auth/login']);
         },
@@ -122,8 +124,7 @@ export class RegisterComponent implements OnInit{
         });
   }
 
-  getUrl()
-  {
-    return "url('')";
+  getUrl() {
+    return 'url(\'\')';
   }
 }

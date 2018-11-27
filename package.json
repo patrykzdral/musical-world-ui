@@ -28,6 +28,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@angular/material": "^7.0.4",
     "@angular/cdk": "^7.0.4",
+    "@ng-bootstrap/ng-bootstrap": "^4.0.0",
     "ngx-cookie-service": "2.0.0",
     "ngx-toastr": "^9.0.2",
     "bootstrap": "^4.1.3",

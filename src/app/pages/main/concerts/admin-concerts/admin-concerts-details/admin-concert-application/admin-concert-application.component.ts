@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ConcertModel} from '../../../../../../@core/model/get-model/concert.model';
-import {ConcertApplicationModel} from '../../../../../../@core/model/concert-application.model';
 import {ConcertApplicationChangeModel} from '../../../../../../@core/model/concert-application-change.model';
 import {ConcertApplicationService} from '../../../../../../@core/service/concert-application/concert-application.service';
 import {ConcertApplicationExamineModel} from '../../../../../../@core/model/concert-application-examine.model';
@@ -17,22 +15,26 @@ export class AdminConcertApplicationComponent implements OnInit {
 
   concertApplication: ConcertApplicationChangeModel;
 
+  constructor(private _concertApplicationService: ConcertApplicationService, private _toastrService: ToastrService,
+              private _router: Router) {
+  }
+
   @Input()
   set concertApplicationInput(value: ConcertApplicationChangeModel) {
     this.concertApplication = value;
   }
-  constructor(private _concertApplicationService: ConcertApplicationService, private _toastrService: ToastrService,
-              private _router: Router) { }
 
   ngOnInit() {
   }
 
   navigateToUserDetails() {
+    this._router.navigate(['/pages/profile/user-profile-show/', this.concertApplication.user.username]);
 
   }
-  //TODO REFRESH PAGE
-  reject(){
-    this._concertApplicationService.examineConcertApplication(new ConcertApplicationExamineModel(this.concertApplication.id,false))
+
+  // TODO REFRESH PAGE
+  reject() {
+    this._concertApplicationService.examineConcertApplication(new ConcertApplicationExamineModel(this.concertApplication.id, false))
       .pipe(first())
       .subscribe(
         data => {
@@ -42,8 +44,9 @@ export class AdminConcertApplicationComponent implements OnInit {
           this._toastrService.error(error);
         });
   }
-  accept(){
-    this._concertApplicationService.examineConcertApplication(new ConcertApplicationExamineModel(this.concertApplication.id,true))
+
+  accept() {
+    this._concertApplicationService.examineConcertApplication(new ConcertApplicationExamineModel(this.concertApplication.id, true))
       .pipe(first())
       .subscribe(
         data => {

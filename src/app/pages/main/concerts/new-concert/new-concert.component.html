@@ -14,17 +14,20 @@
             <mat-form-field>
               <mat-label>Description</mat-label>
               <textarea matInput placeholder="Textarea" formControlName="description"></textarea>
+              <mat-error *ngIf="description.invalid">{{getDescriptionError()}}</mat-error>
             </mat-form-field>
             <div class="events-date">
-              <mat-form-field  class="date-from">
+              <mat-form-field class="date-from">
                 <mat-label>the beginning of the event</mat-label>
-                <input matInput [owlDateTimeTrigger]="dt" [owlDateTime]="dt" formControlName="dateFrom" name="dateFrom-input">
+                <input matInput [owlDateTimeTrigger]="dt" [owlDateTime]="dt" formControlName="dateFrom"
+                       name="dateFrom-input">
                 <owl-date-time class="owl-picker" #dt></owl-date-time>
               </mat-form-field>
               <div class="spacer"></div>
               <mat-form-field class="date-to">
                 <mat-label>the end of the event</mat-label>
-                <input matInput [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" formControlName="dateTo" name="dateFrom-input">
+                <input matInput [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" formControlName="dateTo"
+                       name="dateFrom-input">
                 <owl-date-time class="owl-picker" #dt2></owl-date-time>
               </mat-form-field>
             </div>
@@ -35,7 +38,8 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label>Address</mat-label>
-              <input matInput type="text" [ngModel]="mapAddress" formControlName="address" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off"  #search>
+              <input matInput type="text" [ngModel]="mapAddress" formControlName="address"
+                     placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
               <!--<mat-error *ngIf="name.invalid">{{getEventError()}}</mat-error>-->
             </mat-form-field>
             <!--<div class="form-group">-->
@@ -47,7 +51,8 @@
           <ng-template matStepLabel>Choose instruments</ng-template>
           <mat-form-field>
             <mat-select [(value)]="selectedInstruments" placeholder="Choose instruments" multiple required>
-              <mat-option *ngFor="let instrumentsModel of instrumentsModelObservable | async" [value]="instrumentsModel">
+              <mat-option *ngFor="let instrumentsModel of instrumentsModelObservable | async"
+                          [value]="instrumentsModel">
                 {{instrumentsModel.name}}
               </mat-option>
             </mat-select>

@@ -28,19 +28,20 @@
       margin-left: 10px;
     }
   }
-  .second-row{
+  .second-row {
     display: flex;
     flex-direction: row;
-    .empty-space{
+    .empty-space {
       flex-grow: 1;
     }
   }
 
 }
-  button {
-    min-height: 20px !important;
-    min-width: 46px !important;
-    font-size: 10px !important;
-    line-height: 0;
-  }
+
+button {
+  min-height: 20px !important;
+  min-width: 46px !important;
+  font-size: 10px !important;
+  line-height: 0;
+}
 

@@ -1,21 +1,21 @@
 
-
-.instr-row{
+.instr-row {
   flex-direction: row;
   display: flex;
   align-items: center;
-  .instrument{
+  .instrument {
     min-width: 150px;
     font-weight: bold;
   }
   .quantity-label {
     min-width: 150px;
-    .form-field{
+    .form-field {
       //max-width: 35px;
     }
   }
 }
-mat-form-field{
-  margin:0;
+
+mat-form-field {
+  margin: 0;
   padding: 0;
 }

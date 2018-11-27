@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ProfileDeleteComponent } from './profile-delete.component';
+import {ProfileDeleteComponent} from './profile-delete.component';
 
 describe('ProfileDeleteComponent', () => {
   let component: ProfileDeleteComponent;
@@ -8,9 +8,9 @@ describe('ProfileDeleteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileDeleteComponent ]
+      declarations: [ProfileDeleteComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,14 +1,11 @@
-
-
-
 <div class="instr-row">
   <div class="instrument">{{_instrument.name}}</div>
   <div class="instrument">{{_instrument.type.name}}</div>
 
-  <div class="quantity-label" >
+  <div class="quantity-label">
     quantity:
     <mat-form-field class="form-field">
-    <input matInput [(ngModel)]="_instrument.quantity" type="number">
+      <input matInput [(ngModel)]="_instrument.quantity" type="number">
     </mat-form-field>
   </div>
 

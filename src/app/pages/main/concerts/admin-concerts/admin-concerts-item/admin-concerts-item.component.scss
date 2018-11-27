@@ -8,48 +8,48 @@ mat-expansion-panel-header {
     float: left;
     flex: 40%
   }
-
   .date-from {
+    flex: 28%;
     text-align: center;
     margin-right: 3px;
-    flex: 30%;
   }
-
   .date-to {
-    flex: 30%;
+    flex: 28%;
     text-align: right;
   }
-
+  .arrow {
+    flex: 4%;
+  }
 }
+
 @media(max-width: 500px) {
-  .date-to{
+  .date-to {
     display: none;
   }
 }
+
 .mat-tab-g {
   ::ng-deep mat-tab-group {
 
+    width: 100% !important;
 
-      width:100% !important;
-
-    ::ng-deep mat-tab-label{
+    ::ng-deep mat-tab-label {
       display: flex;
-        flex:30%;
-      }
-        //.mat-tab-list {
-        //  width: 100%;
-        //}
+      flex: 30%;
+    }
+    //.mat-tab-list {
+    //  width: 100%;
+    //}
 
-        //.mat-tab-header-pagination {
-        //  display: none;
-        //}
-        //
-        //.mat-tab-label {
-        //  min-width: 50%;
-        //  font-size: 10px;
-        //
-        //}
-
+    //.mat-tab-header-pagination {
+    //  display: none;
+    //}
+    //
+    //.mat-tab-label {
+    //  min-width: 50%;
+    //  font-size: 10px;
+    //
+    //}
 
   }
 }

@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import {HttpService} from '../http/http.service';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Instrument} from '../../model/intrument.model';
 import {AuthHttpService} from '../http/auth-http.service';
@@ -9,12 +8,13 @@ import {AuthHttpService} from '../http/auth-http.service';
 })
 export class InstrumentService {
 
-  private instrumentUrl = "/musicalworld/rest/api/instruments";
+  private instrumentUrl = '/musicalworld/rest/api/instruments';
 
-  constructor(private _authHttpService: AuthHttpService){
+  constructor(private _authHttpService: AuthHttpService) {
 
   }
-  findAll(): Observable<Instrument[]>{
+
+  findAll(): Observable<Instrument[]> {
     return this._authHttpService.findAll(this.instrumentUrl);
   }
 }

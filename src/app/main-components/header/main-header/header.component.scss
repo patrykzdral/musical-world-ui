@@ -9,20 +9,25 @@
 ::ng-deep .langSelect.mat-select {
   display: inline;
 }
-.app-name{
+
+.app-name {
   margin-top: 3px;
 }
-.const-height{
+
+.const-height {
   height: 7vh;
 }
+
 @media (max-width: $large-handset) {
   .app-name {
     display: none;
   }
 }
-.profile-icon{
+
+.profile-icon {
   margin-top: 5px;
 }
+
 #logo {
   height: 50px;
   width: 100px;

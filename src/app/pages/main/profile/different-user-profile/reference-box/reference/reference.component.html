@@ -1,0 +1,21 @@
+<div class="flex-space">
+  <div>{{_userReference.userToUsername}}</div>
+  <div class="first-row">
+    <div class="rating">
+      <ngb-rating [(rate)]="_userReference.starRating">
+        <ng-template let-fill="fill" let-index="index">
+          <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+        </ng-template>
+      </ngb-rating>
+    </div>
+    <div class="spacer"></div>
+    <div class="date">
+      {{_userReference.referenceDate | date : 'MM/dd/yyyy'}}
+    </div>
+  </div>
+  <div>
+    <mat-card>
+      {{_userReference.text}}
+    </mat-card>
+  </div>
+</div>

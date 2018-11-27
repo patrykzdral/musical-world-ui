@@ -11,7 +11,7 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./profile-picture-upload.component.scss']
 })
 export class ProfilePictureUploadComponent implements OnInit {
-  hasProfile: boolean = false;
+  hasProfile = false;
   imageToShow: any;
   selectedFiles: FileList;
   currentFileUpload: File;
@@ -31,8 +31,7 @@ export class ProfilePictureUploadComponent implements OnInit {
       if (this.selectedFiles.item(0).size > 4194304) {
         this.selectedFiles = null;
         this._toastr.error(this._translateService.instant('Toastr.error.file_too_big'));
-      }
-      else {
+      } else {
         this.selectedFiles = event.target.files;
         this.currentFileUpload = event.target.files.item(0);
       }
@@ -46,7 +45,7 @@ export class ProfilePictureUploadComponent implements OnInit {
   upload() {
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0);
-    this.pictureService.pushFileToStorageAndRaportProgressAndAssignToUser(this.currentFileUpload, JSON.parse(localStorage.getItem('currentUser')).username).subscribe(event => {
+    this.pictureService.pushFileToStorageAndRapportProgressAndAssignToUser(this.currentFileUpload).subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress.percentage = Math.round(100 * event.loaded / event.total);
         } else if (event instanceof HttpResponse) {

@@ -12,7 +12,6 @@ import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
 import {ConcertService} from '../../../../@core/service/concert/concert.service';
 import {Address} from '../../../../@core/model/address.model';
-import {AuthenticationService} from '../../../../@core/service/authentication/authentication.service';
 import {GoogleService} from '../../../../@core/service/google/google.service';
 import {ConcertAddressModel} from '../../map-view/mapAddress.model';
 import {SessionService} from '../../../../@core/service/session/session.service';
@@ -31,14 +30,22 @@ export class NewConcertComponent implements OnInit {
   instrumentsModelObservable: Observable<Instrument[]>;
   selectedInstruments: Instrument[];
   location: any;
-  mapAddress:any;
+  mapAddress: any;
   concertAddressModel: ConcertAddressModel;
   message: any;
   @ViewChild('search') public searchElement: ElementRef;
 
-  constructor(private _sessionService: SessionService, private _googleService: GoogleService, private _toastr: ToastrService, private router: Router, private ngZone: NgZone,
-              private _mapsAPILoader: MapsAPILoader, private _formBuilder: FormBuilder,
-              private _instrumentService: InstrumentService,private _concertService: ConcertService, private _pictureService: PictureService) {
+  constructor(private _sessionService: SessionService, private _googleService: GoogleService, private _toastr: ToastrService
+    , private router: Router, private ngZone: NgZone, private _mapsAPILoader: MapsAPILoader, private _formBuilder: FormBuilder,
+              private _instrumentService: InstrumentService, private _concertService: ConcertService, private _pictureService: PictureService) {
+  }
+
+  get name(): any {
+    return this.eventData.get('name');
+  }
+
+  get description(): any {
+    return this.eventData.get('description');
   }
 
   ngOnInit() {
@@ -46,21 +53,21 @@ export class NewConcertComponent implements OnInit {
     this.address = new Address();
     this.selectedInstruments = [];
     this.instrumentsModelObservable = this._instrumentService.findAll();
-    this.location= this._sessionService.location;
-    if(this.location) {
+    this.location = this._sessionService.location;
+    if (this.location) {
       this.mapAddress = this.location.formatted_address;
       this.getAddressComponentByPlace(this.location);
-      this._sessionService.location=null;
+      this._sessionService.location = null;
     }
     this.eventData = this._formBuilder.group({
-      name: ['', [Validators.required]],
-      description: ['',],
-      dateFrom: ['',],
-      dateTo: ['',],
-      address: ['',],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      description: ['', [Validators.minLength(1), Validators.maxLength(255)]],
+      dateFrom: ['', ],
+      dateTo: ['', ],
+      address: ['', ],
       guaranteedMeal: [false],
       ensuredDrive: [false],
-      numberOfRehearsals: [0,],
+      numberOfRehearsals: [0, ],
     });
 
     this._mapsAPILoader.load().then(
@@ -77,15 +84,17 @@ export class NewConcertComponent implements OnInit {
           });
         });
       }
-    );
+    )
   }
 
-  get name(): any {
-    return this.eventData.get('name');
+  getDescriptionError() {
+    return this.description.hasError('maxlength') ? 'Max length is 255 cases' : '';
   }
 
   getEventError() {
-    return 'You must fill out event name form';
+    return this.name.hasError('required') ? 'You must fill out event name form' :
+      this.name.hasError('maxlength') ? 'Max length is 30 cases' :
+        this.name.hasError('minlength') ? 'Min length is 2 cases' : '';
   }
 
   onSubmit() {
@@ -99,10 +108,9 @@ export class NewConcertComponent implements OnInit {
     this.concert.numberOfRehearsals = this.eventData.controls['numberOfRehearsals'].value;
     this.concert.address = this.address;
     this.concert.concertInstrumentSlots = this.selectedInstruments;
-    this.concert.username = JSON.parse(localStorage.getItem('currentUser')).username;
     console.log(this.concert);
-    if(this.currentFileUpload){
-      this.message= this._pictureService.pushFileToStorage(this.currentFileUpload)
+    if (this.currentFileUpload) {
+      this.message = this._pictureService.pushFileToStorage(this.currentFileUpload)
         .pipe(first())
         .subscribe(
           data => {
@@ -121,13 +129,18 @@ export class NewConcertComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          //this.loading=true;
+          // this.loading=true;
           this._toastr.success('Toastr.success.event_created');
           this.router.navigate(['/']);
         },
         error => {
-          this._toastr.error("Toastr.error.something_wrong");
+          this._toastr.error('Toastr.error.something_wrong');
         });
+  }
+
+  fileAdded(picture: File) {
+    console.log(picture);
+    this.currentFileUpload = picture;
   }
 
   private getAddressComponentByPlace(place) {
@@ -142,22 +155,22 @@ export class NewConcertComponent implements OnInit {
     let i = 0, component;
     for (; component = components[i]; i++) {
       console.log(component);
-      if (component.types[0] == 'country') {
+      if (component.types[0] === 'country') {
         country = component['short_name'] + ', ' + component['long_name'];
       }
-      if (component.types[0] == 'administrative_area_level_1') {
+      if (component.types[0] === 'administrative_area_level_1') {
         city = component['long_name'];
       }
-      if (component.types[0] == 'postal_code') {
+      if (component.types[0] === 'postal_code') {
         postalCode = component['short_name'];
       }
-      if (component.types[0] == 'street_number') {
+      if (component.types[0] === 'street_number') {
         street_number = component['short_name'];
       }
-      if (component.types[0] == 'route') {
+      if (component.types[0] === 'route') {
         route = component['long_name'];
       }
-      if (component.types[0] == 'locality') {
+      if (component.types[0] === 'locality') {
         locality = component['short_name'];
       }
     }
@@ -170,9 +183,6 @@ export class NewConcertComponent implements OnInit {
     this.address.longitude = place.geometry.location.lng();
   }
 
-  fileAdded(picture: File){
-    console.log(picture);
-    this.currentFileUpload=picture;
-  }
+
 }
 

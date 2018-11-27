@@ -1,16 +1,16 @@
 @import "../../../../../@theme/scss/main-theme";
 
-.flex-row{
+.flex-row {
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  .flex-column{
+  .flex-column {
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    .fullsize{
+    .fullsize {
       width: 300px
     }
   }

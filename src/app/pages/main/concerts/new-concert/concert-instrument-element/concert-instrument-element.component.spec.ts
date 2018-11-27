@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ConcertInstrumentElementComponent } from './concert-instrument-element.component';
+import {ConcertInstrumentElementComponent} from './concert-instrument-element.component';
 
 describe('ConcertInstrumentElementComponent', () => {
   let component: ConcertInstrumentElementComponent;
@@ -8,9 +8,9 @@ describe('ConcertInstrumentElementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConcertInstrumentElementComponent ]
+      declarations: [ConcertInstrumentElementComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

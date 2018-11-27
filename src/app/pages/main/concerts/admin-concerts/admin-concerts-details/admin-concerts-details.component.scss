@@ -1,27 +1,27 @@
 @import '../../../../../@theme/scss/main-theme';
 
-.aligner{
+.aligner {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .mat-card{
+  .mat-card {
     width: 70%;
 
-    .user{
+    .user {
       flex: 30%;
     }
-    .instrument{
+    .instrument {
       flex: 30%;
     }
-    .empty{
+    .empty {
       flex: 40%;
     }
   }
 }
 
-.header-expension{
-  ::ng-deep mat-expansion-panel{
+.header-expension {
+  ::ng-deep mat-expansion-panel {
     background-color: rgba($application-main-color, 0.9) !important;
   }
   .mat-expansion-panel-header {
@@ -30,8 +30,8 @@
 }
 
 @media(max-width: 500px) {
-  .aligner{
-    .mat-card{
+  .aligner {
+    .mat-card {
       width: 100%;
     }
   }

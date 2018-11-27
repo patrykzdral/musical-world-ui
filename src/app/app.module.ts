@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {AppComponent} from './app.component';
 import {MainComponentsModule} from './main-components/main-components.module';
 import {MatModule} from './mat.module';
@@ -20,7 +20,7 @@ import {MatProgressButtonsModule} from 'mat-progress-buttons';
 import {AgmCoreModule} from '@agm/core';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import {AgGridModule} from 'ag-grid-angular';
-import {SharedModule} from './shared/shared.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,12 +37,13 @@ import {SharedModule} from './shared/shared.module';
     ModuleRouting,
     AuthModule,
     ErrorModule,
+    NgbModule,
     AgGridModule.withComponents([]),
     ToastrModule.forRoot(),
     MatProgressButtonsModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyBEmx5P3vl4ox4OU6nPgwTbU9k-_0Zm6Lo',
-      libraries: ["places"]
+      apiKey: 'AIzaSyBEmx5P3vl4ox4OU6nPgwTbU9k-_0Zm6Lo',
+      libraries: ['places']
     }),
     Ng4LoadingSpinnerModule.forRoot(),
     TranslateModule.forRoot({
@@ -63,6 +64,7 @@ import {SharedModule} from './shared/shared.module';
 })
 export class AppModule {
 }
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,12 +8,14 @@ import {Router} from '@angular/router';
 })
 export class UnauthorizedComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router) {
+  }
 
   ngOnInit() {
   }
-  goToHome(){
-    this._router.navigate(['/'])
+
+  goToHome() {
+    this._router.navigate(['/']);
   }
 
 }

@@ -10,12 +10,12 @@ export class MainPageGuard implements CanActivate {
   token: any;
   activated: boolean;
 
-  constructor(private _route: ActivatedRoute, public _toastr: ToastrService, public _authenticationService: AuthenticationService, public _router: Router,) {
+  constructor(private _route: ActivatedRoute, public _toastr: ToastrService, public _authenticationService: AuthenticationService, public _router: Router, ) {
   }
 
   canActivate(): boolean {
     if (!this._authenticationService.checkCredentials()) {
-      //this._toastr.info('Unuthorized access');
+      // this._toastr.info('Unuthorized access');
       this._router.navigate(['/auth/login']);
       return false;
     }

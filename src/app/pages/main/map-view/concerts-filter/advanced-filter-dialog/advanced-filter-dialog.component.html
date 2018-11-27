@@ -28,10 +28,12 @@
     <!--<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>-->
     <!--</mat-select>-->
     <!--</mat-form-field>-->
-    <div class = "whole-space">
+    <div class="whole-space">
       <mat-form-field>
-        <mat-select [(value)]="filterData.instruments" placeholder="Choose instruments" [formControl]="toppings" multiple>
-          <mat-option *ngFor="let instrumentsModel of instrumentsModelObservable | async" [value]="instrumentsModel.name">
+        <mat-select [(value)]="filterData.instruments" placeholder="Choose instruments" [formControl]="toppings"
+                    multiple>
+          <mat-option *ngFor="let instrumentsModel of instrumentsModelObservable | async"
+                      [value]="instrumentsModel.name">
             {{instrumentsModel.name}}
           </mat-option>
         </mat-select>
@@ -40,20 +42,22 @@
 
 
     <!--<mat-form-field>-->
-      <!--<input [ngModel]="filterData.dateFrom | date:'yyyy-MM-dd'" (ngModelChange)="filterData.dateFrom = $event" matInput [matDatepicker]="picker" placeholder="Choose a date">-->
-      <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-      <!--<mat-datepicker #picker></mat-datepicker>-->
+    <!--<input [ngModel]="filterData.dateFrom | date:'yyyy-MM-dd'" (ngModelChange)="filterData.dateFrom = $event" matInput [matDatepicker]="picker" placeholder="Choose a date">-->
+    <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+    <!--<mat-datepicker #picker></mat-datepicker>-->
     <!--</mat-form-field>-->
     <div class="date-row">
       <div class="form-group date">
         <label>Date From</label>
-        <input [(ngModel)]="selectedMoments" class="form-control" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [selectMode]="'rangeFrom'" name="dateFrom-input">
+        <input [(ngModel)]="selectedMoments" class="form-control" [owlDateTimeTrigger]="dt" [owlDateTime]="dt"
+               [selectMode]="'rangeFrom'" name="dateFrom-input">
         <owl-date-time class="owl-picker" #dt></owl-date-time>
       </div>
 
       <div class="form-group date">
         <label>Date To </label>
-        <input [(ngModel)]="selectedMoments" class="form-control" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" [selectMode]="'rangeTo'" name="dateFrom-input">
+        <input [(ngModel)]="selectedMoments" class="form-control" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2"
+               [selectMode]="'rangeTo'" name="dateFrom-input">
         <owl-date-time class="owl-picker" #dt2></owl-date-time>
       </div>
     </div>

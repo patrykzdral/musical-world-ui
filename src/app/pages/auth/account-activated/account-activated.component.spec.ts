@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AccountActivatedComponent } from './account-activated.component';
+import {AccountActivatedComponent} from './account-activated.component';
 import {LoginComponent} from '../login/login.component';
 import {RegisterComponent} from '../register/register.component';
 import {LogoutComponent} from '../logout/logout.component';
 import {RequestPasswordComponent} from '../request-password/request-password.component';
 import {ResetPasswordComponent} from '../reset-password/reset-password.component';
 import {AuthPageTemplateComponent} from '../auth-page-template/auth-page-template.component';
-import {AuthPageTemplateForRegistration} from '../auth-page-template-for-registration/auth-page-template-for-registration';
+import {AuthPageTemplateForRegistrationComponent} from '../auth-page-template-for-registration/auth-page-template-for-registration.component';
 import {UnauthorizedComponent} from '../unauthorized/unauthorized.component';
 import {MatModule} from '../../../mat.module';
 import {TranslateModule} from '@ngx-translate/core';
@@ -33,7 +33,7 @@ describe('AccountActivatedComponent', () => {
         ResetPasswordComponent,
         AccountActivatedComponent,
         AuthPageTemplateComponent,
-        AuthPageTemplateForRegistration,
+        AuthPageTemplateForRegistrationComponent,
         UnauthorizedComponent
       ],
       imports: [
@@ -45,11 +45,10 @@ describe('AccountActivatedComponent', () => {
         RouterModule,
         MainComponentsModule,
         MatProgressButtonsModule,
-        PipesModule
+        PipesModule,
       ],
-      declarations: [ AccountActivatedComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

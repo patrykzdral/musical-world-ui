@@ -19,4 +19,5 @@ import {SharedModule} from '../../shared/shared.module';
 
   providers: []
 })
-export class ErrorModule { }
+export class ErrorModule {
+}

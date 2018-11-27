@@ -9,7 +9,7 @@
   }
   &:hover,
   &:focus {
-    >.mat-list-item:not(.expanded) {
+    > .mat-list-item:not(.expanded) {
       background-color: mat-color($app-primary, 100) !important;
     }
   }
@@ -21,7 +21,7 @@
     margin-right: 15px;
   }
 
-  .ex-icon{
-    margin-left:50px;
+  .ex-icon {
+    margin-left: 50px;
   }
 }

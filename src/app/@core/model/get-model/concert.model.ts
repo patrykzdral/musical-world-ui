@@ -1,4 +1,3 @@
-import {Instrument} from '../intrument.model';
 import {ConcertInstrumentSlotModel} from './concert-instrument-slot.model';
 
 export class ConcertModel {

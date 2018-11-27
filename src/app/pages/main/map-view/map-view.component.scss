@@ -2,51 +2,58 @@ agm-map {
   height: 88vh;
 
 }
-.map{
-}
-.wrapper{
-  position: relative;
-}
-.filters{
-  position: absolute; top: 10px; left: 10px; z-index: 99;
+
+.map {
 }
 
-.event-info{
+.wrapper {
+  position: relative;
+}
+
+.filters {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 99;
+}
+
+.event-info {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: center;
   text-align: left;
-  .info-title{
+  .info-title {
     font-weight: bold;
   }
 }
-.button-info{
+
+.button-info {
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
-.button-create{
+
+.button-create {
   display: flex;
   align-items: center;
   justify-content: center;
-  .button-style{
+  .button-style {
     font-size: 15px;
     min-width: 100%;
   }
 }
 
-
-.create-new-event{
+.create-new-event {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  .create-title{
+  .create-title {
     font-weight: bold;
   }
-  .button-create{
+  .button-create {
 
   }
 }

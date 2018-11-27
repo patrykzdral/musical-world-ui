@@ -1,16 +1,12 @@
-import {Component, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {pipe, Subject} from 'rxjs';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
 import {AgGridNg2} from 'ag-grid-angular';
-import {GridOptions} from 'ag-grid-community';
 
 import {first} from 'rxjs/operators';
 import {ToastrService} from 'ngx-toastr';
 import {ConcertApplicationService} from '../../../../../@core/service/concert-application/concert-application.service';
 import {ConcertApplicationModel} from '../../../../../@core/model/concert-application.model';
 import {ConcertInstrumentSlotModel} from '../../../../../@core/model/get-model/concert-instrument-slot.model';
-import {UserService} from '../../../../../@core/service/user/user.service';
 import {ConcertWithPhotoModel} from '../../../../../@core/model/get-model/concert-with-photo.model';
 
 @Component({
@@ -20,13 +16,12 @@ import {ConcertWithPhotoModel} from '../../../../../@core/model/get-model/concer
 })
 export class ConcertDetailsComponent implements OnInit {
 
-  private destroy$: Subject<void> = new Subject<void>();
   concert: ConcertWithPhotoModel;
   public isRowSelectable;
   public buttonDisabled = true;
-  private gridOptions: GridOptions;
-  hasProfile: boolean = false;
+  hasProfile = false;
   imageToShow: any;
+  rowData: any;
 
 
   @ViewChild('agGrid') agGrid: AgGridNg2;
@@ -39,14 +34,12 @@ export class ConcertDetailsComponent implements OnInit {
     {headerName: 'by who i taken', field: 'user.username'},
   ];
 
-  rowData: any;
+  constructor(private toastrService: ToastrService, private router: Router, private route: ActivatedRoute, private _concertApplicationService: ConcertApplicationService) {
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.agGrid.api.sizeColumnsToFit();
-  }
-
-  constructor(private toastrService: ToastrService, private router: Router, private route: ActivatedRoute, private _concertApplicationService: ConcertApplicationService) {
   }
 
   ngOnInit() {
@@ -55,10 +48,10 @@ export class ConcertDetailsComponent implements OnInit {
     };
     this.route.data.subscribe((data: { concert: ConcertWithPhotoModel }) => {
         if (data.concert) {
-          this.concert=data.concert;
-          if(this.concert.picture){
-            this.imageToShow=this.concert.picture;
-            this.hasProfile=true;
+          this.concert = data.concert;
+          if (this.concert.picture) {
+            this.imageToShow = this.concert.picture;
+            this.hasProfile = true;
           }
           this.rowData = this.concert.concertInstrumentSlots;
           console.log(this.concert.concertInstrumentSlots);
@@ -70,9 +63,11 @@ export class ConcertDetailsComponent implements OnInit {
     );
 
   }
+
   hasProfilePic() {
     return this.hasProfile;
   }
+
   getSelectedRows() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
     const selectedData = selectedNodes.map(node => node.data);
@@ -83,9 +78,8 @@ export class ConcertDetailsComponent implements OnInit {
   applyOnSelectedJob() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();
     const selectedData = selectedNodes.map(node => node.data);
-    let concertApp = new ConcertApplicationModel();
+    const concertApp = new ConcertApplicationModel();
     concertApp.concertInstrumentSlot = selectedData[0] as ConcertInstrumentSlotModel;
-    console.log(concertApp.concertInstrumentSlot);
     concertApp.username = JSON.parse(localStorage.getItem('currentUser')).username;
     this._concertApplicationService.save(concertApp)
       .pipe(first())

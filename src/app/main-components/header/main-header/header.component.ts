@@ -10,19 +10,19 @@ import {UserService} from '../../../@core/service/user/user.service';
   styleUrls: ['./header.component.scss']
 })
 export class MainHeaderComponent implements OnInit {
-  hasProfile: boolean = false;
+  hasProfile = false;
   imageToShow: any;
   @Output() toggleSideNav = new EventEmitter<boolean>();
   setLang: any;
   username: any;
 
+  constructor(private _userService: UserService, private _translate: TranslateService,
+              private _router: Router, public navService: NavService) {
+  }
+
   navToggle() {
     this.toggleSideNav.emit(true);
   }
-
-  constructor(private _userService: UserService, private _translate: TranslateService, private _router: Router, public navService: NavService) {
-  }
-
 
   hasProfilePic() {
     return this.hasProfile;
@@ -43,7 +43,7 @@ export class MainHeaderComponent implements OnInit {
   }
 
   showProfile() {
-    this._router.navigate(['/pages/profile']);
+    this._router.navigate(['/pages/profile/show']);
   }
 
   logOut() {

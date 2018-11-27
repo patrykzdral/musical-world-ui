@@ -3,7 +3,7 @@ import {Address} from '../address.model';
 
 export class ConcertWithPhotoModel {
   id: any;
-  name: any;
+  name: string;
   description: any;
   dateFrom: any;
   dateTo: any;

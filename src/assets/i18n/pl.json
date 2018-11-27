@@ -1,9 +1,9 @@
 {
-  "Footer":{
-    "name":"Stworzona z ♥ przez "
+  "Footer": {
+    "name": "Stworzona z ♥ przez "
   },
-  "Auth":{
-    "login":{
+  "Auth": {
+    "login": {
       "sign_in": "Zaloguj się",
       "welcome": "Witamy w Musical World. Zaloguj się za pomocą swojej nazwy użytkownika!",
       "remember": "Zapamiętaj mnie",
@@ -14,38 +14,38 @@
       "enter_username": "Wpisz nazwę użytkownika",
       "enter_password": "Wpisz hasło",
       "login": "zaloguj się",
-      "register":"zarejestruj się"
+      "register": "zarejestruj się"
     },
-    "register":{
-
+    "register": {
     }
   },
-  "Pages":{
-    "profile":{
-      "delete":{
-        "delete_account":"Czy chcesz usunąć swoje konto? ",
-        "confirm":"Jeśli jesteś pewien kliknij przycisk poniżej",
-        "delete_button":"Tak chce usunąć moje konto! "
+  "Pages": {
+    "friends":{
+      "tab1": "znajomi",
+      "tab2": "oczekujące zaproszenia",
+      "tab3": "zaproś"
+    },
+    "profile": {
+      "delete": {
+        "delete_account": "Czy chcesz usunąć swoje konto? ",
+        "confirm": "Jeśli jesteś pewien kliknij przycisk poniżej",
+        "delete_button": "Tak chce usunąć moje konto! "
       },
       "picture_change": {
         "title": "Zmień swoje zdjęcie profilowe"
       }
     }
   },
-
-  "Toastr":{
-    "error":{
+  "Toastr": {
+    "error": {
       "file_too_big": "Zdjęcie jest za duże!",
       "invalid_format": "Zły format wybranego zdjęcia!",
       "file_upload_error": "Błąd dodawania plilu!",
       "something_wrong": "Coś poszło nie tak:("
-
     },
-    "success":{
+    "success": {
       "file_uploaded": "Zdjęcie zostało zmienione",
       "event_created": "Concert został dodany poprawnie! "
-
     }
   }
-
 }

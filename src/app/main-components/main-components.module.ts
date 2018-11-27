@@ -12,7 +12,6 @@ import {MenuListItemComponent} from './sidenav/menu-list-item/menu-list-item.com
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {LoginFooterComponent} from './footer/login-footer/login-footer.component';
 import {FooterComponent} from './footer/main-footer/footer.component';
-import {SharedModule} from '../shared/shared.module';
 import {PipesModule} from '../shared/pipes/pipes.module';
 
 @NgModule({

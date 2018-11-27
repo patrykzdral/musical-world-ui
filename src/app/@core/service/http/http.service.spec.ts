@@ -1,5 +1,5 @@
-import { TestBed, inject } from '@angular/core/testing';
-import {HttpService} from "./http.service";
+import {inject, TestBed} from '@angular/core/testing';
+import {HttpService} from './http.service';
 
 
 describe('HttpService', () => {

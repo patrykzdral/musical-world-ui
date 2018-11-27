@@ -1,5 +1,5 @@
 export class PictureModel {
-  fileName:string;
-  mimetype:string;
+  fileName: string;
+  mimetype: string;
   pic: any;
 }

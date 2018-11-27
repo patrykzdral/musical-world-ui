@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SnackBarDeleteProfileComponent } from './snack-bar-delete-profile.component';
+import {SnackBarDeleteProfileComponent} from './snack-bar-delete-profile.component';
 
 describe('SnackBarDeleteProfileComponent', () => {
   let component: SnackBarDeleteProfileComponent;
@@ -8,9 +8,9 @@ describe('SnackBarDeleteProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnackBarDeleteProfileComponent ]
+      declarations: [SnackBarDeleteProfileComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

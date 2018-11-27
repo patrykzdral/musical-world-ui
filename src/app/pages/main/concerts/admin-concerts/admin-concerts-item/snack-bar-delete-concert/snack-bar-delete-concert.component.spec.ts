@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SnackBarDeleteConcertComponent } from './snack-bar-delete-concert.component';
+import {SnackBarDeleteConcertComponent} from './snack-bar-delete-concert.component';
 
 describe('SnackBarDeleteConcertComponent', () => {
   let component: SnackBarDeleteConcertComponent;
@@ -8,9 +8,9 @@ describe('SnackBarDeleteConcertComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SnackBarDeleteConcertComponent ]
+      declarations: [SnackBarDeleteConcertComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

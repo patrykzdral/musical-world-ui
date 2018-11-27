@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RegisterComponent } from './register.component';
+import {RegisterComponent} from './register.component';
 import {MatModule} from '../../../mat.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -16,7 +16,7 @@ import {RequestPasswordComponent} from '../request-password/request-password.com
 import {ResetPasswordComponent} from '../reset-password/reset-password.component';
 import {AccountActivatedComponent} from '../account-activated/account-activated.component';
 import {AuthPageTemplateComponent} from '../auth-page-template/auth-page-template.component';
-import {AuthPageTemplateForRegistration} from '../auth-page-template-for-registration/auth-page-template-for-registration';
+import {AuthPageTemplateForRegistrationComponent} from '../auth-page-template-for-registration/auth-page-template-for-registration.component';
 import {UnauthorizedComponent} from '../unauthorized/unauthorized.component';
 
 describe('RegisterComponent', () => {
@@ -33,7 +33,7 @@ describe('RegisterComponent', () => {
         ResetPasswordComponent,
         AccountActivatedComponent,
         AuthPageTemplateComponent,
-        AuthPageTemplateForRegistration,
+        AuthPageTemplateForRegistrationComponent,
         UnauthorizedComponent
       ],
       imports: [
@@ -47,9 +47,8 @@ describe('RegisterComponent', () => {
         MatProgressButtonsModule,
         PipesModule
       ],
-      declarations: [ RegisterComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

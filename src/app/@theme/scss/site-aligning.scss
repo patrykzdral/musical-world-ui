@@ -1,4 +1,5 @@
 @import './main-theme';
+
 .content {
   height: 88vh;
   display: flex;
@@ -7,13 +8,15 @@
   flex-direction: column;
   flex: 1;
 }
-.register-content{
+
+.register-content {
   height: 88vh;
   flex: 1;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
 .site {
   display: flex;
   height: 100vh;

@@ -1,77 +1,78 @@
-.profile{
+.profile {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   min-height: 100vh;
   min-width: 60vh;
-  .flex-row{
+  .flex-row {
     display: flex;
     flex-direction: row;
-    .photo-column{
+    .photo-column {
       display: flex;
       flex-direction: column;
-      flex:50%;
-      .photo{
-        width:256px;
-        height:256px;
+      flex: 50%;
+      .photo {
+        width: 256px;
+        height: 256px;
         background-color: white;
       }
     }
-    .title-column{
+    .title-column {
       display: flex;
       flex-direction: column;
-      flex:50%;
-      .title{
+      flex: 50%;
+      .title {
         font-size: 25px;
       }
     }
 
   }
 
-  .button-row{
+  .button-row {
     display: flex;
     flex-direction: row;
-    .button-edit{
-      flex:30%;
+    .button-edit {
+      flex: 30%;
     }
     .spacer {
       flex-grow: 1;
     }
-    .button-cancel{
-      flex:30%;
+    .button-cancel {
+      flex: 30%;
 
     }
   }
-  .content{
+  .content {
     margin-top: 20px;
     margin-bottom: 100px;
   }
-  .form-group{
+  .form-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
   }
-  ::ng-deep mat-form-field{
+  ::ng-deep mat-form-field {
     height: 2vh;
     margin-top: 0 !important;
     padding-top: 0;
 
   }
-  label{
+  label {
     padding-bottom: 0;
     margin-bottom: 0;
   }
-  ::ng-deep div.mat-form-field-flex{
+  ::ng-deep div.mat-form-field-flex {
     padding-top: 0 !important;
   }
 
 }
 
-mat-card{
+mat-card {
   min-width: 60vh;
 }
-.big-avatar{
+
+.big-avatar {
   width: 300px;
   height: 300px;
   -webkit-border-radius: 60px;
@@ -87,7 +88,8 @@ mat-card{
   background-size: contain;
   //background: url("/assets/profile/nopic.png") center center;
 }
-.company-header-avatar-white{
+
+.company-header-avatar-white {
   width: 300px;
   height: 300px;
   -webkit-border-radius: 60px;
@@ -107,7 +109,7 @@ mat-card{
 
 @media(max-width: 550px) {
   .profile {
-    .flex-row{
+    .flex-row {
       display: flex;
       flex-direction: column;
     }

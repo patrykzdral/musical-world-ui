@@ -2,7 +2,7 @@ import {Address} from './address.model';
 import {Instrument} from './intrument.model';
 
 export class Concert {
-  public name: any;
+  public name: string;
   public description: any;
   public dateFrom: any;
   public dateTo: any;
@@ -10,7 +10,6 @@ export class Concert {
   public ensuredDrive: any;
   public guaranteedMeal: any;
   public address: Address;
-  public username: string;
   public concertInstrumentSlots: Instrument[];
   public pictureName: any;
 }

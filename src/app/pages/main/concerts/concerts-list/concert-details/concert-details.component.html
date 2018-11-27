@@ -1,22 +1,22 @@
 <div class="flex-area">
   <mat-card>
-      <div class="flex-row">
-        <div class="photo-column">
-          <div *ngIf="hasProfilePic();else other_content">
-            <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar">
-          </div>
-          <ng-template #other_content class="company-header-avatar-white">
-            <div class="photo"></div>
-          </ng-template>
+    <div class="flex-row">
+      <div class="photo-column">
+        <div *ngIf="hasProfilePic();else other_content">
+          <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar">
         </div>
-        <div class="title-column">
-          <mat-card-title class="title">Concert information</mat-card-title>
-          <mat-card-subtitle>Concert description {{concert.description}}</mat-card-subtitle>
-        </div>
+        <ng-template #other_content class="company-header-avatar-white">
+          <div class="photo"></div>
+        </ng-template>
       </div>
-      <!--<div mat-card-avatar class="example-header-image"></div>-->
-      <!--<mat-card-title class="title">Name of the concert: {{concert.name}}</mat-card-title>-->
-      <!--<mat-card-subtitle> Concert description: {{concert.description}}</mat-card-subtitle>-->
+      <div class="title-column">
+        <mat-card-title class="title">Concert information</mat-card-title>
+        <mat-card-subtitle>Concert description {{concert.description}}</mat-card-subtitle>
+      </div>
+    </div>
+    <!--<div mat-card-avatar class="example-header-image"></div>-->
+    <!--<mat-card-title class="title">Name of the concert: {{concert.name}}</mat-card-title>-->
+    <!--<mat-card-subtitle> Concert description: {{concert.description}}</mat-card-subtitle>-->
     <mat-card-content>
       <mat-grid-list class="details-grid" colspan='3' [cols]="2" rowHeight="50px">
         <mat-grid-tile>

@@ -1,12 +1,6 @@
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
-import {_throw} from 'rxjs-compat/observable/throw';
-import {catchError} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ConcertService} from '../../../../../@core/service/concert/concert.service';
-import {ConcertModel} from '../../../../../@core/model/get-model/concert.model';
-import {ConcertApplicationModel} from '../../../../../@core/model/concert-application.model';
-import {ConcertApplicationService} from '../../../../../@core/service/concert-application/concert-application.service';
 import {User} from '../../../../../@core/model/user.model';
 import {UserService} from '../../../../../@core/service/user/user.service';
 

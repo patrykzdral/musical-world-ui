@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {CookieService} from 'ngx-cookie-service';
 import {AuthenticationService} from '../../../@core/service/authentication/authentication.service';
 
 @Component({
@@ -10,12 +9,14 @@ import {AuthenticationService} from '../../../@core/service/authentication/authe
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private _router: Router, private _authenticationService: AuthenticationService) { }
+  constructor(private _router: Router, private _authenticationService: AuthenticationService) {
+  }
 
   ngOnInit() {
     this._authenticationService.logout();
   }
-  goToHome(){
+
+  goToHome() {
     this._router.navigate(['/']);
   }
 }

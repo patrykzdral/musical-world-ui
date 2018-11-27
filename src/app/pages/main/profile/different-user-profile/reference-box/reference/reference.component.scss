@@ -1,0 +1,11 @@
+.flex-space {
+  display: flex;
+  flex-direction: column;
+  .first-row {
+    display: flex;
+    flex-direction: row;
+    .spacer {
+      flex-grow: 1;
+    }
+  }
+}

@@ -1,22 +1,27 @@
-<div class="aligner component-scroll-bar">
+
+<div class="aligner">
   <mat-card class="mat-card">
     <div class="list-properties component-title">
       <mat-card-title>List of actual concerts</mat-card-title>
+      <mat-form-field>
+        <input matInput [(ngModel)]="searchText" placeholder="filter concerts by name">
+      </mat-form-field>
     </div>
     <nav class="component-sticky">
       <mat-accordion class="header-expension">
         <mat-expansion-panel class="application-main-color-shadow" [disabled]="true">
           <mat-expansion-panel-header>
             <div class="name">name</div>
-            <div class="date-from">when is my event</div>
+            <div class="date-from">start date</div>
             <div class="date-to">end date</div>
+            <div class="arrow"></div>
           </mat-expansion-panel-header>
         </mat-expansion-panel>
       </mat-accordion>
     </nav>
-    <div class="warning-list">
-      <div *ngFor="let concertModel of concertModelObservable | async">
-        <app-admin-concerts-item (eventDeletedEmitter)="refreshList()" [concertModelIn]="concertModel"></app-admin-concerts-item>
+    <div class="concert-list constant-height">
+      <div *ngFor="let concertModel of concertModelObservable | async | filter : this.searchText">
+        <app-admin-concerts-item [concertModelIn]=concertModel (eventDeletedEmitter)="refreshList()"></app-admin-concerts-item>
       </div>
     </div>
   </mat-card>

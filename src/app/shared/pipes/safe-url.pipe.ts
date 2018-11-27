@@ -4,7 +4,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 @Pipe({name: 'safeUrl'})
 export class SafeUrlPipe implements PipeTransform {
 
-  constructor(private sanitizer: DomSanitizer)  {}
+  constructor(private sanitizer: DomSanitizer) {
+  }
 
   transform(value: any, ...args: any[]): any {
 

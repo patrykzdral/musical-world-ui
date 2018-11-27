@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +6,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 @Injectable()
 export class NavService {
   public appDrawer: any;
+
   constructor() {
   }
 
@@ -14,6 +15,6 @@ export class NavService {
   }
 
   public openNav() {
-      this.appDrawer.toggle();
+    this.appDrawer.toggle();
   }
 }

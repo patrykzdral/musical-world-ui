@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AuthPageTemplateForRegistration } from './auth-page-template-for-registration';
+import {AuthPageTemplateForRegistrationComponent} from './auth-page-template-for-registration.component';
 import {LoginComponent} from '../login/login.component';
 import {RegisterComponent} from '../register/register.component';
 import {LogoutComponent} from '../logout/logout.component';
@@ -19,9 +19,9 @@ import {MainComponentsModule} from '../../../main-components/main-components.mod
 import {MatProgressButtonsModule} from 'mat-progress-buttons';
 import {PipesModule} from '../../../shared/pipes/pipes.module';
 
-describe('AuthPageTemplateForRegistration', () => {
-  let component: AuthPageTemplateForRegistration;
-  let fixture: ComponentFixture<AuthPageTemplateForRegistration>;
+describe('AuthPageTemplateForRegistrationComponent', () => {
+  let component: AuthPageTemplateForRegistrationComponent;
+  let fixture: ComponentFixture<AuthPageTemplateForRegistrationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,7 +33,7 @@ describe('AuthPageTemplateForRegistration', () => {
         ResetPasswordComponent,
         AccountActivatedComponent,
         AuthPageTemplateComponent,
-        AuthPageTemplateForRegistration,
+        AuthPageTemplateForRegistrationComponent,
         UnauthorizedComponent
       ],
       imports: [
@@ -47,13 +47,12 @@ describe('AuthPageTemplateForRegistration', () => {
         MatProgressButtonsModule,
         PipesModule
       ],
-      declarations: [ AuthPageTemplateForRegistration ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthPageTemplateForRegistration);
+    fixture = TestBed.createComponent(AuthPageTemplateForRegistrationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,16 +1,16 @@
-.flex-container{
+.flex-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 
-  .whole-space{
+  .whole-space {
     flex-grow: 1;
-    flex:100%;
+    flex: 100%;
   }
-  .date-row{
+  .date-row {
     display: flex;
     flex-direction: row;
-    .date{
+    .date {
       margin: 5px;
     }
   }
@@ -19,10 +19,11 @@
   }
 }
 
-.owl-picker{
+.owl-picker {
   position: relative;
   left: 1000px;
 }
+
 mat-form-field {
   width: 100%;
 }

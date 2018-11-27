@@ -18,27 +18,17 @@ export class AdminConcertsDetailsResolver implements Resolve<ConcertApplicationM
     console.log(id);
     if (isNaN(id)) {
       return this.navigateToAllConcerts();
-    }
-    else {
+    } else {
       this.concertApplicationService.getConcertApplications(id)
         .pipe(first())
         .subscribe(data => {
             return data;
           },
           error => {
-            console.log(error)
+            console.log(error);
           }
         );
     }
-    // } else {
-    //   console.log("check");
-    //   return this.concertApplicationService.getConcertApplications(id).pipe(
-    //
-    //     catchError(() => {
-    //       return this.navigateToAllConcerts();
-    //     })
-    //   );
-    // }
   }
 
   private navigateToAllConcerts() {

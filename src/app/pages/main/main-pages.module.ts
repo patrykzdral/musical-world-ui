@@ -8,8 +8,8 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {MatModule} from '../../mat.module';
 import {ConcertsModule} from './concerts/concerts.module';
 import {ProfileModule} from './profile/profile.module';
-import {SharedModule} from '../../shared/shared.module';
 import {PipesModule} from '../../shared/pipes/pipes.module';
+import {FriendsModule} from './friends/friends.module';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -25,7 +25,8 @@ const PAGES_COMPONENTS = [
     ErrorModule,
     AngularFontAwesomeModule,
     MatModule,
-    PipesModule
+    PipesModule,
+    FriendsModule
   ],
   declarations: [
     ...PAGES_COMPONENTS,

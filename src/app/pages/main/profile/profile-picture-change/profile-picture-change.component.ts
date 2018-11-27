@@ -8,8 +8,9 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./profile-picture-change.component.scss']
 })
 export class ProfilePictureChangeComponent implements OnInit {
-  hasProfile: boolean = false;
+  hasProfile = false;
   imageToShow: any;
+
   constructor(
     private _userService: UserService, private sanitizer: DomSanitizer) {
   }

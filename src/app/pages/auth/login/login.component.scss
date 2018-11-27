@@ -1,21 +1,21 @@
 @import '../../../@theme/scss/main-theme';
 
-.header{
-  height:10vh;
+.header {
+  height: 10vh;
 }
 
 .Aligner {
-  display:flex;
+  display: flex;
   flex-direction: row;
-  min-height:85vh;
-  .photo{
+  min-height: 85vh;
+  .photo {
     margin-left: 50px;
     display: flex;
-    flex:50%;
+    flex: 50%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    .logo{
+    .logo {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -24,11 +24,11 @@
   }
   .Aligner-item {
     display: flex;
-    flex:50%;
+    flex: 50%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    .mat-card{
+    .mat-card {
       width: 90%;
       .sign_in {
         size: 24px;
@@ -64,7 +64,7 @@
         .login-button {
           flex: 48%;
         }
-        .gap{
+        .gap {
           flex: 4%;
         }
         .register-button {
@@ -78,20 +78,20 @@
 }
 
 .box {
-  text-align: center;     /* will center text in <p>, which is not a flex item */
+  text-align: center; /* will center text in <p>, which is not a flex item */
 }
+
 .Aligner-item {
 
 }
 
-
 @media(max-width: 800px) {
-  .Aligner{
-    .photo{
+  .Aligner {
+    .photo {
       display: none;
     }
     .Aligner-item {
-     // max-width: 90%;
+      // max-width: 90%;
       min-width: 100%;
       .sign-button {
         display: flex;

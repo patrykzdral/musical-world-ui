@@ -1,0 +1,9 @@
+@import '../../../@theme/scss/main-theme';
+
+.flex-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

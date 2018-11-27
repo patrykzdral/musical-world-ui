@@ -2,14 +2,17 @@
   <div class="first-row">
     <input class="text-input form-control" placeholder="enter the name of concert" type="text" [(ngModel)]="value">
     <fa class="search-icon" (click)="filterByName(value)" name="search" animation="spin"></fa>
-    <fa class="clear-icon" name="close"  *ngIf="value" aria-label="Clear" (click)="value=''"></fa>
+    <fa class="clear-icon" name="close" *ngIf="value" aria-label="Clear" (click)="value=''"></fa>
   </div>
   <div class="second-row">
-    <button mat-raised-button color="primary" (click)="changeMapView()" class="filter-text map-text" >change map view</button >
+    <button mat-raised-button color="primary" (click)="changeMapView()" class="filter-text map-text">change map view
+    </button>
     <div class="empty-space"></div>
-    <button  mat-raised-button color="primary" (click)="deleteFilters()" class="reset-text " >delete filters</button >
+    <button mat-raised-button color="primary" (click)="deleteFilters()" class="reset-text ">delete filters</button>
     <div class="empty-space"></div>
-    <button mat-raised-button color="primary" (click)="openDialog()" class="filter-text advanced-text" >advanced filter options</button >
+    <button mat-raised-button color="primary" (click)="openDialog()" class="filter-text advanced-text">advanced filter
+      options
+    </button>
   </div>
 </div>
 

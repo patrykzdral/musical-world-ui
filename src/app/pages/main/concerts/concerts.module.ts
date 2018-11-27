@@ -23,7 +23,8 @@ import {PictureUploadComponent} from './new-concert/picture-upload/picture-uploa
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {SnackBarDeleteConcertComponent} from './admin-concerts/admin-concerts-item/snack-bar-delete-concert/snack-bar-delete-concert.component';
 import {PipesModule} from '../../../shared/pipes/pipes.module';
-import { AdminConertInfoUpdateComponent } from './admin-concerts/admin-conert-info-update/admin-conert-info-update.component';
+import {AdminConcertInfoUpdateComponent} from './admin-concerts/admin-conert-info-update/admin-concert-info-update.component';
+import {AdminConcertPictureUpdateComponent} from './admin-concerts/admin-conert-info-update/admin-concert-picture-update/admin-concert-picture-update.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,7 @@ import { AdminConertInfoUpdateComponent } from './admin-concerts/admin-conert-in
     ReactiveFormsModule,
     CommonModule,
     FlexLayoutModule,
-    //BrowserModule,
+    // BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
@@ -56,7 +57,8 @@ import { AdminConertInfoUpdateComponent } from './admin-concerts/admin-conert-in
     AdminConcertsDetailsComponent,
     AdminConcertApplicationComponent,
     PictureUploadComponent,
-    AdminConertInfoUpdateComponent
+    AdminConcertInfoUpdateComponent,
+    AdminConcertPictureUpdateComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

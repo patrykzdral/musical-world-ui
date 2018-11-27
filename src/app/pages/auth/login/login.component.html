@@ -50,10 +50,14 @@
           <a class="forgot-password" routerLink="../request-password">{{'Auth.login.forgot' | translate}}</a>
         </div>
         <div class="sign-button">
-          <button class="login-button" type="submit" [disabled]="!loginForm.valid" mat-stroked-button>{{'Auth.login.login' | translate}}</button>
+          <button class="login-button" type="submit" [disabled]="!loginForm.valid" mat-stroked-button>
+            {{'Auth.login.login' | translate}}
+          </button>
           <!--<mat-spinner-button class="login-button" type="submit"  [options]="spinnerButtonOptions">Login</mat-spinner-button>-->
           <div class="gap"></div>
-          <button [disabled]="loading" class="register-button" mat-stroked-button [routerLink]="['/auth/register']">{{'Auth.login.register' | translate}}</button>
+          <button [disabled]="loading" class="register-button" mat-stroked-button [routerLink]="['/auth/register']">
+            {{'Auth.login.register' | translate}}
+          </button>
         </div>
       </form>
     </mat-card>

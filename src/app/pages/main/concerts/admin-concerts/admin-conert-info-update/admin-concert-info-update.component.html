@@ -1,0 +1,124 @@
+<div class="aligner">
+  <mat-card class="mat-card">
+    <div>
+
+    </div>
+    <form [formGroup]="concertData">
+      <mat-tab-group>
+        <div class="mat-concert-tab-group">
+          <mat-tab label="main">
+            <div class="main-info-row">
+              <div class="photo-column">
+                <div *ngIf="hasConcertPhoto();else other_content">
+                  <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar">
+                </div>
+                <ng-template #other_content class="company-header-avatar-white">
+                  <div class="big-avatar"></div>
+                </ng-template>
+                <app-admin-concert-picture-update [concertId]="concert.id"
+                                                  (fileAdded)="fileAdded($event)"></app-admin-concert-picture-update>
+              </div>
+              <div class="info-column">
+                <mat-form-field>
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Enter event name" formControlName="name" [(ngModel)]="concert.name"
+                         required>
+                  <mat-error *ngIf="name.invalid">{{getEventError()}}</mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Description</mat-label>
+                  <textarea class="concert-description" matInput placeholder="Textarea" formControlName="description"
+                            [(ngModel)]="concert.description"></textarea>
+                  <mat-error *ngIf="description.invalid">{{getDescriptionError()}}</mat-error>
+
+                </mat-form-field>
+                <div class="events-date">
+                  <mat-form-field class="date-from">
+                    <mat-label>the beginning of the event</mat-label>
+                    <input matInput [(ngModel)]="concert.dateFrom" [owlDateTimeTrigger]="dt" [owlDateTime]="dt"
+                           formControlName="dateFrom">
+                    <owl-date-time class="owl-picker" #dt></owl-date-time>
+                  </mat-form-field>
+                  <div class="spacer"></div>
+                  <mat-form-field class="date-to">
+                    <mat-label>the end of the event</mat-label>
+                    <input matInput [(ngModel)]="concert.dateTo" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
+                    <owl-date-time class="owl-picker" #dt2></owl-date-time>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="additional">
+            <div class="additional-info-column">
+              <mat-form-field>
+                <mat-label>number of rehearsals</mat-label>
+                <input type="number" [(ngModel)]="concert.numberOfRehearsals" matInput placeholder="Enter a number"
+                       formControlName="numberOfRehearsals">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput type="text"
+                       [ngModel]="addr" formControlName="address" placeholder="Search for Location"
+                       autocorrect="off" autocapitalize="off" spellcheck="off" #search>
+                <!--<input *ngIf="!hasAddress()" matInput type="text"-->
+                <!--[ngModel]="concert.address.address" formControlName="address" placeholder="Search for Location"-->
+                <!--autocorrect="off" autocapitalize="off" spellcheck="off" #search>-->
+                <!--<ng-template #other_content>-->
+                <!--<input *ngIf="" matInput type="text" formControlName="address" placeholder="Search for Location"-->
+                <!--autocorrect="off" autocapitalize="off" spellcheck="off" #search>-->
+                <!--</ng-template>-->
+                <!--<mat-error *ngIf="name.invalid">{{getEventError()}}</mat-error>-->
+              </mat-form-field>
+              <mat-slide-toggle [(ngModel)]="concert.ensuredDrive" formControlName="ensuredDrive">
+                Ensured drive
+              </mat-slide-toggle>
+              <mat-slide-toggle [(ngModel)]="concert.guaranteedMeal" formControlName="guaranteedMeal">
+                Guaranteed meal
+              </mat-slide-toggle>
+
+            </div>
+          </mat-tab>
+          <mat-tab label="concert slots">
+            <div class="concert-slots">
+              <ag-grid-angular
+                #agGrid
+                class="ag-theme-dark inner"
+                [enableSorting]="true"
+                [enableFilter]="true"
+                [enableColResize]="true"
+                [rowData]="rowData"
+                [columnDefs]="columnDefs"
+                [isRowSelectable]="isRowSelectable"
+                rowSelection="multiple"
+                (gridReady)="onGridReady($event)"
+                (rowSelected)="isAnySelected()">
+              </ag-grid-angular>
+
+              <button [disabled]="buttonDisabled" mat-raised-button class="middle-buttons" color="primary"
+                      (click)="deleteSelected()">delete selected slots
+              </button>
+            </div>
+
+          </mat-tab>
+        </div>
+
+      </mat-tab-group>
+    </form>
+    <div class="space"></div>
+
+    <div class="buttons-row">
+      <button (click)="update()" class="button-update" color="primary" type="submit"
+              [disabled]="!concertData.valid"
+              mat-raised-button> update your concert info
+      </button>
+      <div class="space"></div>
+      <button mat-raised-button="" class="button-cancel" color="accent" (click)="cancelEdition()">Cancel</button>
+
+    </div>
+
+  </mat-card>
+
+</div>
+

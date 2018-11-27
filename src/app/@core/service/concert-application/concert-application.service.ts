@@ -21,9 +21,9 @@ export class ConcertApplicationService {
 
   getConcertApplications(id: any): Observable<ConcertApplicationChangeModel[]> {
     return this._authHttpService.findAll('/musicalworld/rest/api/concert-applications/list/' + id);
-}
+  }
 
   examineConcertApplication(concertApplication: ConcertApplicationExamineModel) {
-    return this._authHttpService.save('/musicalworld/rest/api/concert-applications/examine',concertApplication);
+    return this._authHttpService.save('/musicalworld/rest/api/concert-applications/examine', concertApplication);
   }
 }
