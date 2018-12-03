@@ -4,6 +4,7 @@ import {MAT_SNACK_BAR_DATA, MatSnackBarRef} from '@angular/material';
 import {first} from 'rxjs/operators';
 import {UserService} from '../../../../../@core/service/user/user.service';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../../../../@core/service/authentication/authentication.service';
 
 @Component({
   selector: 'app-snack-bar-delete-profile',
@@ -12,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class SnackBarDeleteProfileComponent implements OnInit {
 
-  constructor(private _router: Router, private _toastr: ToastrService, private _userService: UserService,
+  constructor(private _authService: AuthenticationService, private _router: Router, private _toastr: ToastrService, private _userService: UserService,
               @Inject(MAT_SNACK_BAR_DATA) public data: any,
               private dialogRef: MatSnackBarRef<SnackBarDeleteProfileComponent>) {
   }
@@ -26,6 +27,7 @@ export class SnackBarDeleteProfileComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+
           this._toastr.success('Deleted profile successfully');
           this._router.navigate(['/pages/auth/login']);
           this.dialogRef.dismissWithAction();

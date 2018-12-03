@@ -1,9 +1,17 @@
 <div class="flex-area">
   <mat-card class="mat-card">
     <mat-tab-group>
-      <mat-tab label="s">  </mat-tab>
-      <mat-tab label=""> Content 2 </mat-tab>
-      <mat-tab label=""> Content 3 </mat-tab>
+      <mat-tab label="{{'Pages.friends.tab1' | translate}}">
+        <app-my-friends (refresh)="refresh()" [friends]="friendLists.friends"></app-my-friends>
+      </mat-tab>
+      <mat-tab label="{{'Pages.friends.tab2' | translate}}">
+        <app-friend-pending (refresh)="refresh()" [InvitationSentToLoggedUser]="friendLists.friendsIDidNotAccept"
+                            [InvitationsSentByLoggedUser]="friendLists.friendsWhoDidNotAcceptMe"></app-friend-pending>
+      </mat-tab>
+      <mat-tab label="{{'Pages.friends.tab3' | translate}}">
+        <app-friend-request (refresh)="refresh()"
+                            [notFriends]="friendLists.outsideOfFriendshipsUsers"></app-friend-request>
+      </mat-tab>
     </mat-tab-group>
   </mat-card>
 </div>

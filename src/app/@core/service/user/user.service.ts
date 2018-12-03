@@ -34,13 +34,9 @@ export class UserService {
   }
 
 
-  delete(id: number) {
-    return this.http.delete('/api/users/', id);
-  }
-
   deleteByUsername() {
-    const httpParams = new HttpParams()
-    return this.http.deleteWithParams('/musicalworld/rest/api/users/', httpParams);
+    const httpParams = new HttpParams();
+    return this.http.deleteWithHttpParams('/musicalworld/rest/api/users/', httpParams);
   }
 
   activateAccount(token: string) {

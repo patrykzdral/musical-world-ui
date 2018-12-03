@@ -39,6 +39,7 @@ export class ConcertsListItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.concertModel.username)
   }
 
   navigateToDetails() {

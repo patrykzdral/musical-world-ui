@@ -16,25 +16,25 @@ export class YourProfileComponent implements OnInit {
   imageToShow: any;
 
 
-  constructor(private route: ActivatedRoute, private _toastrService: ToastrService, private _userService: UserService, private _router: Router) {
+  constructor(private _route: ActivatedRoute, private _toastrService: ToastrService, private _userService: UserService, private _router: Router) {
   }
 
   ngOnInit() {
-    this._userService.getUserWithPhoto(JSON.parse(localStorage.getItem('currentUser')).username).toPromise().then(res => {
-        if (res != null) {
-          this.user = res;
-          if (res.photo) {
-            this.imageToShow = res.photo;
+    this._route.data.subscribe((data: { user: UserWithPhotoModel }) => {
+        if (data.user) {
+          this.user = data.user;
+          console.log(this.user);
+          if (this.user.photo) {
+            console.log("check");
+            this.imageToShow = this.user.photo;
             this.hasProfile = true;
           }
-
         } else {
+          this._router.navigate(['/']);
+
         }
-      },
-      (err) => {
-        this._router.navigate(['/']);
-        this._toastrService.error(err);
-      });
+      }
+    );
 
   }
 

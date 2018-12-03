@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AdminConcertApplicationComponent} from './admin-concert-application.component';
 
-describe('AdminConcertApplicationComponent', () => {
+describe('FriendRequestComponent', () => {
   let component: AdminConcertApplicationComponent;
   let fixture: ComponentFixture<AdminConcertApplicationComponent>;
 

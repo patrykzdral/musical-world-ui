@@ -42,4 +42,7 @@ export class DifferentUserProfileComponent implements OnInit {
   }
 
 
+  refreshPage() {
+
+  }
 }

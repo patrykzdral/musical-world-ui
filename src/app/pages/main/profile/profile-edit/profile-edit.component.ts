@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {UserService} from '../../../../@core/service/user/user.service';
 import {UserWithPhotoModel} from '../profile-picture-change/user-with-photo.model';
@@ -14,27 +14,27 @@ export class ProfileEditComponent implements OnInit {
   user: UserWithPhotoModel;
   hasProfile = false;
   imageToShow: any;
+  noPhotoPath: '/assets/concert/new_event.png';
 
-  constructor(private _toastrService: ToastrService, private _userService: UserService, private _router: Router) {
+  constructor(private _route: ActivatedRoute, private _toastrService: ToastrService, private _userService: UserService, private _router: Router) {
   }
 
   ngOnInit() {
 
-    this._userService.getUserWithPhoto(JSON.parse(localStorage.getItem('currentUser')).username).toPromise().then(res => {
-        if (res != null) {
-          this.user = res;
-          if (res.photo) {
-            this.imageToShow = res.photo;
+    this._route.data.subscribe((data: { user: UserWithPhotoModel }) => {
+        if (data.user) {
+          this.user = data.user;
+          if (this.user.photo) {
+            console.log("check");
+            this.imageToShow = this.user.photo;
             this.hasProfile = true;
           }
-
         } else {
+          this._router.navigate(['/']);
+
         }
-      },
-      (err) => {
-        this._router.navigate(['/']);
-        this._toastrService.error(err);
-      });
+      }
+    );
   }
 
   hasProfilePic() {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserReferenceModel} from '../../../../../@core/model/user-reference.model';
 import {UserReferenceService} from '../../../../../@core/service/user-reference/user-reference.service';
 import {first} from 'rxjs/operators';
@@ -14,6 +14,8 @@ export class ReferenceBoxComponent implements OnInit {
 
   userReference: UserReferenceModel = new UserReferenceModel();
   userReferencesObservable: Observable<UserReferenceModel[]>;
+
+  @Output() opinionAdded = new EventEmitter<any>();
 
   @Input()
   notAdmin: boolean;
@@ -37,6 +39,7 @@ export class ReferenceBoxComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.userReferencesObservable = this._userReferenceService.findAllUserReferences(this.userReference.userToUsername);
           this._toastrService.success('Successfully added opinion!');
         },
         error => {

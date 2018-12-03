@@ -1,26 +1,28 @@
 ///<reference path="../../../../node_modules/@angular/common/http/src/interceptor.d.ts"/>
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {AuthenticationService} from '../service/authentication/authentication.service';
+import {ToastrService} from 'ngx-toastr';
+import 'rxjs/add/operator/do';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-@Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private _router: Router, private _toastr: ToastrService, private authenticationService: AuthenticationService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request).pipe(catchError(err => {
-      if (err.status === 401) {
-        // auto logout if 401 response returned from api
-        this.authenticationService.logout();
-        location.reload(true);
+
+    return next.handle(request).do((event: HttpEvent<any>) => {
+    }, (err: any) => {
+      if (err instanceof HttpErrorResponse) {
+        if (err.status === 401) {
+          this.authenticationService.cleanStorageAndCookies();
+          location.reload(true);
+        }
       }
-      const error = err.error.message || err.statusText;
-      return throwError(error);
-    }))
+    });
   }
 }

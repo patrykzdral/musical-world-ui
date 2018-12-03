@@ -18,8 +18,6 @@ export class AppComponent implements OnInit {
               private translate: TranslateService) {
     translate.setDefaultLang('pl');
     translate.use('pl');
-
-    console.log(this.translate.get('footer.name').toString() + 'SDASD');
   }
 
   ngOnInit(): void {

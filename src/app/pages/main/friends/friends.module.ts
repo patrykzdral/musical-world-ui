@@ -9,10 +9,17 @@ import {RouterModule} from '@angular/router';
 import {TranslateModule} from '@ngx-translate/core';
 import {PipesModule} from '../../../shared/pipes/pipes.module';
 import {MatModule} from '../../../mat.module';
+import { FriendPendingComponent } from './friend-pending/friend-pending.component';
+import {FriendRequestComponent} from './friend-request/friend-request.component';
+import { MyFriendsComponent } from './my-friends/my-friends.component';
 
 @NgModule({
   declarations: [
-    FriendsComponent
+    FriendsComponent,
+    FriendPendingComponent,
+    FriendRequestComponent,
+    MyFriendsComponent,
+    FriendPendingComponent
   ],
   imports: [
     ReactiveFormsModule,

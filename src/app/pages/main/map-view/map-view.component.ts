@@ -1,6 +1,6 @@
 /// <reference types="@types/googlemaps" />
 
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
 import {Concert} from '../../../@core/model/concert.model';
@@ -12,15 +12,16 @@ import {ConcertAddressModel} from './mapAddress.model';
 import {SessionService} from '../../../@core/service/session/session.service';
 import {ConcertModel} from '../../../@core/model/get-model/concert.model';
 import {GoogleService} from '../../../@core/service/google/google.service';
+import {ISubscription} from 'rxjs-compat/Subscription';
 
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
   styleUrls: ['./map-view.component.scss']
 })
-export class MapViewComponent implements OnInit {
-  startLatitude = 51.1078852;
-  startLongitude = 17.0385376;
+export class MapViewComponent implements OnInit, OnDestroy {
+  private subscription: ISubscription;
+
   newEventLocationChosen = false;
   mapTypes = ['hybrid', 'roadmap', 'satellite', 'terrain'];
   mapTypeId = 1;
@@ -30,7 +31,7 @@ export class MapViewComponent implements OnInit {
   location: any;
   mapAddress: ConcertAddressModel;
   coordinates;
-
+  isTracking;
   newEventMarker = {
     image: '/assets/concert/new_event.png',
     latitude: 51.1078852,
@@ -46,18 +47,19 @@ export class MapViewComponent implements OnInit {
   ngOnInit() {
     this.mapAddress = new ConcertAddressModel();
     this.getEvents();
-
-    this._geoLocationService.getPosition().subscribe(
-      (pos: Position) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
         this.coordinates = {
-          latitude:  +(pos.coords.latitude),
-          longitude: +(pos.coords.longitude)
+          latitude:  +(position.coords.latitude),
+          longitude: +(position.coords.longitude)
         };
-        console.log(this.coordinates.longitude)
       });
-
+    }
   }
 
+  ngOnDestroy(){
+    //this.subscription.unsubscribe()
+  }
 
   getEvents() {
     console.log(JSON.parse(localStorage.getItem('currentUser')).username);
@@ -158,4 +160,19 @@ export class MapViewComponent implements OnInit {
     this._router.navigate(['/pages/concerts/show-all/concert', id]);
 
   }
+
+  trackMe() {
+    if (navigator.geolocation) {
+      this.isTracking = true;
+      navigator.geolocation.watchPosition((position) => {
+        this.coordinates = {
+          latitude:  +(position.coords.latitude),
+          longitude: +(position.coords.longitude)
+        };
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
 }

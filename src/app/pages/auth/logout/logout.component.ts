@@ -13,7 +13,7 @@ export class LogoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._authenticationService.logout();
+    this._authenticationService.cleanStorageAndCookies();
   }
 
   goToHome() {

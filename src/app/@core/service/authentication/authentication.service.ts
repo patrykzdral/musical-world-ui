@@ -5,12 +5,13 @@ import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 import {UserService} from '../user/user.service';
 import {ToastrService} from 'ngx-toastr';
+import {CheckAccessService} from '../check-access/check-access.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  constructor(private _router: Router, private _http: HttpClient, private _cookieService: CookieService
+  constructor(private _checkAccessService: CheckAccessService, private _router: Router, private _http: HttpClient, private _cookieService: CookieService
     , private _userService: UserService, private _toastr: ToastrService) {
   }
 
@@ -44,7 +45,7 @@ export class AuthenticationService {
       );
   }
 
-  logout() {
+  cleanStorageAndCookies() {
     this._cookieService.delete('access_token');
     this._cookieService.delete('access_token_expire_date');
     localStorage.removeItem('currentUser');
@@ -75,18 +76,5 @@ export class AuthenticationService {
       });
   }
 
-  checkCredentials(): boolean {
-    if (!this._cookieService.check('access_token') || !this._cookieService.check('access_token_expire_date')) {
-      return false;
-    } else {
-      if (AuthenticationService.isExpired(this._cookieService.get('access_token_expire_date'))) {
-        this._cookieService.delete('access_token');
-        this._cookieService.delete('access_token_expire_date');
-        localStorage.removeItem('current_user');
-      }
-      return true;
-    }
-
-  }
 
 }

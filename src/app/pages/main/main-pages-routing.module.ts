@@ -22,6 +22,8 @@ import {DifferentUserProfileComponent} from './profile/different-user-profile/di
 import {DifferentUserProfileResolver} from './profile/different-user-profile/different-user-profile.resolver';
 import {YourProfileComponent} from './profile/your-profile/your-profile.component';
 import {FriendsComponent} from './friends/friends.component';
+import {ProfileEditResolver} from './profile/profile-edit/profile-edit.resolver';
+import {YourProfileResolver} from './profile/your-profile/your-profile.resolver';
 
 
 const routes: Routes = [{
@@ -119,11 +121,17 @@ const routes: Routes = [{
         {
           path: 'show',
           component: YourProfileComponent,
+          resolve: {
+            user: YourProfileResolver
+          },
           canActivate: [AuthGuard]
         },
         {
           path: 'edit',
           component: ProfileEditComponent,
+          resolve: {
+            user: ProfileEditResolver
+          },
           canActivate: [AuthGuard]
 
         },

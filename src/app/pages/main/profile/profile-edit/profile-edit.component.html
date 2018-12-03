@@ -10,8 +10,8 @@
         <div *ngIf="hasProfilePic();else other_content">
           <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar">
         </div>
-        <ng-template #other_content class="company-header-avatar-white">
-          <div class="photo"></div>
+        <ng-template #other_content class="big-avatar">
+          <img src="assets/profile/nophoto.png" alt="photo not found" class="big-avatar">
         </ng-template>
         <app-profile-picture-upload></app-profile-picture-upload>
       </div>

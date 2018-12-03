@@ -17,8 +17,6 @@ export class AuthHttpService extends HttpClient {
   createAuthorizationHeader(): HttpHeaders {
     const token = this.cookieService.get('access_token');
     const headers = new HttpHeaders({'Authorization': 'bearer ' + token});
-    console.log(headers.get('Authorization'));
-
     return headers;
   }
 
@@ -30,19 +28,28 @@ export class AuthHttpService extends HttpClient {
   }
 
 
-  delete(url: string, id: any): Observable<any> {
+  deleteWithParams(url: string, params: Params): Observable<any> {
     const headers = this.createAuthorizationHeader();
-    return super.delete(url + '/' + id, {
+    return super.delete(url, {
+      params,
       headers: headers
     });
   }
 
 
-  deleteWithParams(url: string, params: HttpParams): Observable<any> {
+  deleteWithHttpParams(url: string, params: HttpParams): Observable<any> {
     const headers = this.createAuthorizationHeader();
     return super.delete(url, {
       headers: headers,
       params: params
+    });
+  }
+  findAllWithParams(url: string, params: Params): Observable<any> {
+    const headers = this.createAuthorizationHeader();
+    console.log(headers);
+    return super.get(url, {
+      params,
+      headers: headers
     });
   }
 
@@ -65,15 +72,6 @@ export class AuthHttpService extends HttpClient {
     return super.put(url, object, {
       headers: headers,
       params
-    });
-  }
-
-  findAllWithParams(url: string, params: Params): Observable<any> {
-    const headers = this.createAuthorizationHeader();
-    console.log(headers);
-    return super.get(url, {
-      params,
-      headers: headers
     });
   }
 }

@@ -156,11 +156,13 @@ export class AdminConcertInfoUpdateComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this._toastrService.success('Application has been deleted successfully!');
-          this._router.navigate(['/']);
         },
         error => {
           this._toastrService.error(error);
+        },
+        () => {
+          this.refresh();
+          this._toastrService.success('Application has been deleted successfully!');
         });
   }
 
@@ -202,5 +204,9 @@ export class AdminConcertInfoUpdateComponent implements OnInit {
     this.address.street = route;
     this.address.latitude = place.geometry.location.lat();
     this.address.longitude = place.geometry.location.lng();
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 }

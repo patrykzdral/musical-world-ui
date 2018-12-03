@@ -43,7 +43,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatProgressButtonsModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBEmx5P3vl4ox4OU6nPgwTbU9k-_0Zm6Lo',
-      libraries: ['places']
+      libraries: ['places, geometry']
     }),
     Ng4LoadingSpinnerModule.forRoot(),
     TranslateModule.forRoot({

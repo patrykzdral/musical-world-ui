@@ -4,14 +4,14 @@
 <!--<input matInput placeholder="Enter your first name" formControlName="firstName">-->
 <!--</mat-form-field>-->
 <div class="profile">
-  <mat-card>
+  <mat-card class="mat-card">
     <div class="flex-row">
       <div class="photo-column">
         <div *ngIf="hasProfilePic();else other_content">
           <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar">
         </div>
         <ng-template #other_content class="company-header-avatar-white">
-          <div class="photo"></div>
+          <img src="assets/profile/nophoto.png" alt="Card image cap" class="big-avatar">
         </ng-template>
       </div>
       <div class="title-column">
@@ -60,7 +60,7 @@
         </mat-form-field>
       </div>
       <mat-card class="card">
-        <app-reference-box [notAdmin]="true" [userTo]="user.username"></app-reference-box>
+        <app-reference-box (opinionAdded)="refreshPage()" [notAdmin]="true" [userTo]="user.username"></app-reference-box>
       </mat-card>
     </mat-card-content>
     <mat-card-actions>

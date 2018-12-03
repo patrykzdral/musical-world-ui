@@ -13,7 +13,6 @@ import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {ConcertsListComponent} from './concerts-list/concerts-list.component';
 import {ConcertsListItemComponent} from './concerts-list/concerts-list-item/concerts-list-item.component';
 import {AgGridModule} from 'ag-grid-angular';
-import {AuthInterceptor} from '../../../@core/interceptor/auth.interceptor';
 import {AdminConcertsComponent} from './admin-concerts/admin-concerts.component';
 import {ConcertDetailsComponent} from './concerts-list/concert-details/concert-details.component';
 import {AdminConcertsItemComponent} from './admin-concerts/admin-concerts-item/admin-concerts-item.component';
@@ -59,10 +58,6 @@ import {AdminConcertPictureUpdateComponent} from './admin-concerts/admin-conert-
     PictureUploadComponent,
     AdminConcertInfoUpdateComponent,
     AdminConcertPictureUpdateComponent
-  ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-
   ],
 
   entryComponents: [

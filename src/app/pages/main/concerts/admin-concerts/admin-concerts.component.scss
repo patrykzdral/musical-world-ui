@@ -11,7 +11,7 @@
   height: 100%;
   .mat-card {
     width: 70%;
-    //height: 700px;
+    height: 100%;
 
   }
 }
@@ -73,7 +73,9 @@ mat-expansion-panel-header {
 .concert-list {
   overflow-y: auto;
 }
-
+mat-card{
+  overflow-y:auto;
+}
 .header-expension {
   ::ng-deep mat-expansion-panel {
     background-color: rgba($application-main-color, 0.9) !important;

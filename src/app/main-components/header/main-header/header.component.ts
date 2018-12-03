@@ -32,9 +32,10 @@ export class MainHeaderComponent implements OnInit {
     this.username = JSON.parse(localStorage.getItem('currentUser')).username;
     this._userService.getUserWithPhoto(JSON.parse(localStorage.getItem('currentUser')).username).toPromise().then(res => {
         if (res != null) {
-          this.imageToShow = res.photo;
-          this.hasProfile = true;
-        } else {
+          if (res.photo) {
+            this.imageToShow = res.photo;
+            this.hasProfile = true;
+          }
         }
       },
       (err) => {
