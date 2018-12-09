@@ -33,6 +33,6 @@ export class AdminConcertsDetailsResolver implements Resolve<ConcertApplicationM
 
   private navigateToAllConcerts() {
     this.router.navigate(['/pages/concerts/show-all/']);
-    return _throw('Book could not be found');
+    return _throw('Admin concert cannot be found');
   }
 }

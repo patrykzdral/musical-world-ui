@@ -29,6 +29,7 @@ export class SnackBarDeleteProfileComponent implements OnInit {
           console.log(data);
 
           this._toastr.success('Deleted profile successfully');
+          this._authService.cleanStorageAndCookies();
           this._router.navigate(['/pages/auth/login']);
           this.dialogRef.dismissWithAction();
 

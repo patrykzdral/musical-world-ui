@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ConcertApplicationChangeModel} from '../../../../../../@core/model/concert-application-change.model';
 import {ConcertApplicationService} from '../../../../../../@core/service/concert-application/concert-application.service';
 import {ConcertApplicationExamineModel} from '../../../../../../@core/model/concert-application-examine.model';
@@ -24,6 +24,9 @@ export class AdminConcertApplicationComponent implements OnInit {
     this.concertApplication = value;
   }
 
+  @Output()
+  refresh: EventEmitter<any> = new EventEmitter();
+
   ngOnInit() {
   }
 
@@ -38,6 +41,7 @@ export class AdminConcertApplicationComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.refresh.emit();
           this._toastrService.success('Application has been accepted');
         },
         error => {
@@ -50,6 +54,7 @@ export class AdminConcertApplicationComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.refresh.emit();
           this._toastrService.success('Application has been rejected');
         },
         error => {

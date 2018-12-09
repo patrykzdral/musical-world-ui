@@ -2,18 +2,17 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {FriendModel} from '../../@core/model/friend.model';
 
 @Pipe({
-  name: 'friendsFilter'
+  name: 'myFriendsFilter'
 })
-export class FriendsFilter implements PipeTransform {
+export class MyFriendsFilter implements PipeTransform {
 
   transform(items: FriendModel[], searchText: string): FriendModel[] {
     if (!items) {
       return [];
     }
     if (!searchText) {
-      return [];
+      return items;
     }
-    console.log(items);
     searchText = searchText.toLowerCase();
     return items.filter(it => {
       return (it.username.toLowerCase().includes(searchText));

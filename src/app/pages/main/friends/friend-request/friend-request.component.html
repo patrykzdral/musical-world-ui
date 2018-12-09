@@ -1,0 +1,26 @@
+<div class="flexbox">
+  <mat-card-title>List of actual users that are not your friends</mat-card-title>
+  <mat-form-field>
+    <input class="filter-box"  matInput [(ngModel)]="searchText" placeholder="filter by username">
+  </mat-form-field>
+  <div class="cons-height">
+    <div *ngFor="let friend of notFriends | friendsFilter : this.searchText">
+      <div class="flex-row override-expansion">
+        <mat-expansion-panel [disabled]="true">
+          <mat-expansion-panel-header>
+            <div class="username">{{friend.username}}</div>
+            <div class="name">{{friend.firstName }} {{friend.lastName}}</div>
+            <div class="invite-button">
+              <button  mat-raised-button color="" (click)="invite(friend.friendId)"> invite
+              </button>
+            </div>
+            <div class="details-button">
+              <button  mat-raised-button color="primary" (click)="navigateToUserDetails(friend.username)"> show profile
+              </button>
+            </div>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import {UserReferenceService} from '../../../../../@core/service/user-reference/
 import {first} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ToastrService} from 'ngx-toastr';
+import {OAuthError} from '../../../../../@core/error/oauth-error.model';
 
 @Component({
   selector: 'app-reference-box',
@@ -43,7 +44,9 @@ export class ReferenceBoxComponent implements OnInit {
           this._toastrService.success('Successfully added opinion!');
         },
         error => {
-          this._toastrService.error(error);
+          const businessErrorCode: string = (<OAuthError>error.error).errorMessage;
+          console.log(businessErrorCode);
+          //this._toastrService.error(oAuthError.errorMessage);
         });
   }
 }

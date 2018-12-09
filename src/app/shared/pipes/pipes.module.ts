@@ -5,12 +5,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatModule} from '../../mat.module';
 import {FormsModule} from '@angular/forms';
 import {FriendsFilter} from './friends-filter';
+import {MyFriendsFilter} from './my-friends-filter';
 
 @NgModule({
   declarations: [
     SafeUrlPipe,
     FilterPipe,
-    FriendsFilter
+    FriendsFilter,
+    MyFriendsFilter
   ],
   imports: [
     HttpClientModule,
@@ -20,10 +22,11 @@ import {FriendsFilter} from './friends-filter';
   exports: [
     SafeUrlPipe,
     FilterPipe,
-    FriendsFilter
+    FriendsFilter,
+    MyFriendsFilter
   ],
 
-  providers: [SafeUrlPipe, FilterPipe,FriendsFilter],
+  providers: [SafeUrlPipe, FilterPipe, FriendsFilter, MyFriendsFilter],
 })
 export class PipesModule {
 }

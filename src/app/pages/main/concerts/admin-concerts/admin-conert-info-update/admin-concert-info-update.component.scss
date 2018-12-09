@@ -85,6 +85,9 @@
       max-width: 90%;
       min-width: 90%;
       .main-info-row {
+        .photo-column{
+          display: none;
+        }
         display: flex;
         flex-direction: column;
       }

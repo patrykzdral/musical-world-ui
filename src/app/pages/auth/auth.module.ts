@@ -17,6 +17,7 @@ import {AuthPageTemplateComponent} from './auth-page-template/auth-page-template
 import {AuthPageTemplateForRegistrationComponent} from './auth-page-template-for-registration/auth-page-template-for-registration.component';
 import {PipesModule} from '../../shared/pipes/pipes.module';
 import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
+import {LicencesComponent} from './licences/licences.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
     AccountActivatedComponent,
     AuthPageTemplateComponent,
     AuthPageTemplateForRegistrationComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    LicencesComponent
+
   ],
   imports: [
     MatModule,
@@ -51,7 +54,8 @@ import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
     AccountActivatedComponent,
     AuthPageTemplateForRegistrationComponent,
     AuthPageTemplateComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    LicencesComponent
 
   ],
 

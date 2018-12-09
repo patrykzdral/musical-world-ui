@@ -12,11 +12,17 @@
       display: flex;
       flex-direction: row;
       .photo-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex: 50%
 
       }
       .title-column {
         flex: 50%;
+        .font{
+          color: black;
+        }
       }
 
     }
@@ -56,4 +62,7 @@
 .text-align {
   display: flex;
   justify-content: flex-start !important;
+}
+.bigger-text{
+  font-size: 18px;
 }

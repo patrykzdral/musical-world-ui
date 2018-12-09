@@ -8,10 +8,10 @@
     <div class="flex-row">
       <div class="photo-column">
         <div *ngIf="hasProfilePic();else other_content">
-          <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar">
+          <img [src]="imageToShow | safeUrl" alt="Card image cap" class="big-avatar-smaller">
         </div>
         <ng-template #other_content class="company-header-avatar-white">
-          <img src="assets/profile/nophoto.png" alt="Card image cap" class="big-avatar">
+          <img src="assets/profile/nophoto.png" alt="Card image cap" class="big-avatar-smaller">
         </ng-template>
       </div>
       <div class="title-column">

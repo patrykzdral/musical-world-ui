@@ -106,9 +106,6 @@ export class MapViewComponent implements OnInit, OnDestroy {
 
 
   getGeoLocation(lat: number, lng: number) {
-    console.log(lat);
-    console.log(lng);
-
     if (navigator.geolocation) {
       const geocoder = new google.maps.Geocoder;
       const latlng = new google.maps.LatLng(lat, lng);

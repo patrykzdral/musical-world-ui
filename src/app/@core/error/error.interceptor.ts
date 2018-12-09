@@ -6,6 +6,7 @@ import {AuthenticationService} from '../service/authentication/authentication.se
 import {ToastrService} from 'ngx-toastr';
 import 'rxjs/add/operator/do';
 import {Router} from '@angular/router';
+import {OAuthError} from './oauth-error.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,13 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (err.status === 401) {
           this.authenticationService.cleanStorageAndCookies();
           location.reload(true);
+        }
+        if( err.status === 500){
+          let businessErrorCode: string = (<OAuthError>err.error).errorMessage;
+          if (businessErrorCode === undefined) {
+            businessErrorCode = (<OAuthError>JSON.parse(err.error)).errorMessage;
+          }
+          this._toastr.error(businessErrorCode)
         }
       }
     });

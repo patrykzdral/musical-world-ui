@@ -20,7 +20,6 @@ export class DifferentUserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('in');
     this.route.data.subscribe((data: { user: UserWithPhotoModel }) => {
         if (data.user) {
           this.user = data.user;

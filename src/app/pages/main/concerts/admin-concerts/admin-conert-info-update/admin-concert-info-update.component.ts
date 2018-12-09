@@ -70,6 +70,8 @@ export class AdminConcertInfoUpdateComponent implements OnInit {
     this._route.data.subscribe((data: { concert: ConcertWithPhotoModel }) => {
       if (data.concert) {
         this.concert = data.concert;
+        console.log(this.concert.dateFrom);
+        console.log(this.concert.dateTo);
         if (this.concert.picture) {
           this.imageToShow = this.concert.picture;
           this.hasPhoto = true;

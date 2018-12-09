@@ -1,0 +1,68 @@
+@import '../../../../@theme/scss/main-theme';
+
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  .filter-box{
+    width: 60%;
+  }
+  .flex-row{
+    display: flex;
+    flex-direction: row;
+    .username {
+      flex: 20%;
+    }
+    .name {
+      flex: 20%;
+    }
+    .invite-button{
+      flex: 30%;
+    }
+    .details-button {
+      flex: 30%;
+    }
+  }
+
+}
+
+mat-expansion-panel {
+  width: 600px;
+}
+.override-expansion{
+  ::ng-deep mat-expansion-panel-header{
+    color: black !important;
+
+  }
+}
+
+
+.cons-height {
+  height: 600px;
+}
+@media(max-width: 600px) {
+  .flexbox{
+    .flex-row{
+      .name{
+        display: none;
+      }
+    }
+  }
+  mat-expansion-panel {
+    width: 420px;
+  }
+}
+@media(max-width: 400px) {
+  .flexbox{
+    .flex-row{
+      .name{
+        display: none;
+      }
+    }
+  }
+  mat-expansion-panel {
+    width: 300px;
+  }
+}

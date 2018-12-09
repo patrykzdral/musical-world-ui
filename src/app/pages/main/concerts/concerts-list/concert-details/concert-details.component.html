@@ -11,7 +11,7 @@
       </div>
       <div class="title-column">
         <mat-card-title class="title">Concert information</mat-card-title>
-        <mat-card-subtitle>Concert description {{concert.description}}</mat-card-subtitle>
+        <mat-card-subtitle class="font">Concert description {{concert.description}}</mat-card-subtitle>
       </div>
     </div>
     <!--<div mat-card-avatar class="example-header-image"></div>-->
@@ -19,36 +19,50 @@
     <!--<mat-card-subtitle> Concert description: {{concert.description}}</mat-card-subtitle>-->
     <mat-card-content>
       <mat-grid-list class="details-grid" colspan='3' [cols]="2" rowHeight="50px">
-        <mat-grid-tile>
-          <div fxFlex fxLayoutAlign="start center">
+        <mat-grid-tile class="bigger-text">
+          <div fxFlex fxLayoutAlign="center end">
             Number of rehearsals:
           </div>
         </mat-grid-tile>
-        <mat-divider></mat-divider>
+        <mat-grid-tile  class="bigger-text">
+          <div fxFlex fxLayoutAlign="start start">
+            {{concert.numberOfRehearsals}}
+          </div>
+        </mat-grid-tile>
 
-        <mat-grid-tile> {{concert.numberOfRehearsals}}</mat-grid-tile>
+        <mat-grid-tile class="bigger-text">
+          <div fxFlex fxLayoutAlign="center end">
+            Date:
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile  class="bigger-text">
+          <div fxFlex fxLayoutAlign="start start">
+            {{concert.dateFrom | date:'short'}} - {{concert.dateTo | date:'short'}}
+          </div>
+
+        </mat-grid-tile>
         <mat-divider></mat-divider>
         <mat-grid-tile>
-          <div fxFlex fxLayoutAlign="start center">
+          <div class="bigger-text" fxFlex fxLayoutAlign="center end">
             Ensured drive:
           </div>
         </mat-grid-tile>
         <mat-divider></mat-divider>
-        <mat-grid-tile>
-          <div *ngIf="concert.ensuredDrive;else not_ensured">
-            yes
+        <mat-grid-tile class="bigger-text">
+          <div fxFlex fxLayoutAlign="start start" *ngIf="concert.ensuredDrive;else not_ensured">
+              yes
           </div>
-          <ng-template #not_ensured><p>no</p></ng-template>
+          <ng-template class="bigger-text" #not_ensured><p>no</p></ng-template>
         </mat-grid-tile>
         <mat-divider></mat-divider>
-        <mat-grid-tile>
-          <div fxFlex fxLayoutAlign="start center">
+        <mat-grid-tile class="bigger-text">
+          <div fxFlex fxLayoutAlign="center end">
             guaranteed meal:
           </div>
         </mat-grid-tile>
         <mat-divider></mat-divider>
-        <mat-grid-tile>
-          <div *ngIf="concert.guaranteedMeal;else not_guaranteed">
+        <mat-grid-tile class="bigger-text">
+          <div fxFlex fxLayoutAlign="start start" *ngIf="concert.guaranteedMeal;else not_guaranteed">
             yes
           </div>
           <ng-template #not_guaranteed><p>no</p></ng-template>

@@ -8,6 +8,7 @@ import {ConcertApplicationService} from '../../../../../@core/service/concert-ap
 import {ConcertApplicationModel} from '../../../../../@core/model/concert-application.model';
 import {ConcertInstrumentSlotModel} from '../../../../../@core/model/get-model/concert-instrument-slot.model';
 import {ConcertWithPhotoModel} from '../../../../../@core/model/get-model/concert-with-photo.model';
+import {OAuthError} from '../../../../../@core/error/oauth-error.model';
 
 @Component({
   selector: 'app-concert-details',
@@ -22,7 +23,7 @@ export class ConcertDetailsComponent implements OnInit {
   hasProfile = false;
   imageToShow: any;
   rowData: any;
-
+  oAuthError: OAuthError;
 
   @ViewChild('agGrid') agGrid: AgGridNg2;
 
@@ -89,7 +90,8 @@ export class ConcertDetailsComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error => {
-          this.toastrService.error(error);
+          this.oAuthError = (<OAuthError>error.error);
+          this.toastrService.error(this.oAuthError.errorMessage);
         });
   }
 

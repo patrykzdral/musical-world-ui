@@ -18,20 +18,11 @@ export class AdminConcertsDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+  refresh(){
     this.route.params.subscribe(params => {
       this.concertApplications = this._concertApplicationService.getConcertApplications(params['id']);
     });
-    // console.log("onINIT");
-    // this.route.data.subscribe((data: { concertApplicationModels: ConcertApplicationModel[] }) => {
-    //     if (data.concertApplicationModels) {
-    //       this.concertApplications = data.concertApplicationModels;
-    //
-    //     } else {
-    //       this.router.navigate(['/pages/concerts/show-all/']);
-    //
-    //     }
-    //   }
-    // );
   }
-
 }

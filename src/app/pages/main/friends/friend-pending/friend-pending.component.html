@@ -1,0 +1,61 @@
+<div class="flexbox">
+  <mat-card-title>Lists of sent to me and by me applications</mat-card-title>
+  <!--<div *ngFor="let friend of notFriends | friendsFilter : this.searchText">-->
+  <div class="flex-row">
+    <div class="inv-sent-to ">
+      <mat-card>
+        <div  *ngIf="InvitationSentToLoggedUser.length==0;else listOfSentToMe">
+          no invitations has been sent you
+        </div>
+        <ng-template class="constant-height" #listOfSentToMe>
+          Invitations sent to me
+          <div  *ngFor="let friend of InvitationSentToLoggedUser">
+            <mat-expansion-panel [disabled]="false">
+              <mat-expansion-panel-header>
+                <div class="username">{{friend.username}}</div>
+
+                <button class="details-button" mat-raised-button color="primary"
+                        (click)="navigateToUserDetails(friend.username)"> show profile
+                </button>
+              </mat-expansion-panel-header>
+              <button class="accept-button" mat-raised-button color="primary" (click)="acceptFrie(friend.friendId)">
+                accept
+              </button>
+              <button class="reject-button" mat-raised-button color="warn" (click)="rejectFrie(friend.friendId)">
+                reject
+              </button>
+            </mat-expansion-panel>
+          </div>
+        </ng-template>
+
+      </mat-card>
+
+    </div>
+
+    <div class="inv-sent-by">
+      <mat-card>
+        <div *ngIf="InvitationsSentByLoggedUser.length==0;else listOfSentByMe">
+          no invitations has been sent by you
+        </div>
+        <ng-template #listOfSentByMe>
+          My invitations
+          <div *ngFor="let friend of InvitationsSentByLoggedUser">
+            <mat-expansion-panel [disabled]="true" hideToggle>
+              <mat-expansion-panel-header>
+                <div class="username">{{friend.username}}</div>
+                <div class="name">{{friend.firstName }} {{friend.lastName}}</div>
+                <button class="details-button" mat-raised-button color="warn" (click)="cancelInv(friend.friendId)">
+                  cancel
+                </button>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          </div>
+        </ng-template>
+
+
+      </mat-card>
+
+    </div>
+  </div>
+</div>
+

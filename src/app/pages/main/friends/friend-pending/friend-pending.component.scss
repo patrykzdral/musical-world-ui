@@ -1,0 +1,57 @@
+@import '../../../../@theme/scss/main-theme';
+
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+    .inv-sent-to {
+      flex: 50%;
+      .username {
+        flex: 10%;
+        margin-right: 15px;
+      }
+      .accept-button {
+        flex: 30%;
+        margin-right: 15px;
+      }
+      .reject-button {
+        flex: 30%;
+      }
+      .details-button {
+        flex: 30%;
+      }
+    }
+    .inv-sent-by {
+      flex: 50%;
+      .flex-row {
+        display: flex;
+        flex-direction: row;
+        .username {
+          flex: 30%;
+          margin-right: 15px;
+        }
+        .name {
+          flex: 30%;
+          margin-right: 15px;
+        }
+        .details-button {
+          flex: 40%;
+        }
+      }
+    }
+  }
+
+}
+
+mat-expansion-panel {
+  width: 100%;
+  color: black;
+}
+
+.const-height {
+  height: 600px;
+}
+

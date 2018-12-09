@@ -1,6 +1,7 @@
 {
   "Footer": {
-    "name": "Created with ♥ by "
+    "name": "Created with ♥ by ",
+    "licence": "licences"
   },
   "Auth": {
     "login": {

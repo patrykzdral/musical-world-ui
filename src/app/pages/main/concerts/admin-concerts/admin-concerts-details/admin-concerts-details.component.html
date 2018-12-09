@@ -12,7 +12,7 @@
     </mat-accordion>
     <div class=" concert-list constant-height">
       <div *ngFor="let concertApplic of concertApplications | async">
-        <app-admin-concert-application [concertApplicationInput]=concertApplic></app-admin-concert-application>
+        <app-admin-concert-application (refresh)="refresh()" [concertApplicationInput]=concertApplic></app-admin-concert-application>
       </div>
     </div>
   </mat-card>

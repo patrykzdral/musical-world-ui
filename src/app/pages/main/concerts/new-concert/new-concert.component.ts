@@ -60,14 +60,14 @@ export class NewConcertComponent implements OnInit {
       this._sessionService.location = null;
     }
     this.eventData = this._formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-      description: ['', [Validators.minLength(1), Validators.maxLength(255)]],
-      dateFrom: ['', ],
-      dateTo: ['', ],
-      address: ['', ],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+      description: ['', [Validators.minLength(1), Validators.maxLength(2000)]],
+      dateFrom: ['',],
+      dateTo: ['',],
+      address: ['',],
       guaranteedMeal: [false],
       ensuredDrive: [false],
-      numberOfRehearsals: [0, ],
+      numberOfRehearsals: [0,],
     });
 
     this._mapsAPILoader.load().then(
@@ -84,11 +84,11 @@ export class NewConcertComponent implements OnInit {
           });
         });
       }
-    )
+    );
   }
 
   getDescriptionError() {
-    return this.description.hasError('maxlength') ? 'Max length is 255 cases' : '';
+    return this.description.hasError('maxlength') ? 'Max length is 2000 cases' : '';
   }
 
   getEventError() {
@@ -121,21 +121,21 @@ export class NewConcertComponent implements OnInit {
           error => {
             this._toastr.error('Toastr.error.file_upload_error');
           });
-      setTimeout(() => {
-      }, 500);
-    }
 
-    this._concertService.create(this.concert)
-      .pipe(first())
-      .subscribe(
-        data => {
-          // this.loading=true;
-          this._toastr.success('Toastr.success.event_created');
-          this.router.navigate(['/']);
-        },
-        error => {
-          this._toastr.error('Toastr.error.something_wrong');
-        });
+      setTimeout(() => {
+        this._concertService.create(this.concert)
+          .pipe(first())
+          .subscribe(
+            data => {
+              this._toastr.success('Toastr.success.event_created');
+              this.router.navigate(['/']);
+            },
+            error => {
+              this._toastr.error('Toastr.error.something_wrong');
+            });
+
+      }, 1000);
+    }
   }
 
   fileAdded(picture: File) {

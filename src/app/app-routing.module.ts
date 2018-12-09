@@ -10,6 +10,7 @@ import {AccountActivatedComponent} from './pages/auth/account-activated/account-
 import {ErrorsComponent} from './@core/error/errors-components/errors.component';
 import {TokenCorrectGuard} from './pages/auth/account-activated/token-correct.guard';
 import {UnauthorizedComponent} from './pages/auth/unauthorized/unauthorized.component';
+import {LicencesComponent} from './pages/auth/licences/licences.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'pages', pathMatch: 'full'},
@@ -54,6 +55,9 @@ export const routes: Routes = [
   },
   {
     path: 'unauthorized', component: UnauthorizedComponent,
+  },
+  {
+    path: 'licenses', component: LicencesComponent
   },
   {
     path: '**', redirectTo: '/bad-path'

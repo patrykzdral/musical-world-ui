@@ -34,16 +34,19 @@
 
                 </mat-form-field>
                 <div class="events-date">
+                  <div>{{concert.dateFrom | date:'short'}}</div>
                   <mat-form-field class="date-from">
                     <mat-label>the beginning of the event</mat-label>
-                    <input matInput  [owlDateTimeTrigger]="dt" [owlDateTime]="dt"
+                    <input matInput [(ngModel)]="concert.dateFrom" [owlDateTimeTrigger]="dt" [owlDateTime]="dt"
                            formControlName="dateFrom">
                     <owl-date-time class="owl-picker" #dt></owl-date-time>
                   </mat-form-field>
                   <div class="spacer"></div>
+                  <div>{{concert.dateTo | date:'short'}}</div>
                   <mat-form-field class="date-to">
                     <mat-label>the end of the event</mat-label>
-                    <input matInput  [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
+                    <input matInput [(ngModel)]="concert.dateTo" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2"
+                           formControlName="dateTo">
                     <owl-date-time class="owl-picker" #dt2></owl-date-time>
                   </mat-form-field>
                 </div>

@@ -21,7 +21,7 @@ import {PipesModule} from '../shared/pipes/pipes.module';
     LoginHeaderComponent,
     MainHeaderComponent,
     LoginFooterComponent,
-    MenuListItemComponent
+    MenuListItemComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -39,7 +39,7 @@ import {PipesModule} from '../shared/pipes/pipes.module';
     SidenavComponent,
     FooterComponent,
     MainHeaderComponent,
-    LoginFooterComponent
+    LoginFooterComponent,
   ],
 
   providers: []
